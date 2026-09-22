@@ -1,0 +1,114 @@
+[17:55:40] TUNE: 18,737 user, 32,510 POI, Y nnz=598,819, 17,957 user co ground truth
+[17:55:40] Giai doan: Do thi POI (sigma km, k_poi)
+    vong 1/3: user step 39s (thay doi 0.4741), POI step 28s
+    vong 2/3: user step 42s (thay doi 0.4276), POI step 31s
+    vong 3/3: user step 42s (thay doi 0.3458), POI step 0s
+[17:59:18]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 0.5, 'sigma': 0.5, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0297 R@5=0.0527  P@10=0.0250 R@10=0.0860  P@20=0.0205 R@20=0.1371  P@50=0.0145 R@50=0.2302 (217s)
+    vong 1/3: user step 39s (thay doi 0.4741), POI step 31s
+    vong 2/3: user step 41s (thay doi 0.4275), POI step 36s
+    vong 3/3: user step 42s (thay doi 0.3440), POI step 0s
+[18:02:58]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 50, 'alpha_poi': 0.5, 'sigma': 0.5, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0297 R@5=0.0523  P@10=0.0253 R@10=0.0868  P@20=0.0206 R@20=0.1379  P@50=0.0146 R@50=0.2325 (220s)
+    vong 1/3: user step 40s (thay doi 0.4741), POI step 31s
+    vong 2/3: user step 42s (thay doi 0.4253), POI step 30s
+    vong 3/3: user step 43s (thay doi 0.3372), POI step 0s
+[18:06:34]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 0.5, 'sigma': 1.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0313 R@5=0.0545  P@10=0.0260 R@10=0.0880  P@20=0.0210 R@20=0.1390  P@50=0.0148 R@50=0.2344 (217s)
+    vong 1/3: user step 40s (thay doi 0.4741), POI step 35s
+    vong 2/3: user step 42s (thay doi 0.4253), POI step 36s
+    vong 3/3: user step 43s (thay doi 0.3348), POI step 0s
+[18:10:26]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 50, 'alpha_poi': 0.5, 'sigma': 1.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0310 R@5=0.0541  P@10=0.0258 R@10=0.0876  P@20=0.0211 R@20=0.1390  P@50=0.0148 R@50=0.2341 (231s)
+    vong 1/3: user step 39s (thay doi 0.4741), POI step 27s
+    vong 2/3: user step 42s (thay doi 0.4227), POI step 30s
+    vong 3/3: user step 44s (thay doi 0.3257), POI step 0s
+[18:14:03]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 0.5, 'sigma': 3.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0330 R@5=0.0562  P@10=0.0270 R@10=0.0895  P@20=0.0213 R@20=0.1389  P@50=0.0148 R@50=0.2335 (217s)
+    vong 1/3: user step 40s (thay doi 0.4741), POI step 36s
+    vong 2/3: user step 42s (thay doi 0.4229), POI step 35s
+    vong 3/3: user step 44s (thay doi 0.3224), POI step 0s
+[18:17:51]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 50, 'alpha_poi': 0.5, 'sigma': 3.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0325 R@5=0.0553  P@10=0.0269 R@10=0.0894  P@20=0.0214 R@20=0.1395  P@50=0.0149 R@50=0.2331 (229s)
+    vong 1/3: user step 39s (thay doi 0.4741), POI step 31s
+    vong 2/3: user step 42s (thay doi 0.4207), POI step 29s
+    vong 3/3: user step 44s (thay doi 0.3148), POI step 0s
+[18:21:29]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 0.5, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0336 R@5=0.0567  P@10=0.0272 R@10=0.0887  P@20=0.0214 R@20=0.1376  P@50=0.0147 R@50=0.2301 (217s)
+    vong 1/3: user step 39s (thay doi 0.4741), POI step 36s
+    vong 2/3: user step 42s (thay doi 0.4210), POI step 37s
+    vong 3/3: user step 44s (thay doi 0.3116), POI step 0s
+[18:25:19]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 50, 'alpha_poi': 0.5, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0332 R@5=0.0556  P@10=0.0270 R@10=0.0880  P@20=0.0214 R@20=0.1377  P@50=0.0147 R@50=0.2296 (231s)
+[18:25:20]   -> tot nhat: {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 0.5, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} | P@10=0.0272 R@10=0.0887
+[18:25:20] Giai doan: Do thi POI (alpha_poi)
+    vong 1/3: user step 39s (thay doi 0.4741), POI step 29s
+    vong 2/3: user step 42s (thay doi 0.4203), POI step 28s
+    vong 3/3: user step 44s (thay doi 0.3134), POI step 0s
+[18:28:57]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 0.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0333 R@5=0.0560  P@10=0.0269 R@10=0.0882  P@20=0.0213 R@20=0.1366  P@50=0.0146 R@50=0.2285 (217s)
+    vong 1/3: user step 39s (thay doi 0.4741), POI step 29s
+    vong 2/3: user step 42s (thay doi 0.4209), POI step 30s
+    vong 3/3: user step 44s (thay doi 0.3158), POI step 0s
+[18:32:32]     {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0336 R@5=0.0565  P@10=0.0272 R@10=0.0886  P@20=0.0214 R@20=0.1380  P@50=0.0147 R@50=0.2305 (215s)
+[18:32:32]   -> tot nhat: {'k_user': 50, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} | P@10=0.0272 R@10=0.0886
+[18:32:32] Giai doan: Do thi user (k_user, alpha_user)
+    vong 1/3: user step 19s (thay doi 0.3807), POI step 31s
+    vong 2/3: user step 17s (thay doi 0.2187), POI step 30s
+    vong 3/3: user step 17s (thay doi 0.1178), POI step 0s
+[18:34:53]     {'k_user': 20, 'alpha_user': 0.0, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0265 R@5=0.0427  P@10=0.0227 R@10=0.0719  P@20=0.0182 R@20=0.1148  P@50=0.0130 R@50=0.1959 (141s)
+    vong 1/3: user step 28s (thay doi 0.4696), POI step 25s
+    vong 2/3: user step 29s (thay doi 0.4040), POI step 30s
+    vong 3/3: user step 32s (thay doi 0.2906), POI step 0s
+[18:37:46]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0336 R@5=0.0568  P@10=0.0275 R@10=0.0897  P@20=0.0216 R@20=0.1385  P@50=0.0148 R@50=0.2322 (172s)
+    vong 1/3: user step 28s (thay doi 0.4710), POI step 25s
+    vong 2/3: user step 29s (thay doi 0.4087), POI step 28s
+    vong 3/3: user step 32s (thay doi 0.2972), POI step 0s
+[18:40:36]     {'k_user': 20, 'alpha_user': 1.0, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0332 R@5=0.0562  P@10=0.0269 R@10=0.0879  P@20=0.0212 R@20=0.1363  P@50=0.0146 R@50=0.2295 (170s)
+    vong 1/3: user step 19s (thay doi 0.3808), POI step 31s
+    vong 2/3: user step 16s (thay doi 0.2190), POI step 26s
+    vong 3/3: user step 17s (thay doi 0.1182), POI step 0s
+[18:43:01]     {'k_user': 50, 'alpha_user': 0.0, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0265 R@5=0.0428  P@10=0.0227 R@10=0.0718  P@20=0.0182 R@20=0.1148  P@50=0.0130 R@50=0.1962 (145s)
+    vong 1/3: user step 39s (thay doi 0.4753), POI step 32s
+    vong 2/3: user step 42s (thay doi 0.4246), POI step 31s
+    vong 3/3: user step 45s (thay doi 0.3214), POI step 0s
+[18:46:51]     {'k_user': 50, 'alpha_user': 1.0, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0329 R@5=0.0557  P@10=0.0270 R@10=0.0877  P@20=0.0212 R@20=0.1365  P@50=0.0145 R@50=0.2281 (230s)
+[18:46:51]   -> tot nhat: {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} | P@10=0.0275 R@10=0.0897
+[18:46:51] Giai doan: Trong so Laplacian (lambda1, lambda2)
+    vong 1/3: user step 20s (thay doi 0.3133), POI step 27s
+    vong 2/3: user step 19s (thay doi 0.2923), POI step 44s
+    vong 3/3: user step 32s (thay doi 0.2619), POI step 0s
+[18:49:48]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 0.5, 'lam2': 0.3, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0357 R@5=0.0593  P@10=0.0290 R@10=0.0939  P@20=0.0230 R@20=0.1466  P@50=0.0154 R@50=0.2378 (177s)
+    vong 1/3: user step 20s (thay doi 0.3133), POI step 34s
+    vong 2/3: user step 20s (thay doi 0.2820), POI step 31s
+    vong 3/3: user step 20s (thay doi 0.2297), POI step 0s
+[18:52:19]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 0.5, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0308 R@5=0.0532  P@10=0.0254 R@10=0.0857  P@20=0.0200 R@20=0.1324  P@50=0.0141 R@50=0.2255 (151s)
+    vong 1/3: user step 20s (thay doi 0.3133), POI step 37s
+    vong 2/3: user step 22s (thay doi 0.2594), POI step 60s
+    vong 3/3: user step 20s (thay doi 0.1995), POI step 0s
+[18:55:17]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 0.5, 'lam2': 3.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0229 R@5=0.0404  P@10=0.0194 R@10=0.0660  P@20=0.0162 R@20=0.1078  P@50=0.0121 R@50=0.1935 (178s)
+    vong 1/3: user step 29s (thay doi 0.4696), POI step 27s
+    vong 2/3: user step 30s (thay doi 0.4223), POI step 28s
+    vong 3/3: user step 30s (thay doi 0.3440), POI step 0s
+[18:58:00]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 0.3, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0361 R@5=0.0581  P@10=0.0289 R@10=0.0919  P@20=0.0227 R@20=0.1426  P@50=0.0153 R@50=0.2336 (163s)
+    vong 1/3: user step 28s (thay doi 0.4696), POI step 37s
+    vong 2/3: user step 30s (thay doi 0.3660), POI step 37s
+    vong 3/3: user step 32s (thay doi 0.2490), POI step 0s
+[19:01:00]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 1.0, 'lam2': 3.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0249 R@5=0.0425  P@10=0.0210 R@10=0.0696  P@20=0.0172 R@20=0.1113  P@50=0.0125 R@50=0.1972 (179s)
+    vong 1/3: user step 41s (thay doi 0.6296), POI step 23s
+    vong 2/3: user step 44s (thay doi 0.5383), POI step 24s
+    vong 3/3: user step 46s (thay doi 0.3697), POI step 0s
+[19:04:15]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 2.0, 'lam2': 0.3, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0318 R@5=0.0507  P@10=0.0259 R@10=0.0815  P@20=0.0202 R@20=0.1240  P@50=0.0142 R@50=0.2140 (195s)
+    vong 1/3: user step 41s (thay doi 0.6296), POI step 31s
+    vong 2/3: user step 46s (thay doi 0.5090), POI step 30s
+    vong 3/3: user step 46s (thay doi 0.3097), POI step 0s
+[19:07:45]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 2.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0333 R@5=0.0539  P@10=0.0265 R@10=0.0844  P@20=0.0208 R@20=0.1296  P@50=0.0143 R@50=0.2182 (210s)
+    vong 1/3: user step 41s (thay doi 0.6296), POI step 38s
+    vong 2/3: user step 46s (thay doi 0.4540), POI step 37s
+    vong 3/3: user step 46s (thay doi 0.2719), POI step 0s
+[19:11:28]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 2.0, 'lam2': 3.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0267 R@5=0.0435  P@10=0.0219 R@10=0.0702  P@20=0.0174 R@20=0.1094  P@50=0.0124 R@50=0.1903 (223s)
+    vong 1/3: user step 57s (thay doi 0.7986), POI step 26s
+    vong 2/3: user step 56s (thay doi 0.6180), POI step 23s
+    vong 3/3: user step 57s (thay doi 0.3192), POI step 0s
+[19:15:24]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 5.0, 'lam2': 0.3, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0214 R@5=0.0343  P@10=0.0173 R@10=0.0544  P@20=0.0139 R@20=0.0854  P@50=0.0103 R@50=0.1534 (236s)
+    vong 1/3: user step 56s (thay doi 0.7986), POI step 25s
+    vong 2/3: user step 56s (thay doi 0.5775), POI step 28s
+    vong 3/3: user step 57s (thay doi 0.2961), POI step 0s
+[19:19:22]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 5.0, 'lam2': 1.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0232 R@5=0.0369  P@10=0.0186 R@10=0.0584  P@20=0.0152 R@20=0.0925  P@50=0.0110 R@50=0.1644 (239s)
+    vong 1/3: user step 57s (thay doi 0.7986), POI step 37s
+    vong 2/3: user step 56s (thay doi 0.5134), POI step 31s
+    vong 3/3: user step 56s (thay doi 0.2828), POI step 0s
+[19:23:38]     {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 5.0, 'lam2': 3.0, 'lam4': 0.0001, 'outer': 3} -> P@5=0.0233 R@5=0.0372  P@10=0.0188 R@10=0.0581  P@20=0.0146 R@20=0.0892  P@50=0.0103 R@50=0.1550 (256s)
+[19:23:39]   -> tot nhat: {'k_user': 20, 'alpha_user': 0.5, 'k_poi': 20, 'alpha_poi': 1.0, 'sigma': 10.0, 'G': 50, 'lam1': 0.5, 'lam2': 0.3, 'lam4': 0.0001, 'outer': 3} | P@10=0.0290 R@10=0.0939
+[19:23:39] Giai doan: Group lasso (lambda4)

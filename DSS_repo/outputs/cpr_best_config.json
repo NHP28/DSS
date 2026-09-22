@@ -1,0 +1,12 @@
+{
+ "k_user": 20,
+ "alpha_user": 0.5,
+ "k_poi": 20,
+ "alpha_poi": 1.0,
+ "sigma": 10.0,
+ "G": 20,
+ "lam1": 0.5,
+ "lam2": 0.2,
+ "lam4": 0.0001,
+ "outer": 3
+}

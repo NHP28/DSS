@@ -1,0 +1,1160 @@
+Contextualized Point-of-Interest Recommendation
+Peng Han2∗, Zhongxiao Li2∗, Yong Liu3 , Peilin Zhao4 , Jing Li5 , Hao Wang5† and Shuo
+Shang1†
+1University of Electronic Science and Technology of China
+2King Abdullah University of Science and Technology
+3Nanyang Technological University
+4Tencent AI Lab
+5Inception Institute of Artiﬁcial Intelligence
+{peng.han, zhongxiao.li}@kaust.edu.sa, stephenliu@ntu.edu.sg, {peilinzhao, jingli.phd}@hotmail.com,
+{haowang.paper,jedi.shang}@gmail.com
+Abstract
+Point-of-interest (POI) recommendation has be-
+come an increasingly important sub-ﬁeld of recom-
+mendation system research. Previous methods em-
+ploy various assumptions to exploit the contextual
+information for improving the recommendation ac-
+curacy. The common property among them is that
+similar users are more likely to visit similar POIs
+and similar POIs would like to be visited by the
+same user. However, none of existing methods uti-
+lize similarity explicitly to make recommendations.
+In this paper, we propose a new framework for POI
+recommendation, which explicitly utilizes similar-
+ity with contextual information. Speciﬁcally, we
+categorize the context information into two groups,
+i.e., global and local context, and develop different
+regularization terms to incorporate them for recom-
+mendation. A graph Laplacian regularization term
+is utilized to exploit the global context information.
+Moreover, we cluster users into different groups,
+and let the objective function constrain the users in
+the same group to have similar predicted POI rat-
+ings. An alternating optimization method is devel-
+oped to optimize our model and get the ﬁnal rat-
+ing matrix. The results in our experiments show
+that our algorithm outperforms all the state-of-the-
+art methods.
+1
+Introduction
+Point of interest (POI) recommendation has become an
+increasingly important sub-ﬁeld of recommendation sys-
+tem [Yang et al., 2018; Liu et al., 2018; Wu et al., 2019]
+and aims to ﬁnd new places for users that they might be in-
+terested in. It can help users ﬁnd interesting spots that will
+make them enjoy their vacations when they are in unfamiliar
+regions. And it can also increase the shopkeepers’ income
+by attracting more customers who would like to spend time
+∗Equal Contribution.
+†Corresponding Author.
+and money at the store. Therefore, POI recommendation has
+become a hot research topic in recent years [Zheng, 2012;
+Zheng and Xie, 2011]. However, there are many challenges
+in this problem and one of the most challenging one is the
+data sparsity problem.
+To tackle this problem, many methods incorporate the con-
+textual information into the recommendation method with
+different assumptions.
+For example, IRenMF [Liu et al.,
+2014b] assumes that the user will visit new POIs that are
+close to the POIs they visited before. And they construct an
+auxiliary label matrix by adding the weighted sum of neigh-
+boring POIs’ ratings to every POI. LRT [Gao et al., 2013]
+assumes that users will have different preference patterns in
+different time slots, so they construct different models for dif-
+ferent time intervals. Although the assumptions are various,
+the common property behind them is that similar users should
+visit similar POIs and similar POIs should be visited by simi-
+lar users. And the only difference between these assumptions
+is the way they construct the similarity, for example the simi-
+larity used in IRenMF is geographic distance and the similar-
+ity used in LRT is the time difference in one day.
+However, there are two main drawbacks in their ways of
+utilizing contextual information. One is that they usually con-
+sider only one type of contextual information in one entity,
+e.g., geographic distance between POIs or relationship be-
+tween users. And they design the model specially for a spe-
+ciﬁc type of context, making the models lack extensibility.
+The other problem is that they are not utilizing the contextual
+information explicitly, as most of the models focuse on check-
+in history, making contextual information utilization only to
+be an accessory component in the objective function. In this
+way, contextual information, which is a key point for the per-
+formance of POI recommendation, cannot be fully utilized.
+To make the model extensible and the utilization of contex-
+tual information completely, we propose a new framework for
+POI recommendation. In our method, we construct one user
+matrix and one POI similarity matrix according to the corre-
+sponding user and POI contextual information. A lot of types
+of similarity can be computed by cosine similarity between
+feature vectors between two entities. Furthermore, different
+types of similarity can be combined as a weighted sum. In
+Proceedings of the Twenty-Ninth International Joint Conference on Artiﬁcial Intelligence (IJCAI-20)
+2484
+
+this way, our framework is extensible for a large class of con-
+textual information. Once the similarity matrices of users and
+POIs are constructed, we will use two global Laplacian regu-
+larization terms to constrain the predicted preference matrix.
+These can directly make sure that, in the ﬁnal prediction, sim-
+ilar users should visit similar POIs and similar POIs should
+be visited by similar users. In addition, to exploit the contex-
+tual information hierarchically, we also impose a local reg-
+ularizer to make the predicted preference matrix have local
+patterns. Based on user similarity, we use spectral clustering
+[Von Luxburg, 2007] to sort users into different groups. Then
+we impose an l2-norm as a regularization term for the pre-
+dicted preference matrix of every group, which can make the
+preference of users in the same group to be sparse and have
+similar patterns.
+We form the objective function by putting the global
+and local regularizers together. To solve this optimization
+problem efﬁciently, we propose an alternating optimization
+method which decompose the objective function into two
+parts with an auxiliary variable. Accelerated proximal gra-
+dient (APG) algorithm is used to optimize the l2-regularized
+part of the problem.
+The contributions made in this work are as follows: (1) We
+propose a new framework for POI recommendation, which
+focuses on the explicit utilization of contextual information;
+(2) We can utilize different types of contextual information of
+both user and POI in our method; (3) We categorize contex-
+tual information into global and local types and utilize them
+by different regularization terms respectively; (4) We design
+an alternating optimization method to optimize the model;
+(5) The results of our method outperform the state-of-the-art
+methods on two large datasets.
+2
+Related Works
+Various methods have been proposed to utilize the context
+information for POI recommendation. One group of meth-
+ods exploit the user-based context. In RankGeoFM [Li et al.,
+2015], the authors proposed two different latent factors for
+each user, one for the preference to the target POI and the oth-
+ers for neighboring POIs. Another group of methods focus on
+exploiting the POI-based context. For example, IRenMF [Liu
+et al., 2014b] utilizes similarity between different POIs based
+on the geographic distance [Liu et al., 2014b]. For every POI
+and a speciﬁc user, it uses a weighted sum of the user’s pref-
+erence of the nearby POIs to estimate the rating of this POI.
+And it constrains the latent factors of the POIs in the same
+region with similar patterns. Although it only utilizes the
+geographic distances between POIs, the performance of this
+work is ranked top according to the latest survey [Liu et al.,
+2017]. Moreover, there also exist some methods exploit hy-
+brid context for recommendation. For instance, GeoMF [Lian
+et al., 2014] splits the whole space into different regions, and
+it incorporates the users’ interest and POIs’ inﬂuence of these
+regions into the their model. Then the ﬁnal preference score
+is combined by individual and regional components.
+3
+Preliminaries
+This section introduces some background about the POI rec-
+ommendation problem and graph Laplacian regularization.
+3.1
+Problem Deﬁnition
+Suppose in the recommendation task the total number of
+users is m and the total number of POIs is n.
+Let
+U = {u1, u2, . . . , um} be the set of users and let V
+=
+{v1, v2, . . . , vn} be the set of POIs. Let Pu be the set of in-
+dices of POIs that is visited by user u (u ∈U). Given the
+past check-in transaction history D, the task of POI recom-
+mendation is to recommend for each user u, a new set of POI
+indices ˆPu (Pu
+T ˆPu = ∅) that match their preference. The
+transaction history D is a set of tuples of the users and their
+visited POIs, i.e., D = {(u, v)|u ∈U, v ∈V }. The con-
+textual information of the users (e.g., social relations) and the
+POIs (e.g., geographical coordinates) are also available to the
+recommendation system while making recommendations. As
+in a typical supervised learning setting, D serves as the train-
+ing set. An additional set of transactions DT e, which contains
+check-ins made by each user unobserved by the recommen-
+dation system, serves as the test set. Let P T e
+u
+denote the set
+of indices of POIs that is visited by user u in the test set. The
+quality of recommendation is evaluated by the size of overlap
+between ˆPu and P T e
+u . For convenience, the transaction his-
+tory set, D, is also represented as a rating matrix, Y, where
+Yij = 1 if (ui, vj) ∈D and (Y)ij = 0 if (ui, vj) /∈D.
+3.2
+Graph Laplacian Regularization
+Let G be a weighted undirected graph, where V
+=
+{ν1, ν2, . . . , ν|V|} is its vertex set, and its weight matrix be
+W = [Wij]i,j=1...|V|, where Wij denotes the weight of edge
+between νi and νj. W is a symmetric matrix, i.e., Wij = Wji
+as G is undirected. The degree matrix D of G is a diago-
+nal matrix, diag
+ d1, d2, . . . , d|V|
+
+, where di = P|V|
+j=1 Wij.
+Then, the normalized Laplacian matrix of G is deﬁned as,
+L = I −D−1/2WD−1/2.
+Let f : V →R be a real-
+valued function deﬁned on the vertex space V. The normal-
+ized Laplacian regularization of f on graph G is deﬁned as
+the quadratic form,
+Lf = f(V)⊤Lf(V)
+(1)
+where f(V) =
+
+f(ν1), f(ν2), . . . , f(ν|V|)
+⊤is the vector
+formed by applying function f on the vertex space V.
+4
+The Proposed Recommendation Model
+This section presents the details of the proposed recommen-
+dation framework. The objective of our model is to predict
+a rating matrix R ∈Rm×n by optimizing an objective func-
+tion. Each element Ri,j in R represents the inferred prefer-
+ence of user ui over POI vj. The new POIs for user ui are then
+recommended based on the values of Ri,1, Ri,2, . . . , Ri,n.
+The objective function includes three regularization terms on
+R and each of them will explicitly utilize user-based global
+contextual information, POI-based global contextual infor-
+mation, and local contextual information, respectively. Fi-
+nally, we describe how the different regularization terms are
+put together and how the optimization is carried out.
+Proceedings of the Twenty-Ninth International Joint Conference on Artiﬁcial Intelligence (IJCAI-20)
+2485
+
+4.1
+Exploiting Global Context Information
+User-based Global Context: To incorporate the user-based
+global contextual information in our framework, we assume
+that similar users should have similar ratings on a partic-
+ular POI. The user similarity is computed from the user-
+based global contextual information (e.g., social relation-
+ship information between users). Let Guser be a weighted
+undirected graph, where the vertex set is the user set U.
+The edge weights are given by a symmetric weight matrix
+Wuser =
+
+W user
+ij
+
+i,j=1...m, where W user
+ij
+is the similarity
+between user i and user j. Here, we assume that Wuser
+is given and the description of how it is constructed from
+speciﬁc types of user-based global contextual information
+is postponed to Section 4.3. As in Section 3.2, the degree
+matrix of Guser is Duser = diag(duser
+1
+, duser
+2
+, . . . , duser
+m
+)
+and the normalized Laplacian matrix of Guser is Luser =
+I −D−1/2
+user WuserD−1/2
+user .
+Suppose there is a rating ma-
+trix R ∈Rm×n, where Rij represents the rating of user
+ui on POI vj. We deﬁne the normalized graph Laplacian
+regularization of R on Guser for a particular POI vj as
+Luser(R:,j) = R⊤
+:,jLuserR:,j, where “:” indicates taking all
+items of a row/column. Then, we can have
+Luser(R:,j) =
+m
+X
+i=1
+m
+X
+k=1
+W user
+ik
+
+Rij
+p
+duser
+i
+−
+Rkj
+p
+duser
+k
+2. (2)
+From Eq. (2), it is clear to see that if we incorporate L(R:,j)
+in the loss function, it will encourage more similar users to
+have more similar ratings on POI vj. From this observation,
+we sum all the normalized graph Laplacian regularization of
+R on graph Guser for all POIs, and have
+Luser(R) =
+n
+X
+j=1
+Luser(R:,j) = trace(R⊤LuserR),
+(3)
+which can be used as the user-based Laplacian regularization
+term for the rating matrix R. Eq. (3) explicitly uses contex-
+tual information to encourage similar users to have similar
+ratings on all POIs.
+POI-based Global Context: The POI-based global contex-
+tual information is utilized similarly as its user-based coun-
+terpart. With POI-based global contextual information, we
+can build a similarity graph in the POI space as we have
+done for users. We can deﬁne Gpoi, Wpoi, Dpoi and Lpoi
+in the same way. For a given rating matrix R, its normalized
+Laplacian regularization on Gpoi for a particular user ui is
+Lpoi(Ri,:) = Ri,:LpoiR⊤
+i,:. Same as in Eq. (3), its POI-based
+Laplacian regularization term for all users is
+Lpoi(R) =
+m
+X
+i=1
+Lpoi(Ri,:) = trace(RLpoiR⊤),
+(4)
+which is used as the POI-based Laplacian regularization term
+for the rating matrix R. This Laplacian regularization explic-
+itly encourage similar POIs to be rated similarly by all users.
+4.2
+Exploiting Local Context Information
+The regularization terms introduced in Section 4.1 can ef-
+fectively utilize global context information between users or
+POIs. We can understand “global” through Eq. (2) where ev-
+ery pairs of users are enumerated and their squared differ-
+ences are summed together and adjusted by the global simi-
+larity score W user
+ik
+existing between any pairs of users. In this
+section, we introduce a regularizer of another type that takes
+into account local contextual information between users and
+POIs. The local regularizer is also based on the assumption
+that similar users should have similar POI ratings. But the lo-
+cal regularizer divide users into groups, therefore making the
+similarity “local”. To distribute similar users into groups, we
+apply spectral clustering [Von Luxburg, 2007] on the lapla-
+cian matrix (Luser) of user similarity graph (Guser). Assume
+the total number of clusters is G. We denote the rating of POI
+vj by the users in g-th cluster as R(g),j. The deﬁnition of
+local regularizer J (R) is as follows,
+J (R) =
+G
+X
+g=1
+n
+X
+j=1
+ωg∥R(g),j∥2,
+(5)
+where ωg = √ng and ng is the number of users in clus-
+ter g. This regularizer is a group lasso regularizer, which
+was proposed in [Yuan and Lin, 2006] and has very wide
+applications [Jenatton et al., 2010; Kim and Xing, 2010;
+Kolar et al., 2009]. Following the same argument in [Liu et
+al., 2014b], the local regularizer in Eq. (5) encourages the rat-
+ings of users belonging to a same group have similar sparsity
+patterns on ratings if it is used in the objective function.
+Then, we can formulate the ﬁnal objective function as,
+L(R) = 1
+2
+
+λ1Luser(R) + λ2Lpoi(R) + λ3∥R −Y∥2
+F
++ λ4J (R)
+
+,
+(6)
+where Luser(R), Lpoi(R) and J (R) are deﬁned in Eq. (3),
+Eq. (4) and Eq. (5) respectively. We have added a new term
+∥R −Y∥2
+F to encourage the rating matrix R to be as close
+as possible to the ground truth rating matrix Y of the training
+set (deﬁned in Eq. (3)). The different terms are weighted by
+tunable parameters λ1, λ2, λ3 and λ4. We can then get the
+optimal rating matrix as R∗= arg minR L(R). Let Vu =
+{j ∈N+|1 ≤j ≤n}\Pu (Pu is deﬁned in Section 3.1 and
+“\” is the set difference operator) and I(u)
+k
+∈Vu be such
+that I(u)
+k
+achieves kth greatest rating in terms of rating score
+(R∗)u,I(u)
+k . If we need to recommend K POIs to user u, the
+set of top K recommendations of POI indices will be ˆP (K)
+u
+=
+{I(u)
+1
+, I(u)
+2
+, . . . , I(u)
+K }.
+4.3
+Similarity Graph Construction
+We now introduce how Guser and Gpoi deﬁned in Section 4.1
+are constructed. In the experiment datasets, i.e., Gowalla and
+Yelp (see Section 5.1 for detailed description), the follow-
+ing information are available: (1) the check-in transactions
+of each user, (2) the check-in time of each user at each POI,
+(3) the social relations between users, (4) the geographic co-
+ordinates of the POIs. Then, we use the above contextual
+information to construct the user similarity graph as well as
+the POI similarity graph.
+Proceedings of the Twenty-Ninth International Joint Conference on Artiﬁcial Intelligence (IJCAI-20)
+2486
+
+User Similarity Graph Construction
+The user similarity graph Guser is built based on the follow-
+ing assumptions: (1) Users that visit similar set of POIs at
+similar periods of a day are more similar (spatial-temporal
+similarity); (2) The users having social relationships are more
+similar (social relation similarity). We deﬁne a feature vector
+f chkin-u
+i
+∈R24×n whose entries records the number of check-
+ins of user ui at each POI in each hour of a day (because the
+number of POIs is n and there are 24 hours in a day, the di-
+mension of f chkin-u
+i
+is 24 × n). The spatial-temporal similarity
+between two users, ui and uj (SST
+ij ), is deﬁned as follows,
+SST
+ij
+=
+f chkin-u
+i
+· f chkin-u
+j
+∥f chkin-u
+i
+∥2∥f chkin-u
+j
+∥2
+.
+(7)
+We denote the spatial-temporal similarity matrix as SST =
+
+SST
+ij
+
+i,j=1...m. To incorporate the social relation similarity,
+we compute the user similarity matrix as,
+Suser = (αuser + SSR) ⊙SST
+1 + αuser
+(8)
+where ⊙denotes the Hadamard product, αuser is a smoothing
+factor and SSR is a symmetric matrix that records the social
+relations between users. SSR
+ij
+= 1 if ui and uj have a social
+relationship, and SSR
+ij
+= 0 if they do not. Finally, we obtain
+Guser as the k-Nearest Neighbor (k-NN) graph of Suser.
+POI Similarity Graph Construction
+The POI similarity graph Gpoi is based on the following as-
+sumptions: (1) Geographically proximal POIs are more simi-
+lar to each other (geographic similarity); (2) Similar POIs are
+visited in similar periods of a day (temporal similarity). We
+deﬁne a feature vector f chkin-p
+i
+∈R24 that records the number
+of times a POI vi is visited by all users in each hour of a day.
+The temporal similarity between two POIs, vi and vj (ST E
+ij ),
+is deﬁned as follows,
+ST E
+ij
+=
+f chkin-p
+i
+· f chkin-p
+j
+∥f chkin-p
+i
+∥2∥f chkin-p
+j
+∥2
+.
+(9)
+Then, we denote the temporal similarity matrix for POIs by
+ST E =
+
+ST E
+ij
+
+i,j=1...n. To take into account geographical
+similarity by proximity, we deﬁne the geographical similar-
+ity between two POIs vi and vj through the Gaussian kernel,
+SGE
+ij
+= exp
+
+−∥xi−xj∥2
+2
+2σ2
+
+, where xi and xj are geographic
+coordinates of POI vi and POI vj respectively. σ is the stan-
+dard deviation parameter. We subsequently deﬁne the geo-
+graphical similarity matrix SGE =
+
+SGE
+ij
+
+i,j=1...n. To put
+together the temporal and geographical similarity matrices,
+we deﬁne the POI similarity matrix as,
+Spoi = (αpoi + ST E) ⊙SGE
+1 + αpoi
+(10)
+where αpoi is a smoothing factor. Finally, we obtain Gpoi as
+the k-NN graph of Spoi.
+Algorithm 1 Alternating Optimization
+1: Input
+2:
+Y: Initial rating matrix
+3:
+Luser: Normalized user Laplacian matrix
+4:
+Lpoi: Normalized POI Laplacian matrix
+5:
+λ1, λ2, λ3, λ4: Weighting parameters
+6: Output
+7:
+R∗: An optimized rating matrix
+8: Initialize T[2] ←Y
+9: do
+10:
+(User Step) T[1] ←arg minR L1(R, T[2])
+by APG with Eq. (15), Eq. (16) and Eq. (17)
+11:
+(POI Step) T[2] ←arg minR L2(R, T[1])
+by solving Eq. (19)
+12: until convergence
+13: R∗←T[1]
+4.4
+Optimization
+The optimization problem in Eq. (6) can be solved by an al-
+ternating algorithm, which includes the following two steps
+in each iteration.
+The ﬁrst step is the user step, where
+user-based terms (Luser(R) and J (R)) in Eq. (6) are op-
+timized. The second step is the POI step, where POI-based
+terms (Lpoi(R)) in Eq. (6) is optimized. Concretely, we de-
+ﬁne two functions L1(R, T) and L2(R, T), each consists of
+the user-based terms and POI-based terms in Eq. (6),
+L1(R, T) = 1
+2
+
+λ1Luser(R) + λ3∥R −T∥2
+F + λ4J (R)
+
+,
+(11)
+L2(R, T) = 1
+2
+
+λ2Lpoi(R) + λ3∥R −T∥2
+F
+
+,
+(12)
+where T is a temporary placeholder matrix variable that rep-
+resents some intermediate estimation of R∗. The optimiza-
+tion procedure is summarized in Algorithm 1. We use two
+temporary variables T[1] and T[2] that keep track of the in-
+termediate values of R∗after the user step and the POI step
+on each iteration. The temporary variable T[2] is initialized
+to Y in the beginning (line 8). The term λ3∥R −T∥2
+F in
+Eq. (11) and Eq. (12) constrains the optimization result at
+current step to be as close as possible to the previous step.
+At convergence, the two matrices T[1] and T[2] are in gen-
+eral different, although each of them has a stable value. T[1]
+can be regarded as the rating matrix after the user step (line
+10) and T[2] as the one after the POI step (line 11). We also
+observe in practice that T[1] generally has better performance
+than T[2]. Therefore, when the iterations complete, we set the
+optimized rating matrix R∗to T[1] in line 13.
+We now describe how the user step and POI step optimiza-
+tions are carried out. We look at the user step ﬁrst. Note that
+the optimization objective of the user step can be separated
+into a smooth part (L1,sm) and a non-smooth part (L1,non),
+with L1(R, T) = L1,sm(R, T) + L1,non(R) where,
+L1,sm(R, T) = 1
+2
+h
+λ1 trace(R⊤LuserR) + λ3∥R −T∥2
+F
+i
+,
+(13)
+Proceedings of the Twenty-Ninth International Joint Conference on Artiﬁcial Intelligence (IJCAI-20)
+2487
+
+and
+L1,non(R) = λ4
+2
+G
+X
+g=1
+n
+X
+j=1
+ωg∥R(g),j∥2.
+(14)
+Both L1,sm(R, T) and L1,non(R) are convex, the optimiza-
+tion problem in the user step can be solved by the Accelerated
+Proximal Gradient (APG) algorithm [Toh and Yun, 2010].
+To ﬁt the objective function into the APG framework, we
+will need to derive the following auxiliary functions. First,
+the gradient of L1,sm(R, T) with respect to variable R is
+∇RL1,sm(R, T) = λ1LuserR + λ3(R −T).
+(15)
+Then, the quadratic approximation of L1(M, T) at a speciﬁc
+point R (center of Taylor expansion) is
+L1(M, T) ≈τ
+2∥M −Z∥2
+F + L1,non(M) + L1,sm(R, T)
+−1
+2τ ∥∇RL1,sm(R, T)∥2
+F
+def= Qτ(M, R), (16)
+where M is in the neighborhood of R, τ is the inverse of gra-
+dient descent step size and Z = R −τ −1∇RL1,sm(R, T).
+The gradient projection function Sτ(Z) is deﬁned as
+Sτ(Z) = arg minM Qτ(M, R) = arg minM
+τ
+2∥M−Z∥2
+F +
+L1,non(M).
+A closed form solution of Sτ(Z) is obtain-
+able, following the derivation in [Liu et al., 2014b].
+Let
+M∗= Sτ(Z), then
+M∗
+(g),j =
+
+
+
+Z(g),j
+
+∥Z(g),j∥2−
+λ4ωg
+τ
+
+∥Z(g),j∥2
+if ∥Z(g),j∥> λ4ωg
+τ
+,
+0
+otherwise.
+(17)
+In this way, the objective function in the user step can be op-
+timized by Algorithm 1 in [Toh and Yun, 2010].
+Next, we discuss the optimization in the POI step. In con-
+trast to L1(R, T), L2(R, T) is completely smooth and con-
+vex, which can be easily optimized after setting the gradient
+of Eq. (12) to zero:
+∇L2(R, T) = λ2RLpoi + λ3(R −T) = 0,
+(18)
+which is equivalent to solving the linear system of R,
+R(λ2Lpoi + λ3I) = λ3T.
+(19)
+5
+Experiments
+5.1
+Experimental Settings
+Datasets
+We use two datasets (Gowalla and Yelp) to evaluate the POI
+recommendation methods.
+The Gowalla dataset1 contains
+user check-in data from February 2009 till October 2010 on
+the Gowalla social network.
+The dataset contains 18,737
+users and 32,510 POIs.
+The total number of check-ins is
+1,278,274. The Yelp dataset2 contains 860,888 check-ins of
+30,887 users and 18,995 POIs. They are from round 7 of the
+Yelp dataset challenge. For both datasets, additional contex-
+tual information, including social relationships between users
+and geographic coordinates of POIs, are available.
+1http://snap.stanford.edu/data/loc-gowalla.html
+2https://www.yelp.com/dataset/challenge
+Method
+P@5
+P@10
+P@20
+P@50
+R@5
+R@10
+R@20
+R@50
+USG
+0.0605
+0.0490
+0.0384
+0.0274
+0.0431
+0.0685
+0.1059
+0.1828
+iGSLR
+0.0288
+0.0250
+0.0197
+0.0139
+0.0190
+0.0317
+0.0488
+0.0784
+LORE
+0.0409
+0.0323
+0.0242
+0.0152
+0.0262
+0.0397
+0.0579
+0.0844
+LFBCA
+0.0602
+0.0494
+0.0393
+0.0277
+0.0426
+0.0688
+0.1075
+0.1835
+IRenMF
+0.0662
+0.0538
+0.0429
+0.0303
+0.0462
+0.0742
+0.1163
+0.1991
+GeoMF
+0.0644
+0.0520
+0.0415
+0.0292
+0.0454
+0.0719
+0.1121
+0.1906
+MGMPFM
+0.0249
+0.0203
+0.0170
+0.0132
+0.0187
+0.0293
+0.0475
+0.0901
+GeoPFM
+0.0386
+0.0314
+0.0256
+0.0186
+0.0262
+0.0426
+0.0659
+0.1163
+Caser
+0.0378
+0.0294
+0.0224
+0.0159
+0.0254
+0.0392
+0.0592
+0.1022
+Ours
+0.0722
+0.0586
+0.0462
+0.0322
+0.0491
+0.0789
+0.1224
+0.2073
+Table 1: Performances of different methods on Gowalla dataset.
+Setup and Metrics
+The two experimental datasets are partitioned into training
+set, tuning set and test set. The check-ins of each user is split-
+ted with ratio 70%, 20% and 10% for training, tuning and
+testing, respectively. The performances of POI recommen-
+dation methods are evaluated by two metrics: Precision at
+K (P@K) and Recall at K (R@K). Empirically, we set K
+to 5, 10, 20, and 50.
+Baseline Methods
+We compare the proposed method with the following base-
+line methods: (1) USG [Ye et al., 2011]: This method con-
+siders geographical inﬂuence by modeling the probability of
+a user visiting a new place given the user’s historical check-
+ins; (2) MGMPFM [Cheng et al., 2012]: This method uses
+PFM to model a user’s preference for a POI, and a Multi-
+center Gaussian Model to estimate the probability of users
+to visit a POI given their living region; (3) iGSLR [Zhang
+and Chow, 2013]: This method computes similarity between
+users by measuring their friendship and distance between
+their residences.
+The probability of visiting a new place
+is estimated by Kernel Density Estimation (KDE); (4) LF-
+BCA [Wang et al., 2013]: This method builds a graph to
+model the users’ relations.
+User preference, social inﬂu-
+ence, and user check-in similarity are represented by differ-
+ent edges; (5) LORE [Zhang et al., 2014]: This method also
+models the probability of visiting a new POI by KDE. More-
+over, it considers a sequential inﬂuence between the visited
+POIs and a given new POI; (6) IRenMF [Liu et al., 2014b]:
+This method predicts the recommendation score based on
+both latent factors of a speciﬁc user-POI pair, and on neigh-
+boring POIs weighted by their similarity; (7) GeoMF [Lian
+et al., 2014]: This method learns four kinds of latent factors
+for recommendation: user latent factors, POI latent factors,
+user activity areas latent factors and POI inﬂuence latent fac-
+tors; (8) GeoPFM [Liu et al., 2014a]: This approach mod-
+els both geographical preference and user interest preference
+through PFM. It is able to handle skewed user check-in data;
+(9) Caser [Tang and Wang, 2018]: This method applies deep
+learning method on recommendation with convolutional net-
+works.
+Parameter Settings
+The parameters in our model are sampled as follows: λ1 ∈
+[0.05, 10], λ2 ∈[0.05, 10], λ4 ∈[10−6, 10−1], the user
+smoothing factor αuser ∈[0, 1], the POI smoothing fac-
+tor αpoi ∈[0, 1], Gaussian kernel standard deviation σ ∈
+[0.1, 10] and the number of clusters for spectral clustering
+G ∈{20, 50, 100}.
+Proceedings of the Twenty-Ninth International Joint Conference on Artiﬁcial Intelligence (IJCAI-20)
+2488
+
+Method
+P@5
+P@10
+P@20
+P@50
+R@5
+R@10
+R@20
+R@50
+USG
+0.0254
+0.0221
+0.0186
+0.0141
+0.0262
+0.0447
+0.0734
+0.1355
+iGSLR
+0.0127
+0.0108
+0.0089
+0.0067
+0.0100
+0.0181
+0.0285
+0.0494
+LORE
+0.0240
+0.0198
+0.0158
+0.0107
+0.0189
+0.0306
+0.0458
+0.0730
+LFBCA
+0.0232
+0.0198
+0.0173
+0.0135
+0.0236
+0.0396
+0.0677
+0.1291
+IRenMF
+0.0286
+0.0249
+0.0209
+0.0158
+0.0291
+0.0500
+0.0819
+0.1502
+GeoMF
+0.0309
+0.0262
+0.0215
+0.0161
+0.0315
+0.0526
+0.0851
+0.1555
+MGMPFM
+0.0162
+0.0134
+0.0109
+0.0086
+0.0162
+0.0275
+0.0451
+0.0868
+GeoPFM
+0.0222
+0.0190
+0.0158
+0.0118
+0.0219
+0.0357
+0.0606
+0.1125
+Caser
+0.0178
+0.0164
+0.0145
+0.0117
+0.0171
+0.0314
+0.0553
+0.1102
+Ours
+0.0315
+0.0271
+0.0224
+0.0167
+0.0319
+0.0542
+0.0878
+0.1597
+Table 2: Performances of different methods on Yelp dataset.
+5.2
+Performance Comparison
+The performance on Gowalla and Yelp are summarized in Ta-
+ble 1 and Table 2. We have following observations:
+• MF methods and our methods generally perform
+best in terms of precision and recall when K
+=
+5, 10, 20 and 50.
+• The PFM-based methods and two UCF methods, iGSLR
+and LORE, is inferior to other methods for most of the
+metrics.
+• It seems that the high-perforance methods tend to inte-
+grate multiple levels of information. For example, the
+two MF-based methods, IRenMF and GeoMF, use latent
+factors for recommendation.
+• For our method, without any probabilistic assump-
+tion (unlike PFM-based methods), we explicitly inte-
+grate multiple levels of information in the user-based
+and POI-based Laplacian regularization, which should
+be the reason that it achieves high performance among
+all methods.
+5.3
+Parameter Analysis
+We study the effect of key parameters (λ1,λ2,λ3 and λ4) in
+the objective function which control the relative importance
+of each regularization term. Because if we change the four
+parameters proportionally, there will be no effect on the opti-
+mization result. Therefore, for simplicity, we set λ3 = 1 and
+only change λ1,λ2 and λ4.
+We show the effect of changing one parameter at a time,
+while keeping the rest of the parameters at their optimal val-
+ues. The intervals of the three parameters that we have tested
+are [0.05, 10], [0.05, 1.5] and [10−6, 10−1], respectively. We
+show the two metrics P@10 and R@10 on both datasets.
+The results are shown in Figure 1. We can see that the op-
+timal values of the two parameters adjusting the user-based
+Laplacian regularization (λ1) and POI-based Laplacian regu-
+larization (λ2) tend to be of the same order with λ3 (which
+is set to 1). A value that is too high or too low can both
+cause performance degradation.
+The optimal λ1 is gener-
+ally higher than λ2 on both datasets, suggesting that user-
+based Laplacian regularization is more informative than its
+POI counterpart. This might suggest that user-based contex-
+tual information is more important than POI-based contextual
+information. The parameter for local regularizer (λ4) affects
+the performance of the model only slightly when it is small,
+but will rapidly decrease performance when it is too large.
+Same as the observation in [Liu et al., 2014b], a too-strong
+Figure 1: Performance trends of proposed method with different pa-
+rameter settings.
+local regularization can introduce too much sparsity in the
+optimization result, seriously affecting recommendation. The
+local regularizer has a much smaller performance gain com-
+pared with the previous two regularizers, probably because a
+lot of contexual information has already been exploited in the
+two global regularizers.
+6
+Conclusion
+In this paper, we designed a new framework for POI recom-
+mendation, which explicitly exploits global contextual infor-
+mation of users and POIs through Laplacian regularization
+and local contextual information through a local regularizer.
+We integrated various levels of similarity information into the
+similarity graph which the Laplacian regularizations and the
+local regularizer are based on. We described the formulations
+of objective functions of our model and how they are opti-
+mized. We showed by experiments that our method outper-
+forms the existing methods on the two datasets, which shows
+the importance of constructing similarity by information in-
+tegration in POI recommendation. The simplicity and exten-
+sibility of our framework can shed light on future research
+direction for POI recommendation and possibly methods for
+other recommendation tasks with contextual information.
+Acknowledgments
+This work is supported by the National Natural Science Foun-
+dation of China (No. 61932004).
+Proceedings of the Twenty-Ninth International Joint Conference on Artiﬁcial Intelligence (IJCAI-20)
+2489
+
+References
+[Cheng et al., 2012] Chen Cheng, Haiqin Yang, Irwin King,
+and Michael R. Lyu. Fused matrix factorization with geo-
+graphical and social inﬂuence in location-based social net-
+works. In Proceedings of the Twenty-Sixth AAAI Confer-
+ence on Artiﬁcial Intelligence, 2012.
+[Gao et al., 2013] Huiji Gao, Jiliang Tang, Xia Hu, and Huan
+Liu. Exploring temporal effects for location recommenda-
+tion on location-based social networks. In Proceedings of
+the 7th ACM conference on Recommender systems, pages
+93–100, 2013.
+[Jenatton et al., 2010] Rodolphe
+Jenatton,
+Guillaume
+Obozinski, and Francis Bach. Structured sparse principal
+component analysis.
+In Proceedings of the Thirteenth
+International Conference on Artiﬁcial Intelligence and
+Statistics, pages 366–373, 2010.
+[Kim and Xing, 2010] Seyoung Kim and Eric P. Xing. Tree-
+guided group lasso for multi-task regression with struc-
+tured sparsity. In Proceedings of the 27th International
+Conference on Machine Learning, pages 543–550, 2010.
+[Kolar et al., 2009] Mladen Kolar, Le Song, and Eric P.
+Xing. Sparsistent learning of varying-coefﬁcient models
+with structural changes.
+In Advances in Neural Infor-
+mation Processing Systems 22: 23rd Annual Conference
+on Neural Information Processing Systems 2009., pages
+1006–1014, 2009.
+[Li et al., 2015] Xutao Li, Gao Cong, Xiao-Li Li, Tuan-
+Anh Nguyen Pham, and Shonali Krishnaswamy. Rank-
+geofm:
+A ranking based geographical factorization
+method for point of interest recommendation. In SIGIR,
+pages 433–442, 2015.
+[Lian et al., 2014] Defu
+Lian,
+Cong
+Zhao,
+Xing
+Xie,
+Guangzhong Sun, Enhong Chen, and Yong Rui. Geomf:
+joint geographical modeling and matrix factorization for
+point-of-interest recommendation. In KDD, pages 831–
+840, 2014.
+[Liu et al., 2014a] Bin Liu, Hui Xiong, Spiros Papadim-
+itriou, Yanjie Fu, and Zijun Yao. A general geographical
+probabilistic factor model for point of interest recommen-
+dation. IEEE Transactions on Knowledge and Data Engi-
+neering, 27(5):1167–1179, 2014.
+[Liu et al., 2014b] Yong Liu, Wei Wei, Aixin Sun, and Chun-
+yan Miao. Exploiting geographical neighborhood charac-
+teristics for location recommendation. In Proceedings of
+the 23rd ACM International Conference on Conference on
+Information and Knowledge Management, pages 739–748,
+2014.
+[Liu et al., 2017] Yiding Liu, Tuan-Anh Nguyen Pham, Gao
+Cong, and Quan Yuan.
+An experimental evaluation of
+point-of-interest recommendation in location-based so-
+cial networks.
+Proceedings of the VLDB Endowment,
+10(10):1010–1021, 2017.
+[Liu et al., 2018] Yong Liu, Lifan Zhao, Guimei Liu, Xinyan
+Lu, Peng Gao, Xiao-Li Li, and Zhihui Jin.
+Dynamic
+bayesian logistic matrix factorization for recommendation
+with implicit feedback. In IJCAI, pages 3463–3469, 2018.
+[Tang and Wang, 2018] Jiaxi Tang and Ke Wang.
+Person-
+alized top-n sequential recommendation via convolutional
+sequence embedding. In Proceedings of the Eleventh ACM
+International Conference on Web Search and Data Mining,
+WSDM 2018, pages 565–573, 2018.
+[Toh and Yun, 2010] Kim-Chuan Toh and Sangwoon Yun.
+An accelerated proximal gradient algorithm for nuclear
+norm regularized linear least squares problems.
+Paciﬁc
+Journal of optimization, 6(615-640):15, 2010.
+[Von Luxburg, 2007] Ulrike Von Luxburg.
+A tutorial on
+spectral clustering. Statistics and computing, 17(4):395–
+416, 2007.
+[Wang et al., 2013] Hao Wang,
+Manolis Terrovitis,
+and
+Nikos Mamoulis. Location recommendation in location-
+based social networks using user check-in data. In Pro-
+ceedings of the 21st ACM SIGSPATIAL International Con-
+ference on Advances in Geographic Information Systems,
+pages 374–383, 2013.
+[Wu et al., 2019] Qiong Wu, Yong Liu, Chunyan Miao, Bin-
+qiang Zhao, Yin Zhao, and Lu Guan. Pd-gan: adversarial
+learning for personalized diversity-promoting recommen-
+dation. In Proceedings of the 28th International Joint Con-
+ference on Artiﬁcial Intelligence, pages 3870–3876. AAAI
+Press, 2019.
+[Yang et al., 2018] Peng Yang, Peilin Zhao, Yong Liu, and
+Xin Gao. Robust cost-sensitive learning for recommenda-
+tion with implicit feedback. In Proceedings of the 2018
+SIAM International Conference on Data Mining, pages
+621–629. SIAM, 2018.
+[Ye et al., 2011] Mao Ye, Peifeng Yin, Wang-Chien Lee, and
+Dik-Lun Lee. Exploiting geographical inﬂuence for col-
+laborative point-of-interest recommendation. In Proceed-
+ings of the 34th international ACM SIGIR conference on
+Research and development in Information Retrieval, pages
+325–334, 2011.
+[Yuan and Lin, 2006] Ming Yuan and Yi Lin. Model selec-
+tion and estimation in regression with grouped variables.
+Journal of the Royal Statistical Society: Series B (Statisti-
+cal Methodology), 68(1):49–67, 2006.
+[Zhang and Chow, 2013] Jia-Dong
+Zhang
+and
+Chi-Yin
+Chow.
+igslr: personalized geo-social location recom-
+mendation:
+a kernel density estimation approach.
+In
+Proceedings of the 21st ACM SIGSPATIAL International
+Conference on Advances in Geographic Information
+Systems, pages 334–343, 2013.
+[Zhang et al., 2014] Jia-Dong Zhang, Chi-Yin Chow, and
+Yanhua Li.
+Lore: Exploiting sequential inﬂuence for
+location recommendations.
+In Proceedings of the 22nd
+ACM SIGSPATIAL International Conference on Advances
+in Geographic Information Systems, pages 103–112, 2014.
+[Zheng and Xie, 2011] Yu Zheng and Xing Xie. Location-
+based social networks: Locations. In Computing with spa-
+tial trajectories, pages 277–308. Springer, 2011.
+[Zheng, 2012] Yu Zheng. Tutorial on location-based social
+networks. In Proceedings of the 21st international confer-
+ence on World wide web, WWW, volume 12, 2012.
+Proceedings of the Twenty-Ninth International Joint Conference on Artiﬁcial Intelligence (IJCAI-20)
+2490

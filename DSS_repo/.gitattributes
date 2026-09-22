@@ -1,0 +1,14 @@
+# Keep LF line endings in the repo and working tree (silences "LF will be replaced by CRLF")
+* text=auto eol=lf
+
+# Windows scripts need CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files: no line-ending conversion
+*.png binary
+*.jpg binary
+*.pdf binary
+*.gz binary
+*.npz binary
+*.pyc binary
