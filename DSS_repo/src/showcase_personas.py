@@ -27,7 +27,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 def run_persona_showcase():
     print("=" * 80)
     print(" MINH CHỨNG THỰC NGHIỆM ĐỊNH TÍNH (QUALITATIVE CASE STUDY - 3 PERSONAS)")
-    print(" BẢO ĐẢM ĐIỂM 10 TUYỆT ĐỐI CHO BÀI BÁO / ĐỒ ÁN TỐT NGHIỆP")
+    print(" KHẢO SÁT HÀNH VI GỢI Ý CÁ NHÂN HÓA THEO NGỮ CẢNH KHÔNG - THỜI GIAN")
     print("=" * 80)
 
     # Nạp dữ liệu

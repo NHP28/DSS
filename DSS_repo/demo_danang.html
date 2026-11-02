@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TAS-GNN: Hệ Thống Gợi Ý Địa Điểm Cá Nhân Hóa Tại Đà Nẵng</title>
+  <title>L-DSS: Gợi Ý Địa Điểm Cá Nhân Hóa & Hỗ Trợ Ra Quyết Định Đa Tiêu Chí Đà Nẵng</title>
   
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +20,7 @@
       --primary: #4f46e5;
       --primary-dark: #3730a3;
       --accent: #06b6d4;
+      --accent-gold: #f59e0b;
       --bg: #0f172a;
       --surface: #1e293b;
       --surface-light: #334155;
@@ -50,10 +51,10 @@
 
     /* Header */
     header {
-      background: rgba(30, 41, 59, 0.85);
+      background: rgba(30, 41, 59, 0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 24px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -77,14 +78,19 @@
     }
 
     .brand h1 {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: -0.3px;
     }
 
     .brand p {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
+    }
+
+    .status-badges {
+      display: flex;
+      gap: 8px;
     }
 
     .status-badge {
@@ -93,27 +99,27 @@
       gap: 6px;
       background: rgba(16, 185, 129, 0.15);
       color: #34d399;
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
     .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: #10b981;
-      box-shadow: 0 0 8px #10b981;
+      box-shadow: 0 0 6px #10b981;
     }
 
     /* Main Container */
     main {
       flex: 1;
       display: grid;
-      grid-template-columns: 420px 1fr;
-      height: calc(100vh - 65px);
+      grid-template-columns: 440px 1fr;
+      height: calc(100vh - 58px);
     }
 
     /* Left Control Sidebar */
@@ -127,44 +133,43 @@
     }
 
     .section {
-      padding: 16px 20px;
+      padding: 14px 16px;
       border-bottom: 1px solid var(--border);
     }
 
     .section-title {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: var(--text-muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-between;
     }
 
     /* Persona Cards */
     .persona-selector {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .persona-card {
       background: var(--surface-light);
       border: 1px solid transparent;
-      border-radius: 10px;
-      padding: 12px 14px;
+      border-radius: 8px;
+      padding: 8px 10px;
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .persona-card:hover {
       border-color: var(--primary);
-      transform: translateY(-1px);
     }
 
     .persona-card.active {
@@ -174,27 +179,27 @@
     }
 
     .persona-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
       background: rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 16px;
       flex-shrink: 0;
     }
 
     .persona-info h4 {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     .persona-info p {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-muted);
-      line-height: 1.3;
+      line-height: 1.25;
     }
 
     /* Time Control */
@@ -202,15 +207,15 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 6px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .preset-btn {
       background: var(--surface-light);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 8px 4px;
-      border-radius: 8px;
+      padding: 6px 2px;
+      border-radius: 6px;
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
@@ -231,183 +236,290 @@
     .slider-container {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .slider-labels {
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--accent);
       font-weight: 700;
     }
 
     input[type=range] {
       width: 100%;
-      height: 6px;
+      height: 5px;
       border-radius: 3px;
       background: var(--surface-light);
       outline: none;
       accent-color: var(--accent);
-      cursor: pointer;
     }
 
-    /* Model Mode Switcher */
-    .model-tabs {
-      display: flex;
+    /* Decision Mode Selector (MCDM vs Pure GNN) */
+    .decision-modes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .mode-tab {
       background: var(--surface-light);
-      border-radius: 8px;
-      padding: 3px;
-      margin-bottom: 12px;
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      border: none;
-      background: transparent;
+      border: 1px solid var(--border);
       color: var(--text-muted);
-      border-radius: 6px;
+      padding: 8px 6px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
       transition: all 0.2s;
     }
 
-    .tab-btn.active {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+    .mode-tab.active {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(6, 182, 212, 0.4));
+      border-color: var(--accent);
+      color: #fff;
     }
 
-    /* Recommendation List */
+    /* AHP Preset & Weights Box */
+    .ahp-panel {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .ahp-presets-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .ahp-preset-btn {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 2px;
+      border-radius: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .ahp-preset-btn.active {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    .weights-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      font-size: 10px;
+      margin-bottom: 6px;
+    }
+
+    .weight-chip {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 3px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .weight-chip strong {
+      color: var(--accent);
+    }
+
+    .cr-badge {
+      font-size: 10px;
+      color: #34d399;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+
+    /* GPS Location Simulator */
+    .gps-presets {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+
+    .gps-btn {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .gps-btn.active {
+      background: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+    }
+
+    .gps-coords-text {
+      font-size: 10px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* POI Recommendations List */
     .poi-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
+      padding-top: 4px;
     }
 
     .poi-card {
       background: var(--surface-light);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      transition: all 0.2s;
+      border-radius: 8px;
+      padding: 10px;
       cursor: pointer;
+      transition: all 0.2s;
     }
 
     .poi-card:hover {
       border-color: var(--accent);
-      transform: translateX(4px);
+      transform: translateX(2px);
     }
 
     .poi-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 6px;
+      align-items: center;
+      margin-bottom: 4px;
     }
 
     .poi-name {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .poi-badge {
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 700;
-      padding: 2px 8px;
+      padding: 2px 6px;
       border-radius: 4px;
       text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
 
-    .badge-cafe { background: rgba(245, 158, 11, 0.2); color: var(--cafe); }
-    .badge-restaurant { background: rgba(239, 68, 68, 0.2); color: var(--restaurant); }
-    .badge-tourist_spot { background: rgba(16, 185, 129, 0.2); color: var(--tourist); }
-    .badge-hotel { background: rgba(139, 92, 246, 0.2); color: var(--hotel); }
+    .badge-cafe { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+    .badge-restaurant { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .badge-tourist_spot { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+    .badge-hotel { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.4); }
 
-    .poi-meta {
+    .poi-metrics {
       display: flex;
-      align-items: center;
       gap: 10px;
       font-size: 11px;
       color: var(--text-muted);
       margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .poi-metrics span {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .metric-highlight {
+      color: var(--accent);
+      font-weight: 700;
     }
 
     .poi-explanation {
-      font-size: 11px;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.08);
-      padding: 6px 8px;
-      border-radius: 6px;
-      border-left: 2px solid #38bdf8;
-      line-height: 1.4;
+      font-size: 10.5px;
+      line-height: 1.35;
+      color: #93c5fd;
+      background: rgba(30, 58, 138, 0.25);
+      padding: 5px 8px;
+      border-radius: 5px;
+      border-left: 2px solid var(--accent);
     }
 
-    /* Map View */
+    /* Map */
     #map {
-      width: 100%;
       height: 100%;
+      width: 100%;
       background: #0f172a;
     }
 
-    /* Custom Leaflet Dark Marker */
+    /* Custom Leaflet Markers */
     .custom-marker {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: 800;
+      font-size: 11px;
       color: #fff;
-      font-size: 14px;
-      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
       border: 2px solid #fff;
-      box-shadow: 0 0 12px rgba(0,0,0,0.6);
-      transition: transform 0.2s;
-    }
-    .custom-marker:hover {
-      transform: scale(1.2);
     }
 
-    .filter-pill, .topk-btn {
-      background: var(--surface-light);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      cursor: pointer;
-      transition: all 0.2s;
+    .user-gps-marker {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #06b6d4;
+      border: 3px solid #fff;
+      box-shadow: 0 0 14px #06b6d4;
+      animation: pulse 1.5s infinite;
     }
-    .filter-pill:hover, .topk-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
-    }
-    .filter-pill.active, .topk-btn.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-      font-weight: 600;
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+      70% { box-shadow: 0 0 0 14px rgba(6, 182, 212, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Header -->
+  <!-- Top Bar -->
   <header>
     <div class="brand">
-      <span class="badge-tag">AI DSS_POIRS</span>
+      <span class="badge-tag">L-DSS ĐÀ NẴNG</span>
       <div>
-        <h1>TAS-GNN: Gợi Ý Địa Điểm Cá Nhân Hóa Theo Thời Gian</h1>
-        <p>Mô hình Mạng Nơ-ron Đồ thị Động tại TP. Đà Nẵng (996 POIs thực địa)</p>
+        <h1>Hệ Thống Gợi Ý & Hỗ Trợ Ra Quyết Định Đa Tiêu Chí</h1>
+        <p>Tích hợp Spatio-Temporal GNN + MCDM (AHP & TOPSIS) trên 996 địa điểm thực tế Đà Nẵng</p>
       </div>
     </div>
-    <div class="status-badge">
-      <div class="status-dot"></div>
-      TAS-GNN v2.0 (PyTorch Ready)
+    <div class="status-badges">
+      <div class="status-badge" id="model-status">
+        <div class="status-dot"></div>
+        <span>AI Engine Live</span>
+      </div>
     </div>
   </header>
 
@@ -419,29 +531,28 @@
       <!-- 1. Persona Selector -->
       <div class="section">
         <div class="section-title">
-          <i data-lucide="users" style="width:14px;height:14px"></i>
-          1. Chọn Nhóm Người Dùng (Personas)
+          <span><i data-lucide="users" style="width:13px;height:13px;display:inline-block;vertical-align:middle"></i> 1. Nhóm Người Dùng (Personas)</span>
         </div>
         <div class="persona-selector">
           <div class="persona-card active" onclick="selectPersona(0)">
             <div class="persona-avatar">☕</div>
             <div class="persona-info">
-              <h4>User A: Cư dân Đà Nẵng</h4>
-              <p>Thích cafe & không gian làm việc sáng, dạo sông Hàn tối</p>
+              <h4>User A: Cư Dân Đà Nẵng</h4>
+              <p>Thích cafe sáng, quán ăn gia đình trưa, dạo phố tối</p>
             </div>
           </div>
           <div class="persona-card" onclick="selectPersona(1)">
             <div class="persona-avatar">🦀</div>
             <div class="persona-info">
-              <h4>User B: Khách Du Lịch Ẩm Thực</h4>
-              <p>Ưu tiên hải sản tươi sống, đặc sản trưa & biển chiều</p>
+              <h4>User B: Du Khách Ẩm Thực</h4>
+              <p>Ưu tiên hải sản Sơn Trà, đặc sản trưa & ngắm biển</p>
             </div>
           </div>
           <div class="persona-card" onclick="selectPersona(2)">
             <div class="persona-avatar">📸</div>
             <div class="persona-info">
-              <h4>User C: Khách Phượt Check-in</h4>
-              <p>Khám phá thắng cảnh Sơn Trà, Bà Nà, Cầu Rồng, chợ đêm</p>
+              <h4>User C: Phượt & Check-in</h4>
+              <p>Thắng cảnh Sơn Trà, Bà Nà, Cầu Rồng, chợ đêm</p>
             </div>
           </div>
         </div>
@@ -450,8 +561,7 @@
       <!-- 2. Time Control -->
       <div class="section">
         <div class="section-title">
-          <i data-lucide="clock" style="width:14px;height:14px"></i>
-          2. Chọn Khung Giờ Truy Vấn (Time Context)
+          <span><i data-lucide="clock" style="width:13px;height:13px;display:inline-block;vertical-align:middle"></i> 2. Ngữ Cảnh Thời Gian (Temporal Context)</span>
         </div>
         <div class="time-presets">
           <button class="preset-btn active" onclick="setPresetTime(7)">07:30 Sáng</button>
@@ -461,48 +571,91 @@
         </div>
         <div class="slider-container">
           <div class="slider-labels">
-            <span>Thời gian mô phỏng:</span>
+            <span>Giờ mô phỏng:</span>
             <span id="time-display">07:30 Sáng</span>
           </div>
           <input type="range" id="hour-slider" min="6" max="23" value="7" oninput="onSliderChange(this.value)">
         </div>
       </div>
 
-      <!-- 3. Model Mode Comparison -->
-      <div class="section" style="flex:1">
+      <!-- 3. Decision Mode: Pure GNN vs MCDM AHP + TOPSIS -->
+      <div class="section">
         <div class="section-title">
-          <i data-lucide="cpu" style="width:14px;height:14px"></i>
-          3. Đối Soánh Mô Hình
+          <span><i data-lucide="sliders" style="width:13px;height:13px;display:inline-block;vertical-align:middle"></i> 3. Chế Độ Quyết Định (MCDM Engine)</span>
         </div>
-        <div class="model-tabs">
-          <button class="tab-btn active" id="tab-tasgnn" onclick="switchModel('tasgnn')">✨ TAS-GNN (Đề xuất)</button>
-          <button class="tab-btn" id="tab-lightgcn" onclick="switchModel('lightgcn')">📊 LightGCN (Baseline)</button>
+        <div class="decision-modes">
+          <button class="mode-tab active" id="tab-dss" onclick="switchDecisionMode(true)">
+            ⚖️ AHP + TOPSIS (L-DSS)
+          </button>
+          <button class="mode-tab" id="tab-pure-gnn" onclick="switchDecisionMode(false)">
+            🧠 Thuần GNN (AI)
+          </button>
         </div>
 
-        <div id="model-note" style="font-size:11px;color:var(--text-muted);margin-bottom:12px">
-          💡 <strong>TAS-GNN:</strong> Tích hợp vector thời gian Fourier. Gợi ý thay đổi linh hoạt theo khung giờ sáng/trưa/chiều/tối.
-        </div>
-
-        <!-- Filter Category & Top K -->
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:11px;color:var(--text-muted)">
-          <span>Lọc danh mục:</span>
-          <div style="display:flex;gap:4px" id="topk-selector">
-            <button class="topk-btn" onclick="setTopK(5)">Top 5</button>
-            <button class="topk-btn active" onclick="setTopK(10)">Top 10</button>
-            <button class="topk-btn" onclick="setTopK(15)">Top 15</button>
+        <!-- AHP Panel (Visible when DSS active) -->
+        <div class="ahp-panel" id="ahp-controls">
+          <div style="font-size:10.5px;color:var(--text-muted);margin-bottom:6px;font-weight:600">Trọng số ưu tiên (AHP Presets):</div>
+          <div class="ahp-presets-row">
+            <button class="ahp-preset-btn active" onclick="setAhpPreset('balanced')">Cân bằng</button>
+            <button class="ahp-preset-btn" onclick="setAhpPreset('ai_centric')">Ưu tiên AI</button>
+            <button class="ahp-preset-btn" onclick="setAhpPreset('proximity')">Gần nhất</button>
+            <button class="ahp-preset-btn" onclick="setAhpPreset('budget')">Tiết kiệm</button>
+          </div>
+          <div class="weights-chips" id="ahp-weights-display">
+            <span class="weight-chip">C1 Khoảng cách: <strong>21%</strong></span>
+            <span class="weight-chip">C2 Rating: <strong>21%</strong></span>
+            <span class="weight-chip">C3 Giá: <strong>14%</strong></span>
+            <span class="weight-chip">C4 AI: <strong>30%</strong></span>
+            <span class="weight-chip">C5 Phổ biến: <strong>14%</strong></span>
+          </div>
+          <div class="cr-badge" id="ahp-cr-badge">
+            <i data-lucide="check-circle" style="width:11px;height:11px"></i>
+            Tỷ số nhất quán: CR = 0.0018 (≤ 0.10 Đạt chuẩn Saaty)
           </div>
         </div>
 
-        <div style="display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap" id="cat-filters">
-          <button class="filter-pill active" id="filter-all" onclick="setCategoryFilter('')">Tất cả</button>
-          <button class="filter-pill" id="filter-restaurant" onclick="setCategoryFilter('restaurant')">🍜 Ẩm thực (Quán ăn)</button>
-          <button class="filter-pill" id="filter-cafe" onclick="setCategoryFilter('cafe')">☕ Quán Cafe</button>
-          <button class="filter-pill" id="filter-tourist_spot" onclick="setCategoryFilter('tourist_spot')">📸 Thắng cảnh</button>
+        <!-- GPS Location Picker -->
+        <div style="margin-top:6px">
+          <div style="font-size:10.5px;color:var(--text-muted);margin-bottom:6px;font-weight:600">
+            📍 Vị trí GPS hiện tại (Click bản đồ để đổi):
+          </div>
+          <div class="gps-presets">
+            <button class="gps-btn active" onclick="setUserGPS(16.068, 108.223, 'Cầu Rồng (Hải Châu)')">🌉 Cầu Rồng</button>
+            <button class="gps-btn" onclick="setUserGPS(16.060, 108.247, 'Biển Mỹ Khê (Sơn Trà)')">🏖 Biển Mỹ Khê</button>
+            <button class="gps-btn" onclick="setUserGPS(16.100, 108.277, 'Sơn Trà (Bán đảo)')">⛰ Bán đảo Sơn Trà</button>
+            <button class="gps-btn" onclick="setUserGPS(16.004, 108.263, 'Ngũ Hành Sơn')">🛕 Ngũ Hành Sơn</button>
+            <button class="gps-btn" onclick="setUserGPS(16.054, 108.202, 'Sân bay Đà Nẵng')">✈️ Sân bay</button>
+          </div>
+          <div class="gps-coords-text">
+            <span id="current-gps-label">Vị trí: Cầu Rồng (Hải Châu)</span>
+            <span id="current-gps-val" style="color:var(--accent)">16.068°N, 108.223°E</span>
+          </div>
         </div>
 
-        <!-- POI Recommendations -->
+      </div>
+
+      <!-- 4. Category Filter & Results -->
+      <div class="section" style="flex:1">
+        <div class="section-title">
+          <span><i data-lucide="compass" style="width:13px;height:13px;display:inline-block;vertical-align:middle"></i> 4. Kết Quả Xếp Hạng Địa Điểm</span>
+          <div style="display:flex;gap:4px">
+            <button class="preset-btn" style="padding:2px 8px;font-size:10px" onclick="setTopK(5)">Top 5</button>
+            <button class="preset-btn active" style="padding:2px 8px;font-size:10px" onclick="setTopK(10)">Top 10</button>
+          </div>
+        </div>
+
+        <!-- Filter pills -->
+        <div style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap">
+          <button class="preset-btn active" id="filter-all" style="padding:4px 8px;font-size:10px" onclick="setCategoryFilter('')">Tất cả</button>
+          <button class="preset-btn" id="filter-restaurant" style="padding:4px 8px;font-size:10px" onclick="setCategoryFilter('restaurant')">🍜 Quán ăn</button>
+          <button class="preset-btn" id="filter-cafe" style="padding:4px 8px;font-size:10px" onclick="setCategoryFilter('cafe')">☕ Cafe</button>
+          <button class="preset-btn" id="filter-tourist_spot" style="padding:4px 8px;font-size:10px" onclick="setCategoryFilter('tourist_spot')">📸 Thắng cảnh</button>
+          <button class="preset-btn" id="filter-hotel" style="padding:4px 8px;font-size:10px" onclick="setCategoryFilter('hotel')">🏨 Khách sạn</button>
+        </div>
+
+        <!-- POI Recommendations Container -->
         <div class="poi-list" id="poi-list-container">
-          <!-- Filled by JS -->
+          <!-- Populated by JS -->
         </div>
       </div>
 
@@ -518,11 +671,28 @@
   <script>
     lucide.createIcons();
 
-    // Map Initialization (Centered in Da Nang)
-    const map = L.map('map', { zoomControl: false }).setView([16.068, 108.223], 13);
+    // State Variables
+    let currentPersona = 0;
+    let currentHour = 7;
+    let isDssMode = true;
+    let currentAhpPreset = 'balanced';
+    let currentCategory = '';
+    let currentTopK = 10;
+    let userLat = 16.068;
+    let userLon = 108.223;
+    let userLocName = 'Cầu Rồng (Hải Châu)';
+
+    const PERSONA_CONFIG = [
+      { id: 12, name: "User A: Cư dân", defaultCat: '' },
+      { id: 45, name: "User B: Du khách ẩm thực", defaultCat: 'restaurant' },
+      { id: 88, name: "User C: Phượt & Check-in", defaultCat: '' }
+    ];
+
+    // Map Initialization
+    const map = L.map('map', { zoomControl: false }).setView([userLat, userLon], 13);
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    // Google Maps Roadmap Tiles (Ổn định 100% tại VN, không cần API Key)
+    // Google Maps Roadmap Tiles
     L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
       maxZoom: 20,
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
@@ -530,153 +700,53 @@
     }).addTo(map);
 
     let markersLayer = L.layerGroup().addTo(map);
+    let userMarker = null;
 
-    // State Variables
-    let currentPersona = 0; // 0: User A, 1: User B, 2: User C
-    let currentHour = 7;
-    let currentModel = 'tasgnn'; // 'tasgnn' or 'lightgcn'
+    function renderUserMarker() {
+      if (userMarker) map.removeLayer(userMarker);
+      const userIcon = L.divIcon({
+        className: 'user-marker-container',
+        html: `<div class="user-gps-marker"></div>`,
+        iconSize: [22, 22],
+        iconAnchor: [11, 11]
+      });
+      userMarker = L.marker([userLat, userLon], { icon: userIcon }).addTo(map);
+      userMarker.bindPopup(`<b>Vị trí GPS của bạn</b><br>${userLocName}<br>Lat: ${userLat.toFixed(3)}, Lon: ${userLon.toFixed(3)}`).openPopup();
+    }
+    renderUserMarker();
 
-    // Mock POI Data for all scenarios
-    const PERSONA_DATA = [
-      // Persona 0 (User A: Local Da Nang resident)
-      {
-        lightgcn: [
-          { name: "Cen Archery Cafe", cat: "cafe", district: "Sơn Trà", rating: 4.7, lat: 16.062, lon: 108.238, score: 0.94, exp: "Địa điểm quen thuộc theo đồ thị tương tác cố định" },
-          { name: "Dragon Bridge West Viewpoint", cat: "tourist_spot", district: "Hải Châu", rating: 4.6, lat: 16.061, lon: 108.221, score: 0.91, exp: "Điểm tham quan trung tâm Hải Châu" },
-          { name: "Dragon Bridge East Viewpoint", cat: "tourist_spot", district: "Hải Châu", rating: 4.4, lat: 16.061, lon: 108.224, score: 0.88, exp: "Điểm tham quan bờ đông Sông Hàn" },
-          { name: "Lang Bich hoa Da Nang", cat: "tourist_spot", district: "Hải Châu", rating: 4.1, lat: 16.069, lon: 108.219, score: 0.85, exp: "Khu dạo bộ chụp ảnh Hải Châu" },
-          { name: "Giant Egg Plants", cat: "tourist_spot", district: "Hải Châu", rating: 4.7, lat: 16.065, lon: 108.222, score: 0.82, exp: "Công viên biểu tượng Sông Hàn" }
-        ],
-        tasgnn: {
-          morning: [
-            { name: "NhaUyen Coffee (Đặc sản Cafe)", cat: "cafe", district: "Hải Châu", rating: 4.8, lat: 16.071, lon: 108.221, score: 0.96, exp: "Khung giờ sáng 7h30 rất thích hợp để thưởng thức cafe & làm việc" },
-            { name: "Cen Archery Specialty Coffee", cat: "cafe", district: "Sơn Trà", rating: 4.7, lat: 16.062, lon: 108.238, score: 0.94, exp: "Không gian mở thoáng đãng buổi sáng ven sông" },
-            { name: "CaPhe Tuoi Hong", cat: "cafe", district: "Hải Châu", rating: 4.4, lat: 16.067, lon: 108.218, score: 0.91, exp: "Quán cafe quen thuộc của cư dân Hải Châu" },
-            { name: "SkyPub & Morning Lounge", cat: "cafe", district: "Hải Châu", rating: 4.5, lat: 16.074, lon: 108.223, score: 0.89, exp: "Không gian yên tĩnh view toàn cảnh thành phố" },
-            { name: "Cafe Giai Khat 35", cat: "cafe", district: "Hải Châu", rating: 4.7, lat: 16.064, lon: 108.220, score: 0.87, exp: "Cafe cóc truyền thống đậm vị người Đà Nẵng" }
-          ],
-          noon: [
-            { name: "Cơm Niêu Nhà Đỏ Hải Châu", cat: "restaurant", district: "Hải Châu", rating: 4.6, lat: 16.068, lon: 108.222, score: 0.95, exp: "Thời điểm 12h trưa lý tưởng để ăn cơm niêu truyền thống" },
-            { name: "Mì Quảng Bà Mua", cat: "restaurant", district: "Hải Châu", rating: 4.5, lat: 16.063, lon: 108.219, score: 0.92, exp: "Đặc sản mì Quảng trưa chuẩn vị Đà Nẵng" },
-            { name: "Bánh Xèo Tôm Nhảy Năm Hiền", cat: "restaurant", district: "Thanh Khê", rating: 4.7, lat: 16.061, lon: 108.198, score: 0.90, exp: "Quán ăn trưa nổi tiếng gần trung tâm" }
-          ],
-          afternoon: [
-            { name: "Wonderlust Cafe & Bakery", cat: "cafe", district: "Hải Châu", rating: 4.7, lat: 16.068, lon: 108.223, score: 0.96, exp: "Cafe máy lạnh thư giãn xế chiều mát mẻ" },
-            { name: "Danang Souvenirs & Cafe", cat: "cafe", district: "Hải Châu", rating: 4.6, lat: 16.073, lon: 108.224, score: 0.93, exp: "Ngắm sông Hàn chiều tà bên cầu quay Sông Hàn" }
-          ],
-          night: [
-            { name: "Dragon Bridge West Viewpoint (Cầu Rồng)", cat: "tourist_spot", district: "Hải Châu", rating: 4.6, lat: 16.061, lon: 108.221, score: 0.97, exp: "Khung giờ 20h30 tối chuẩn bị xem Cầu Rồng phun lửa & dạo sông Hàn" },
-            { name: "Chợ Đêm Sơn Trà (Sơn Trà Night Market)", cat: "tourist_spot", district: "Sơn Trà", rating: 4.5, lat: 16.061, lon: 108.227, score: 0.95, exp: "Ẩm thực đường phố náo nhiệt về đêm" },
-            { name: "Bạch Đằng Walking Street", cat: "tourist_spot", district: "Hải Châu", rating: 4.7, lat: 16.066, lon: 108.224, score: 0.93, exp: "Phố đi bộ lung linh ven sông Hàn buổi tối" },
-            { name: "Sky36 Rooftop Bar Da Nang", cat: "cafe", district: "Hải Châu", rating: 4.6, lat: 16.076, lon: 108.224, score: 0.90, exp: "Bar view cao nhất ngắm toàn bộ các cây cầu Đà Nẵng" }
-          ]
-        }
-      },
-      // Persona 1 (User B: Tourist Foodie in Ngũ Hành Sơn)
-      {
-        lightgcn: [
-          { name: "Cafe Anh", cat: "cafe", district: "Cẩm Lệ", rating: 4.4, lat: 16.021, lon: 108.209, score: 0.89, exp: "Gợi ý đồ thị tĩnh" },
-          { name: "Dragon Bridge East Viewpoint", cat: "tourist_spot", district: "Hải Châu", rating: 4.4, lat: 16.061, lon: 108.224, score: 0.87, exp: "Thắng cảnh phổ biến" },
-          { name: "Giant Egg Plants", cat: "tourist_spot", district: "Hải Châu", rating: 4.7, lat: 16.065, lon: 108.222, score: 0.85, exp: "Địa điểm dạo mát" }
-        ],
-        tasgnn: {
-          morning: [
-            { name: "43 Factory Coffee Roaster", cat: "cafe", district: "Ngũ Hành Sơn", rating: 4.8, lat: 16.050, lon: 108.243, score: 0.96, exp: "Quán cafe specialty hiện đại bậc nhất gần bãi biển Mỹ An" },
-            { name: "The Workshop An Thuong", cat: "cafe", district: "Ngũ Hành Sơn", rating: 4.6, lat: 16.053, lon: 108.244, score: 0.92, exp: "Không gian ăn sáng & cafe cho du khách Tây phố An Thượng" }
-          ],
-          noon: [
-            { name: "Hải Sản Bé Mặn (Mỹ Khê)", cat: "restaurant", district: "Sơn Trà", rating: 4.7, lat: 16.067, lon: 108.247, score: 0.98, exp: "Thời điểm trưa ăn hải sản tươi sống đánh bắt trong ngày" },
-            { name: "Wood Fish Restaurant", cat: "restaurant", district: "Ngũ Hành Sơn", rating: 4.7, lat: 16.048, lon: 108.246, score: 0.95, exp: "Nhà hàng hải sản tươi ngon, không gian ấm cúng gia đình" },
-            { name: "Nhà Hàng Sóng Biển", cat: "restaurant", district: "Ngũ Hành Sơn", rating: 4.8, lat: 16.045, lon: 108.248, score: 0.93, exp: "Ẩm thực biển view thẳng ra đại dương" },
-            { name: "Bếp Cuốn Đà Nẵng", cat: "restaurant", district: "Ngũ Hành Sơn", rating: 4.6, lat: 16.052, lon: 108.242, score: 0.91, exp: "Đặc sản các món cuốn miền Trung tuyệt hảo" }
-          ],
-          afternoon: [
-            { name: "Ha My Beach (Bãi Biển Hà My)", cat: "tourist_spot", district: "Ngũ Hành Sơn", rating: 4.7, lat: 16.022, lon: 108.260, score: 0.97, exp: "16h30 chiều mát rất tuyệt để tắm biển & dạo bờ cát trắng" },
-            { name: "Driftwood Village Resort", cat: "tourist_spot", district: "Ngũ Hành Sơn", rating: 4.6, lat: 16.035, lon: 108.252, score: 0.94, exp: "Không gian nghỉ dưỡng ven biển yên bình chiều tà" },
-            { name: "Bãi Tắm Mỹ Khê", cat: "tourist_spot", district: "Sơn Trà", rating: 4.8, lat: 16.060, lon: 108.247, score: 0.93, exp: "Top bãi biển quyến rũ nhất hành tinh" }
-          ],
-          night: [
-            { name: "Chợ Đêm Helio Center", cat: "tourist_spot", district: "Hải Châu", rating: 4.8, lat: 16.036, lon: 108.225, score: 0.97, exp: "Tối là thiên đường ăn vặt và giải trí gia đình" },
-            { name: "Hải Sản Năm Đảnh", cat: "restaurant", district: "Sơn Trà", rating: 4.5, lat: 16.096, lon: 108.252, score: 0.94, exp: "Quán hải sản đêm nổi tiếng giá bình dân của Đà Nẵng" }
-          ]
-        }
-      },
-      // Persona 2 (User C: Exploration / Tourist check-in)
-      {
-        lightgcn: [
-          { name: "Cafe Anh", cat: "cafe", district: "Cẩm Lệ", rating: 4.4, lat: 16.021, lon: 108.209, score: 0.88, exp: "Mô hình tĩnh" },
-          { name: "CaPhe Chau", cat: "cafe", district: "Cẩm Lệ", rating: 4.7, lat: 16.024, lon: 108.212, score: 0.86, exp: "Mô hình tĩnh" }
-        ],
-        tasgnn: {
-          morning: [
-            { name: "Bán Đảo Sơn Trà & Chùa Linh Ứng", cat: "tourist_spot", district: "Sơn Trà", rating: 4.9, lat: 16.100, lon: 108.277, score: 0.99, exp: "Sáng sớm leo núi Sơn Trà ngắm vịnh biển và tượng Phật Bà" },
-            { name: "Sơn Trà Marina (Cafe Santorini)", cat: "cafe", district: "Sơn Trà", rating: 4.7, lat: 16.107, lon: 108.269, score: 0.96, exp: "Cafe view Địa Trung Hải check-in triệu like buổi sáng" }
-          ],
-          noon: [
-            { name: "Bà Nà Hills (Cầu Vàng Sun World)", cat: "tourist_spot", district: "Hòa Vang", rating: 4.9, lat: 15.998, lon: 107.989, score: 0.98, exp: "Trưa tham quan Làng Pháp và thưởng thức buffet đỉnh Bà Nà" }
-          ],
-          afternoon: [
-            { name: "Danh Thắng Ngũ Hành Sơn", cat: "tourist_spot", district: "Ngũ Hành Sơn", rating: 4.7, lat: 16.004, lon: 108.263, score: 0.97, exp: "Chiều leo động Huyền Không và ngắm hoàng hôn non nước" },
-            { name: "Đỉnh Bàn Cờ Sơn Trà", cat: "tourist_spot", district: "Sơn Trà", rating: 4.8, lat: 16.119, lon: 108.268, score: 0.94, exp: "Điểm cao nhất ngắm toàn cảnh thành phố chiều buông" }
-          ],
-          night: [
-            { name: "Cầu Rồng Phun Lửa (Dragon Bridge)", cat: "tourist_spot", district: "Hải Châu", rating: 4.8, lat: 16.061, lon: 108.221, score: 0.99, exp: "Tối 21h cuối tuần xem Cầu Rồng phun lửa và phun nước" },
-            { name: "Chợ Đêm Sơn Trà", cat: "tourist_spot", district: "Sơn Trà", rating: 4.6, lat: 16.061, lon: 108.227, score: 0.96, exp: "Mua quà lưu niệm và ẩm thực hải sản nướng đêm" }
-          ]
-        }
-      }
-    ];
+    // Map Click Listener to change user GPS
+    map.on('click', function(e) {
+      setUserGPS(e.latlng.lat, e.latlng.lng, 'Vị trí tùy chọn trên bản đồ');
+    });
 
-    // State Variables
-    let currentPersona = 0; // 0: User A, 1: User B, 2: User C
-    let currentHour = 7;
-    let currentModel = 'tasgnn'; // 'tasgnn' or 'lightgcn'
-    let currentCategory = ''; // '' (All), 'restaurant', 'cafe', 'tourist_spot'
-    let currentTopK = 10;
-
-    const PERSONA_CONFIG = [
-      { id: 12, name: "User A: Cư dân", defaultCat: '' },
-      { id: 45, name: "User B: Khách ẩm thực", defaultCat: 'restaurant' },
-      { id: 88, name: "User C: Phượt Check-in", defaultCat: '' }
-    ];
+    function setUserGPS(lat, lon, label) {
+      userLat = lat;
+      userLon = lon;
+      userLocName = label;
+      document.getElementById('current-gps-label').innerText = `Vị trí: ${label}`;
+      document.getElementById('current-gps-val').innerText = `${lat.toFixed(3)}°N, ${lon.toFixed(3)}°E`;
+      document.querySelectorAll('.gps-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.includes(label.split(' ')[0]));
+      });
+      renderUserMarker();
+      renderRecommendations();
+    }
 
     function selectPersona(idx) {
       currentPersona = idx;
       document.querySelectorAll('.persona-card').forEach((el, i) => {
         el.classList.toggle('active', i === idx);
       });
-      // Tự động chuyển danh mục mặc định theo persona
       const defCat = PERSONA_CONFIG[idx].defaultCat;
       setCategoryFilter(defCat);
-    }
-
-    function setCategoryFilter(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.filter-pill').forEach(btn => {
-        const id = btn.id;
-        btn.classList.toggle('active', 
-          (cat === '' && id === 'filter-all') ||
-          (cat === 'restaurant' && id === 'filter-restaurant') ||
-          (cat === 'cafe' && id === 'filter-cafe') ||
-          (cat === 'tourist_spot' && id === 'filter-tourist_spot')
-        );
-      });
-      renderRecommendations();
-    }
-
-    function setTopK(k) {
-      currentTopK = k;
-      document.querySelectorAll('.topk-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText === `Top ${k}`);
-      });
-      renderRecommendations();
     }
 
     function setPresetTime(hour) {
       currentHour = hour;
       document.getElementById('hour-slider').value = hour;
       updateTimeDisplay(hour);
-      document.querySelectorAll('.preset-btn').forEach(btn => {
+      document.querySelectorAll('.time-presets .preset-btn').forEach(btn => {
         const text = btn.innerText;
         btn.classList.toggle('active', 
           (hour <= 9 && text.includes('07:30')) ||
@@ -691,7 +761,7 @@
     function onSliderChange(val) {
       currentHour = parseInt(val);
       updateTimeDisplay(currentHour);
-      document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.time-presets .preset-btn').forEach(btn => btn.classList.remove('active'));
       renderRecommendations();
     }
 
@@ -703,35 +773,44 @@
       document.getElementById('time-display').innerText = `${hr.toString().padStart(2, '0')}:30 ${period}`;
     }
 
-    function switchModel(model) {
-      currentModel = model;
-      document.getElementById('tab-tasgnn').classList.toggle('active', model === 'tasgnn');
-      document.getElementById('tab-lightgcn').classList.toggle('active', model === 'lightgcn');
-      
-      const note = document.getElementById('model-note');
-      if (model === 'tasgnn') {
-        note.innerHTML = `✨ <strong>TAS-GNN:</strong> Tích hợp vector thời gian Fourier. Gợi ý thay đổi linh hoạt theo khung giờ sáng/trưa/chiều/tối.`;
-      } else {
-        note.innerHTML = `📊 <strong>LightGCN Baseline:</strong> Mô hình tĩnh truyền thống. Danh sách gợi ý cố định cả ngày, không phân biệt sáng hay tối.`;
-      }
+    function switchDecisionMode(dssActive) {
+      isDssMode = dssActive;
+      document.getElementById('tab-dss').classList.toggle('active', dssActive);
+      document.getElementById('tab-pure-gnn').classList.toggle('active', !dssActive);
+      document.getElementById('ahp-controls').style.display = dssActive ? 'block' : 'none';
       renderRecommendations();
     }
 
-    function getActiveItems() {
-      const p = PERSONA_DATA[currentPersona] || PERSONA_DATA[0];
-      if (currentModel === 'lightgcn') {
-        return p.lightgcn;
-      } else {
-        if (currentHour <= 9) return p.tasgnn.morning;
-        else if (currentHour <= 13) return p.tasgnn.noon;
-        else if (currentHour <= 17) return p.tasgnn.afternoon;
-        else return p.tasgnn.night;
-      }
+    function setAhpPreset(preset) {
+      currentAhpPreset = preset;
+      document.querySelectorAll('.ahp-preset-btn').forEach(btn => {
+        const nameMap = { balanced: 'Cân bằng', ai_centric: 'Ưu tiên AI', proximity: 'Gần nhất', budget: 'Tiết kiệm' };
+        btn.classList.toggle('active', btn.innerText === nameMap[preset]);
+      });
+      renderRecommendations();
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      const ids = { '': 'filter-all', restaurant: 'filter-restaurant', cafe: 'filter-cafe', tourist_spot: 'filter-tourist_spot', hotel: 'filter-hotel' };
+      Object.entries(ids).forEach(([c, btnId]) => {
+        const el = document.getElementById(btnId);
+        if (el) el.classList.toggle('active', c === cat);
+      });
+      renderRecommendations();
+    }
+
+    function setTopK(k) {
+      currentTopK = k;
+      document.querySelectorAll('.section-title .preset-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText === `Top ${k}`);
+      });
+      renderRecommendations();
     }
 
     async function renderRecommendations() {
       const container = document.getElementById('poi-list-container');
-      container.innerHTML = '<div style="padding:24px;text-align:center;color:var(--text-muted);font-size:12px">⚡ Đang truy vấn dự đoán từ Model AI PyTorch...</div>';
+      container.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:11px">⚡ Đang kết nối AI Engine & tính toán AHP-TOPSIS...</div>';
       markersLayer.clearLayers();
 
       const uId = PERSONA_CONFIG[currentPersona].id;
@@ -745,84 +824,94 @@
             userId: uId,
             hour: currentHour,
             dayOfWeek: 2,
+            userLat: userLat,
+            userLon: userLon,
             topK: currentTopK,
             category: currentCategory || null,
-            excludeVisited: true
+            excludeVisited: true,
+            enableDSS: isDssMode,
+            ahpPreset: currentAhpPreset
           })
         });
 
         if (res.ok) {
           const data = await res.json();
-          const rawItems = currentModel === 'tasgnn' ? data.tasgnnRecommendations : data.lightgcnRecommendations;
-          items = rawItems.map(item => ({
+          items = data.tasgnnRecommendations.map(item => ({
             name: item.name,
             cat: item.category,
             district: item.district,
             rating: item.rating,
+            priceAvg: item.priceAvg,
             lat: item.latitude,
             lon: item.longitude,
             score: item.score,
+            distanceKm: item.distanceKm,
+            topsisScore: item.topsisScore,
             exp: item.explanation
           }));
 
-          const statusBadge = document.querySelector('.status-badge');
+          // Update AHP weights display if returned
+          if (data.ahpWeights) {
+            const w = data.ahpWeights;
+            document.getElementById('ahp-weights-display').innerHTML = `
+              <span class="weight-chip">C1 Khoảng cách: <strong>${Math.round(w.distance * 100)}%</strong></span>
+              <span class="weight-chip">C2 Rating: <strong>${Math.round(w.rating * 100)}%</strong></span>
+              <span class="weight-chip">C3 Giá: <strong>${Math.round(w.price * 100)}%</strong></span>
+              <span class="weight-chip">C4 AI: <strong>${Math.round(w.preference * 100)}%</strong></span>
+              <span class="weight-chip">C5 Phổ biến: <strong>${Math.round(w.popularity * 100)}%</strong></span>
+            `;
+          }
+
+          const statusBadge = document.getElementById('model-status');
           if (statusBadge) {
-            statusBadge.innerHTML = `<div class="status-dot"></div> Live PyTorch Model (Port 8000)`;
+            statusBadge.innerHTML = `<div class="status-dot"></div> Live PyTorch + TOPSIS (Port 8000)`;
             statusBadge.style.color = '#34d399';
           }
         } else {
-          throw new Error('API response status ' + res.status);
+          throw new Error('API status ' + res.status);
         }
       } catch (err) {
-        console.warn('Không thể gọi API trực tiếp, sử dụng dữ liệu mẫu dự phòng:', err);
-        items = getActiveItems();
-        const statusBadge = document.querySelector('.status-badge');
+        console.warn('Không thể gọi API trực tiếp, kích hoạt Offline Mock Demo:', err);
+        items = getFallbackData();
+        const statusBadge = document.getElementById('model-status');
         if (statusBadge) {
-          statusBadge.innerHTML = `<div class="status-dot" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b"></div> Dữ liệu Ngoại Tuyến (Offline Demo)`;
+          statusBadge.innerHTML = `<div class="status-dot" style="background:#f59e0b;box-shadow:0 0 6px #f59e0b"></div> Offline Simulator`;
           statusBadge.style.color = '#fbbf24';
         }
       }
 
       container.innerHTML = '';
-      const bounds = [];
+      const bounds = [[userLat, userLon]];
 
       if (!items || items.length === 0) {
-        container.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:12px">Không tìm thấy địa điểm phù hợp trong danh mục này.</div>';
+        container.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-muted);font-size:11px">Không có địa điểm nào phù hợp danh mục đã chọn.</div>';
         return;
       }
 
       items.forEach((item, index) => {
-        // Build Card
         const card = document.createElement('div');
         card.className = 'poi-card';
         card.onclick = () => {
           map.flyTo([item.lat, item.lon], 16, { duration: 1 });
         };
 
-        const catColors = {
-          cafe: '#f59e0b',
-          restaurant: '#ef4444',
-          tourist_spot: '#10b981',
-          hotel: '#8b5cf6'
-        };
+        const catColors = { cafe: '#f59e0b', restaurant: '#ef4444', tourist_spot: '#10b981', hotel: '#8b5cf6' };
+        const catLabels = { cafe: 'CAFE', restaurant: 'QUÁN ĂN', tourist_spot: 'THẮNG CẢNH', hotel: 'KHÁCH SẠN' };
         const color = catColors[item.cat] || '#06b6d4';
 
-        const catLabels = {
-          cafe: 'CAFE',
-          restaurant: 'ẨM THỰC',
-          tourist_spot: 'THẮNG CẢNH',
-          hotel: 'KHÁCH SẠN'
-        };
+        const topsisHtml = item.topsisScore ? `<span class="metric-highlight">⚡ TOPSIS: ${item.topsisScore.toFixed(3)}</span>` : '';
+        const distHtml = item.distanceKm ? `<span>📍 ${item.distanceKm} km</span>` : '';
 
         card.innerHTML = `
           <div class="poi-header">
-            <span class="poi-name">${index + 1}. ${item.name}</span>
+            <span class="poi-name">#${index + 1} ${item.name}</span>
             <span class="poi-badge badge-${item.cat}">${catLabels[item.cat] || item.cat}</span>
           </div>
-          <div class="poi-meta">
-            <span>📍 ${item.district}</span>
+          <div class="poi-metrics">
             <span>⭐ ${item.rating}</span>
-            <span style="color:var(--accent);font-weight:600">Độ khớp: ${Math.round(item.score * 100)}%</span>
+            <span>💰 ${(item.priceAvg || 50000).toLocaleString()}đ</span>
+            ${distHtml}
+            ${topsisHtml}
           </div>
           <div class="poi-explanation">
             💡 ${item.exp}
@@ -834,27 +923,53 @@
         const customIcon = L.divIcon({
           className: 'custom-icon',
           html: `<div class="custom-marker" style="background:${color}">${index + 1}</div>`,
-          iconSize: [32, 32],
-          iconAnchor: [16, 16]
+          iconSize: [28, 28],
+          iconAnchor: [14, 14]
         });
 
         const marker = L.marker([item.lat, item.lon], { icon: customIcon }).addTo(markersLayer);
         marker.bindPopup(`
           <div style="font-family:'Inter',sans-serif;color:#1e293b;min-width:180px">
-            <h4 style="font-weight:700;font-size:14px;margin-bottom:4px">${item.name}</h4>
-            <p style="font-size:11px;color:#64748b;margin-bottom:4px">📍 ${item.district} • ⭐ ${item.rating} • ${catLabels[item.cat] || item.cat}</p>
-            <p style="font-size:11px;line-height:1.4;color:#0369a1">${item.exp}</p>
+            <h4 style="font-weight:700;font-size:13px;margin-bottom:2px">#${index + 1} ${item.name}</h4>
+            <p style="font-size:10.5px;color:#64748b;margin-bottom:4px">📍 ${item.district} • ⭐ ${item.rating} • ${catLabels[item.cat] || item.cat}</p>
+            <p style="font-size:10.5px;color:#0369a1;line-height:1.3">${item.exp}</p>
           </div>
         `);
         bounds.push([item.lat, item.lon]);
       });
 
-      if (bounds.length > 0) {
-        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
+      if (bounds.length > 1) {
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
       }
     }
 
-    // Initial Render
+    function getFallbackData() {
+      // Mock data sạch, không có SkyPub lúc 7h sáng
+      if (currentHour <= 9) {
+        return [
+          { name: "NhaUyen Coffee (Đặc sản Cafe)", cat: "cafe", district: "Hải Châu", rating: 4.8, priceAvg: 35000, lat: 16.071, lon: 108.221, distanceKm: 0.8, topsisScore: 0.895, exp: "Khung giờ sáng 7h rất thích hợp để thưởng thức cafe & khởi đầu ngày mới" },
+          { name: "Cen Archery Specialty Coffee", cat: "cafe", district: "Sơn Trà", rating: 4.7, priceAvg: 45000, lat: 16.062, lon: 108.238, distanceKm: 1.4, topsisScore: 0.842, exp: "Không gian mở thoáng đãng ven sông Hàn" },
+          { name: "Danang Souvenirs & Cafe", cat: "cafe", district: "Hải Châu", rating: 4.6, priceAvg: 40000, lat: 16.073, lon: 108.224, distanceKm: 0.9, topsisScore: 0.812, exp: "Cafe ngắm cầu quay sông Hàn buổi sáng" }
+        ];
+      } else if (currentHour <= 13) {
+        return [
+          { name: "Cơm Niêu Nhà Đỏ Hải Châu", cat: "restaurant", district: "Hải Châu", rating: 4.6, priceAvg: 120000, lat: 16.068, lon: 108.222, distanceKm: 0.3, topsisScore: 0.912, exp: "Thời điểm trưa lý tưởng để dùng cơm niêu truyền thống đặc sản" },
+          { name: "Mì Quảng Bà Mua", cat: "restaurant", district: "Hải Châu", rating: 4.5, priceAvg: 45000, lat: 16.063, lon: 108.219, distanceKm: 0.7, topsisScore: 0.875, exp: "Đặc sản mì Quảng trưa chuẩn vị Đà Nẵng" }
+        ];
+      } else if (currentHour <= 17) {
+        return [
+          { name: "Bãi Tắm Mỹ Khê", cat: "tourist_spot", district: "Sơn Trà", rating: 4.8, priceAvg: 0, lat: 16.060, lon: 108.247, distanceKm: 2.5, topsisScore: 0.925, exp: "Buổi chiều mát rất thích hợp dạo biển và ngắm cảnh" },
+          { name: "Wonderlust Cafe & Bakery", cat: "cafe", district: "Hải Châu", rating: 4.7, priceAvg: 50000, lat: 16.068, lon: 108.223, distanceKm: 0.2, topsisScore: 0.880, exp: "Cafe máy lạnh thư giãn xế chiều mát mẻ" }
+        ];
+      } else {
+        return [
+          { name: "Dragon Bridge West (Cầu Rồng)", cat: "tourist_spot", district: "Hải Châu", rating: 4.8, priceAvg: 0, lat: 16.061, lon: 108.221, distanceKm: 0.6, topsisScore: 0.965, exp: "Buổi tối thưởng thức Cầu Rồng phun lửa và phố đi bộ Bạch Đằng" },
+          { name: "Hải Sản Bé Mặn (Mỹ Khê)", cat: "restaurant", district: "Sơn Trà", rating: 4.7, priceAvg: 250000, lat: 16.067, lon: 108.247, distanceKm: 2.6, topsisScore: 0.910, exp: "Buổi tối thưởng thức hải sản đêm tươi sống ven biển" }
+        ];
+      }
+    }
+
+    // Initial load
     renderRecommendations();
   </script>
 </body>

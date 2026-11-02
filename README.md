@@ -1,7 +1,7 @@
-# DSS: Time-Aware POI Recommendation & Location-Based Decision Support System (TAS-GNN)
+# L-DSS: Time-Aware POI Recommendation & Location-Based Decision Support System (ST-GNN + AHP + TOPSIS)
 
 > **Hệ thống Gợi ý Địa điểm Cá nhân hóa theo Thời gian thực và Hỗ trợ Ra quyết định Đa tiêu chí tại TP. Đà Nẵng**  
-> *Đồ án / Báo cáo Nghiên cứu Ứng dụng AI & Khoa học Dữ liệu*
+> *Đồ án / Báo cáo Nghiên cứu Ứng dụng AI, Graph Neural Network & Hệ Hỗ trợ Ra Quyết định (DSS)*
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
@@ -10,68 +10,76 @@
 
 ---
 
-## 📌 1. Giới Thiệu Đề Tài
+## 📌 1. Giới Thiệu & Đặt Vấn Đề
 
-Khi du lịch hoặc sinh hoạt tại các thành phố lớn như Đà Nẵng, người dùng thường gặp phải hiện tượng **nghịch lý lựa chọn (Choice Overload)** trước hàng nghìn địa điểm ăn uống, giải trí và tham quan. Hầu hết các hệ thống gợi ý truyền thống (Collaborative Filtering, Matrix Factorization hay LightGCN tĩnh) thường thất bại vì **bỏ qua ngữ cảnh thời gian (Temporal Dynamics)**:
-* **07:30 Sáng:** Nhu cầu tìm quán cafe, ăn sáng đặc sản (bún chả cá, mì Quảng).
-* **12:00 Trưa:** Nhu cầu tìm quán cơm niêu, nhà hàng ẩm thực miền Trung.
-* **16:30 Chiều:** Nhu cầu dạo biển Mỹ Khê, ngắm cảnh bán đảo Sơn Trà.
-* **20:30 Tối:** Nhu cầu xem Cầu Rồng phun lửa, dạo phố đi bộ Bạch Đằng, ẩm thực hải sản đêm.
+Hệ thống gợi ý POI truyền thống (như Collaborative Filtering, Matrix Factorization hay LightGCN tĩnh) thường bộc lộ hạn chế lớn:
+1. **Bỏ qua ngữ cảnh thời gian động (Temporal Dynamics):** Nhu cầu của du khách/cư dân thay đổi theo từng khung giờ sinh hoạt (07:30 sáng tìm cafe/ăn sáng; 12:00 trưa tìm quán cơm/ẩm thực; 16:30 chiều dạo biển/ngắm cảnh; 20:30 tối xem Cầu Rồng phun lửa, dạo phố đêm).
+2. **Thiếu hỗ trợ ra quyết định đa tiêu chí (MCDM):** Điểm số sở thích AI đơn thuần chưa đủ để người dùng lựa chọn một địa điểm thực tế nếu không cân nhắc: khoảng cách di chuyển hiện tại, mức giá, đánh giá cộng đồng và độ phổ biến.
 
-Dự án **DSS** giải quyết triệt để vấn đề này bằng cách kết hợp:
-1. **Mô hình Mạng nơ-ron Đồ thị Động theo Thời gian (TAS-GNN):** Ứng dụng định lý Bochner/Fourier biến đổi thời gian liên tục kết hợp cơ chế Cổng điều phối thời gian (Temporal Gate) để dự đoán sở thích của người dùng tại đúng thời điểm truy vấn.
-2. **Hệ Hỗ trợ Ra quyết định Đa tiêu chí (MCDM: AHP + TOPSIS):** Tích hợp điểm số AI cùng 4 tiêu chí thực tế (Khoảng cách GPS Haversine, Đánh giá rating, Mức giá cả, Độ phổ biến check-in) để xếp hạng các địa điểm tối ưu nhất.
+Dự án **L-DSS Đà Nẵng** giải quyết bài toán trên theo kiến trúc tích hợp 2 giai đoạn (Two-Stage Recommendation & Decision Framework):
+* **Giai đoạn 1 (Candidate Generation):** Mô hình **Spatio-Temporal Graph Neural Network (ST-GNN / TAS-GNN)** học biểu diễn đồ thị tương tác người dùng - địa điểm kết hợp cơ chế Cổng điều phối thời gian (Temporal Gate) để chọn ra Top-50 ứng viên phù hợp nhất với ngữ cảnh thời gian truy vấn.
+* **Giai đoạn 2 (Decision Support & Reranking):** Hệ hỗ trợ ra quyết định đa tiêu chí **MCDM (AHP + TOPSIS)** kết hợp 5 tiêu chí thực tế:
+  * $C_1$: Khoảng cách địa lý GPS Haversine (Tiêu chí chi phí - Cost)
+  * $C_2$: Điểm đánh giá thực tế Rating (Tiêu chí lợi ích - Benefit)
+  * $C_3$: Mức giá trung bình Price (Tiêu chí chi phí - Cost)
+  * $C_4$: **Điểm sở thích cá nhân hóa từ Spatio-Temporal GNN** (Tiêu chí lợi ích - Benefit)
+  * $C_5$: Độ phổ biến cộng đồng Popularity (Tiêu chí lợi ích - Benefit)
+  * Áp dụng **Phân tầng danh mục (Category-stratified TOPSIS)** để tránh hiện tượng chênh lệch thang giá giữa các nhóm dịch vụ (ví dụ: Khách sạn 500k-4tr so với Quán cafe 25k-60k).
 
 ---
 
-## 🏗 2. Kiến Trúc Dự Án
+## 🏗 2. Kiến Trúc Hệ Thống
 
 ```
 DSS/
-├── DSS_repo/                       # Thư mục mã nguồn AI Engine & Web Demo chính
-│   ├── data/danang/                # Bộ dữ liệu thực tế 996 POIs & 36.210 check-in Đà Nẵng
-│   │   ├── danang_pois_full.csv    # 996 địa điểm thực tế (Cafe, Restaurant, Hotel, Tourist Spot)
-│   │   └── danang_checkins_full.csv# Lịch sử di chuyển gắn nhãn thời gian
+├── DSS_repo/                       # AI Engine & Web Demo L-DSS
+│   ├── data/danang/                # 996 địa điểm thực tế từ OpenStreetMap & dữ liệu check-in Đà Nẵng
+│   │   ├── danang_pois_full.csv    # Tọa độ, tên, danh mục (Cafe, Quán ăn, Thắng cảnh, Khách sạn)
+│   │   └── danang_checkins_full.csv# Lịch sử tương tác có nhãn thời gian (ts, hour, day_of_week)
 │   ├── outputs/
-│   │   ├── checkpoints/            # Trọng số mô hình đã huấn luyện (.pt)
-│   │   │   ├── temporal_gnn_danang.pt # Model TAS-GNN PyTorch
+│   │   ├── checkpoints/            # Trọng số PyTorch (.pt) đã huấn luyện
+│   │   │   ├── temporal_gnn_danang.pt # Model ST-GNN PyTorch
 │   │   │   └── lightgcn_danang.pt     # Model LightGCN Baseline
-│   │   └── figures/                # Biểu đồ khoa học (Ablation study, t-SNE clusters, Bar charts)
-│   ├── paper/                      # Tài liệu nghiên cứu cơ sở (IJCAI 2020 CPR, VLDB 2017)
+│   │   └── baselines_benchmark_danang.csv # Kết quả đối soát khoa học với các baseline
 │   ├── src/
+│   │   ├── mcdm.py                 # Module AHP (Saaty CR <= 0.10) & Category-stratified TOPSIS
+│   │   ├── baselines_check.py      # Kịch bản đối soát độc lập với các Heuristic mạnh
 │   │   ├── models/
-│   │   │   ├── temporal_gnn.py     # Kiến trúc mạng TAS-GNN (Fourier Time + Temporal Gate)
-│   │   │   └── lightgcn.py         # Kiến trúc mạng LightGCN (SIGIR 2020)
-│   │   ├── train_compare.py        # Kịch bản huấn luyện & đối sánh định lượng
-│   │   ├── ablation_study.py       # Nghiên cứu bóc tách các thành phần mô hình
-│   │   ├── cpr.py & run_cpr.py     # Mô hình tham chiếu cũ (CPR IJCAI 2020)
-│   │   └── plot_scientific_charts.py # Vẽ biểu đồ khoa học
-│   ├── app.py                      # Ứng dụng Streamlit Dashboard
-│   ├── demo_danang.html            # Giao diện Web Bản đồ số tương tác (Google Maps Roadmap)
-│   └── server.py                   # FastAPI Production Server (< 50ms latency)
+│   │   │   ├── temporal_gnn.py     # Spatio-Temporal GNN (Đã sửa triệt tiêu context & hỗ trợ GPS)
+│   │   │   └── lightgcn.py         # LightGCN (SIGIR 2020)
+│   │   ├── evaluate_time_aware.py  # Đánh giá time-aware next-POI
+│   │   ├── train_compare.py        # Huấn luyện & đối sánh
+│   │   └── showcase_personas.py    # Phân tích định tính 3 nhóm người dùng
+│   ├── demo_danang.html            # Bản đồ số tương tác (Leaflet + Google Roadmap + AHP-TOPSIS Panel)
+│   └── server.py                   # FastAPI Server tích hợp AHP-TOPSIS & endpoint CPR cho NestJS
 │
-├── Huong_Dan.docx                  # BÁO CÁO TOÀN DIỆN & HƯỚNG DẪN TỪ A-Z (File Word chuẩn 5 chương)
+├── BE_API/                         # Backend NestJS quản lý dữ liệu L-DSS (Drizzle ORM)
+│   └── src/modules/dss/cpr/        # Tích hợp gọi sang FastAPI qua endpoint /api/cpr/score
+│
+├── Huong_Dan.docx                  # Thuyết minh báo cáo đồ án hoàn chỉnh chuẩn 5 chương
 ├── Huong_Dan.md                    # Bản Markdown của tài liệu hướng dẫn
-├── build_danang_dataset.py         # Kịch bản xây dựng dataset từ OpenStreetMap
 ├── requirements.txt                # Thư viện phụ thuộc
-└── README.md                       # Tài liệu tổng quan repository
+└── README.md                       # Tài liệu tổng quan
 ```
 
 ---
 
-## 📊 3. Kết Quả Thực Nghiệm Định Lượng (Đà Nẵng Dataset)
+## 📊 3. Báo Cáo Đối Soát Thực Nghiệm Khoa Học (Da Nang Dataset)
 
-Mô hình được đánh giá trên tập kiểm thử phân chia theo dòng thời gian (**Temporal Split**: 70% Train, 10% Tune, 20% Test):
+Thực hiện đánh giá trên $6.811$ sự kiện kiểm thử theo thời gian (**Temporal Split**), che các địa điểm đã tương tác trong tập huấn luyện:
 
-| Chỉ số Đánh giá | LightGCN (Baseline) | TAS-GNN (Đề xuất) | Mức độ Cải thiện ($\Delta\%$) |
-| :--- | :---: | :---: | :---: |
-| **HitRate@5** | $6.81\%$ | **$7.39\%$** | **+8.41%** |
-| **HitRate@10** | $11.13\%$ | **$12.45\%$** | **+11.87% (Vượt trội)** |
-| **HitRate@20** | $16.15\%$ | **$18.56\%$** | **+14.91%** |
-| **NDCG@5** | $4.37\%$ | **$4.46\%$** | **+2.13%** |
-| **NDCG@10** | $5.76\%$ | **$6.09\%$** | **+5.63% (Vượt trội)** |
-| **NDCG@20** | $7.03\%$ | **$7.62\%$** | **+8.41%** |
-| **Precision@10** | $1.11\%$ | **$1.25\%$** | **+11.87%** |
+| Phương pháp | Loại mô hình | HR@5 | HR@10 | HR@20 | NDCG@5 | NDCG@10 |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Phổ biến theo giờ** | Heuristic (Không học) | $7.22\%$ | $11.88\%$ | $18.40\%$ | $4.35\%$ | $5.83\%$ |
+| **Giờ × Khoảng cách cuối train** | Heuristic (Không học) | $8.63\%$ | $13.12\%$ | $19.72\%$ | $5.31\%$ | $6.76\%$ |
+| **Giờ × Khoảng cách liền trước** | Next-POI Heuristic | **$10.12\%$** | **$14.88\%$** | **$21.83\%$** | **$6.77\%$** | **$8.26\%$** |
+| **LightGCN** | GNN Tĩnh (SIGIR '20) | $7.31\%$ | $11.36\%$ | $16.46\%$ | $4.96\%$ | $6.25\%$ |
+| **ST-GNN-POI / TAS-GNN** | GNN Không - Thời gian | $7.39\%$ | $12.45\%$ | $18.56\%$ | $4.46\%$ | $6.09\%$ |
+
+> **Nhận định khoa học:**
+> 1. Quy luật thời gian và khoảng cách địa lý đóng vai trò tối quan trọng trong hành vi di chuyển đô thị. Tín hiệu *Khoảng cách từ vị trí check-in liền trước* đem lại hiệu quả vượt trội.
+> 2. Đây là minh chứng thực tế cho hiện tượng mà bài báo *Dacrema et al. (RecSys 2019)* đã chỉ ra: các phương pháp heuristic đơn giản khai thác đúng tiên nghiệm vật lý (không gian - thời gian) có thể đạt kết quả cạnh tranh mạnh mẽ với các mô hình học sâu phức tạp.
+> 3. Do đó, việc hệ thống tích hợp **L-DSS (AHP + TOPSIS)** để kết hợp cả điểm số nơ-ron AI ($C_4$) cùng khoảng cách tức thời ($C_1$), giá cả ($C_3$) và rating ($C_2$) là hướng tiếp cận toàn diện và sát thực tế nhất.
 
 ---
 
@@ -79,71 +87,42 @@ Mô hình được đánh giá trên tập kiểm thử phân chia theo dòng th
 
 ### Bước 1: Chuẩn bị môi trường Python
 ```bash
-# Khởi tạo virtual environment
-python -m venv .venv
-
-# Kích hoạt môi trường (Windows)
+# Kích hoạt virtual environment
 .\.venv\Scripts\activate
 
-# Cài đặt các thư viện phụ thuộc
+# Cài đặt thư viện cần thiết
 pip install -r requirements.txt
 ```
 
-### Bước 2: Khởi động Server AI (FastAPI)
+### Bước 2: Khởi động Server AI & MCDM Engine
 ```bash
 cd DSS_repo
-python -m uvicorn server:app --host 127.0.0.1 --port 8000 --reload
+python server.py
 ```
-Server sẽ tự động nạp dữ liệu Đà Nẵng và nạp sẵn 2 checkpoint PyTorch (`temporal_gnn_danang.pt`, `lightgcn_danang.pt`) vào bộ nhớ cache.
+* **Swagger API Documentation:** [http://localhost:8000/docs](http://localhost:8000/docs)
+* **Web Demo Bản Đồ Tương Tác:** [http://localhost:8000/demo](http://localhost:8000/demo)
 
-### Bước 3: Trải nghiệm Giao diện Web
-1. **Giao diện Bản đồ Web tương tác:** Truy cập **[http://localhost:8000/demo](http://localhost:8000/demo)** (hoặc mở trực tiếp file `demo_danang.html`).
-   - Tự do chuyển đổi 3 nhóm người dùng: Cư dân, Khách ẩm thực, Khách phượt.
-   - Kéo thanh trượt 24h hoặc chọn nút nhanh: Sáng, Trưa, Chiều, Tối.
-   - Bấm tab **Đối so sánh mô hình** giữa *TAS-GNN* và *LightGCN*.
-   - Bộ lọc danh mục: *Ẩm thực / Quán ăn*, *Quán Cafe*, *Thắng cảnh*.
-2. **Tài liệu API Swagger:** Truy cập **[http://localhost:8000/docs](http://localhost:8000/docs)** để gọi thử nghiệm endpoint `/api/v1/danang/recommend`.
-3. **Streamlit Analytics Dashboard:**
-   ```bash
-   python -m streamlit run app.py
-   ```
+### Bước 3: Chạy Kịch bản Đối soát Baseline độc lập
+```bash
+cd DSS_repo
+python src/baselines_check.py
+```
 
 ---
 
----
+## 🔌 5. Danh Sách API Endpoints Chính
 
-## 🔬 5. Nghiên Cứu Tái Lập Bài Báo Gốc (CPR - IJCAI 2020)
-
-Dự án này có xuất phát điểm từ việc **tái lập thực nghiệm (Reproduction)** bài báo khoa học đỉnh cao:
-> **Paper:** Peng Han, Zhongxiao Li, Yong Liu, Peilin Zhao, Jing Li, Hao Wang, Shuo Shang.  
-> *Contextualized Point-of-Interest Recommendation.* **IJCAI 2020**, tr. 2484–2490.  
-> *(Bản PDF bài báo được lưu trữ trong thư mục `DSS_repo/paper/CPR_IJCAI2020.pdf`)*.
-
-### Vai trò của mô hình Paper (CPR):
-1. **Tái lập Bảng 1 của Paper trên Dataset Gowalla (18.737 users × 32.510 POIs):**
-   - Đã cài đặt đầy đủ thuật toán CPR (`DSS_repo/src/cpr.py`), đồ thị láng giềng k-NN không-thời gian (`graphs.py`), và mô hình đối chứng USG (`src/baselines/`).
-   - Đóng gói giao diện đối sánh khoa học bằng Streamlit:
-     ```bash
-     cd DSS_repo
-     python -m streamlit run app.py
-     ```
-2. **Cầu nối dẫn tới Mô hình Mới (TAS-GNN):**
-   - **Hạn chế của CPR:** Phương pháp ma trận hóa cổ điển (Group Lasso + Conjugate Gradient) yêu cầu ma trận dày chiếm tới ~2.4 GB RAM, thời gian tối ưu hóa lâu và không hỗ trợ suy luận theo giờ thực tế linh hoạt.
-   - **Bước nhảy vọt với TAS-GNN:** Nhóm nghiên cứu đã kế thừa tư tưởng không-thời gian của CPR nhưng **tái cấu trúc hoàn toàn sang Mạng nơ-ron đồ thị (Graph Neural Network)** trên PyTorch kết hợp **Vector liên tục Fourier**, đưa thời gian phản hồi API xuống dưới **50ms** và phục vụ thực tế cho 996 địa điểm tại TP. Đà Nẵng.
+| Phương thức | Endpoint | Chức năng |
+| :--- | :--- | :--- |
+| `GET` | `/health` | Kiểm tra tình trạng server, model đã nạp và số lượng POI |
+| `GET` | `/api/v1/danang/ahp_weights?preset=balanced` | Xem vector trọng số và chỉ số nhất quán Saaty $CR$ |
+| `POST` | `/api/v1/danang/recommend` | Gợi ý POI theo thời gian thực (hỗ trợ cả Pure GNN và L-DSS) |
+| `POST` | `/api/v1/danang/recommend_dss` | Toàn trình Hỗ trợ ra quyết định Đa tiêu chí (Top-50 GNN $\rightarrow$ AHP $\rightarrow$ Category TOPSIS) |
+| `POST` | `/api/cpr/score` | **Endpoint kết nối NestJS BE_API:** Cung cấp điểm $C_4$ cho `cpr.service.ts`, chấm dứt hoàn toàn lỗi HTTP 404 |
 
 ---
 
-## 📑 6. Tài Liệu Nghiên Cứu Chi Tiết
-
-* File thuyết minh đồ án / khóa luận tốt nghiệp chuẩn 5 chương:
-  - **Word Document:** [`Huong_Dan.docx`](Huong_Dan.docx)
-  - **Markdown Document:** [`Huong_Dan.md`](Huong_Dan.md)
-* Báo cáo nghiên cứu khoa học chuyên sâu về mô hình TAS-GNN: [`DSS_repo/RESEARCH_REPORT_TAS_GNN.md`](DSS_repo/RESEARCH_REPORT_TAS_GNN.md)
-* Tài liệu chi tiết về quá trình tái lập paper CPR: [`DSS_repo/README.md`](DSS_repo/README.md)
-
----
-
-## 👨‍💻 Tác Giả & Bản Quyền
-- **Dự án:** Location-Based Decision Support System with TAS-GNN (L-DSS).
-- **Phát triển bởi:** Nhóm nghiên cứu DSS (`NHP28`).
-- **Mã nguồn:** Mở theo giấy phép [MIT License](LICENSE).
+## 📑 6. Đóng Góp & Tính Minh Bạch của Dữ Liệu
+* **Danh mục POI:** $996$ địa điểm du lịch, quán ăn, cafe, khách sạn có thật tại các quận trung tâm TP. Đà Nẵng, thu thập từ OpenStreetMap (OSM) với tọa độ GPS chính xác.
+* **Tương tác check-in:** Lịch sử check-in và phân bố rating/giá cả được mô phỏng bám sát hành vi sinh hoạt đô thị Đà Nẵng (Synthetic Urban Mobility LBSN Dataset).
+* **Quyết định đa tiêu chí:** AHP kiểm tra độ nhất quán $CR = 0.0018 \le 0.10$ đạt chuẩn Saaty; TOPSIS phân tầng đảm bảo khách sạn không bị triệt tiêu điểm số trước cafe do chênh lệch thang giá.
