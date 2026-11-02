@@ -1,0 +1,998 @@
+﻿l,name,category,lat,lon,district,rating,user_ratings_total,price_avg,popularity
+0,CaPhe Thu Uyen,cafe,16.087437,108.144539,Liên Chiểu,4.4,2405,40000.0,83
+1,Cafe Win,cafe,16.074673,108.218701,Hải Châu,4.8,851,40000.0,82
+2,CafeKhanh Ly,cafe,16.062717,108.208943,Hải Châu,4.6,3129,60000.0,66
+3,ThanhBinh Coffee,cafe,16.034719,108.244654,Ngũ Hành Sơn,4.9,3122,25000.0,88
+4,CaPhe Fantasy,cafe,16.0633,108.160154,Thanh Khê,4.1,646,60000.0,81
+5,CaPhe Lang Tien,cafe,16.065743,108.207763,Hải Châu,4.5,414,35000.0,69
+6,KieuLien Coffee,cafe,16.07863,108.147751,Liên Chiểu,4.1,2471,75000.0,79
+7,Cafe Truc Phuong,cafe,16.068459,108.150003,Liên Chiểu,4.3,1128,35000.0,70
+8,Ca Phe 83,cafe,16.078577,108.219339,Hải Châu,4.4,3880,50000.0,73
+9,Cafe Dong Xanh,cafe,16.064058,108.220847,Hải Châu,4.9,1464,35000.0,76
+10,CafeTo Be,cafe,16.073684,108.218289,Hải Châu,4.5,1707,60000.0,99
+11,MuoiChau Coffee,cafe,16.002182,108.267021,Ngũ Hành Sơn,4.2,4438,30000.0,74
+12,CaPhe Sao Mai,cafe,16.066857,108.174359,Thanh Khê,4.5,1376,25000.0,90
+13,MienThao Coffee,cafe,16.076231,108.230843,Sơn Trà,4.8,2663,75000.0,68
+14,GmcCoffee,cafe,16.053938,108.220804,Hải Châu,4.4,2459,60000.0,98
+15,CaPhe 3 Ladies,cafe,16.082733,108.221962,Hải Châu,4.4,544,75000.0,91
+16,OnenineCoffee,cafe,16.066281,108.192052,Thanh Khê,4.6,529,60000.0,84
+17,Ca Phe Thuan,cafe,16.051598,108.170004,Thanh Khê,4.8,556,75000.0,78
+18,CafeGiai Khat 204,cafe,16.059769,108.213503,Hải Châu,4.5,575,50000.0,95
+19,CaPhe Konia,cafe,16.071949,108.212755,Hải Châu,4.8,3217,40000.0,88
+20,VuonNguyet Khue Vien Coffee,cafe,16.06235,108.208896,Hải Châu,4.6,1399,75000.0,91
+21,CafeNguyen,cafe,16.049438,108.213379,Hải Châu,4.3,1500,25000.0,90
+22,NgocVan Coffee,cafe,16.068139,108.181865,Thanh Khê,4.2,2174,35000.0,85
+23,CafeLuna,cafe,16.065451,108.207851,Hải Châu,4.7,4147,60000.0,86
+24,CafeBao Dang,cafe,16.067446,108.152553,Liên Chiểu,4.8,4035,45000.0,81
+25,AnhLinh Coffee,cafe,16.070398,108.20132,Hải Châu,4.7,3576,50000.0,65
+26,HoaTieu Coffee,cafe,16.0789,108.232807,Sơn Trà,4.6,789,30000.0,86
+27,Giai Khat Quang,cafe,16.058238,108.212639,Hải Châu,4.8,3109,30000.0,69
+28,Cafe72,cafe,16.048855,108.216823,Hải Châu,4.1,2042,25000.0,99
+29,ThanhHuong Coffee,cafe,16.064821,108.216475,Hải Châu,4.9,1957,35000.0,67
+30,CaPhe Hoang Anh,cafe,16.034868,108.177899,Hòa Vang,4.3,4090,35000.0,68
+31,VuonThao Coffee,cafe,16.065362,108.20691,Hải Châu,4.4,3812,30000.0,68
+32,324Coffee,cafe,16.05699,108.212811,Hải Châu,4.4,2138,25000.0,71
+33,PhoSao Coffee,cafe,16.045282,108.222724,Hải Châu,4.7,262,45000.0,87
+34,BaoNhi Coffee,cafe,16.082226,108.239924,Sơn Trà,4.6,1604,40000.0,93
+35,CafeBan Toi,cafe,16.058681,108.212215,Hải Châu,4.4,3154,45000.0,91
+36,CaPhe Nhat Linh,cafe,16.036049,108.183242,Hòa Vang,4.5,467,35000.0,97
+37,CafeThoang Sai Gon,cafe,16.071008,108.2213,Hải Châu,4.2,336,45000.0,72
+38,CaPhe Trung,cafe,16.035806,108.182207,Hòa Vang,4.7,3377,45000.0,80
+39,CaPhe Thu Dung,cafe,16.071336,108.191482,Thanh Khê,4.8,1326,25000.0,72
+40,Cafe219,cafe,16.087116,108.241316,Sơn Trà,4.6,1755,30000.0,85
+41,ThanhThuy Coffee,cafe,16.087197,108.144318,Liên Chiểu,4.1,3654,75000.0,94
+42,CaPhe Long,cafe,16.067769,108.159381,Liên Chiểu,4.8,1836,40000.0,74
+43,MyDuyen Coffee,cafe,16.052291,108.237378,Sơn Trà,4.4,2746,50000.0,97
+44,Ca Phe New Life,cafe,16.06598,108.220031,Hải Châu,4.7,1080,60000.0,72
+45,CaPhe Bong Da 14,cafe,16.075029,108.149207,Liên Chiểu,4.8,486,25000.0,71
+46,CaPhe New Life,cafe,16.070738,108.220342,Hải Châu,4.4,1877,40000.0,80
+47,Ca Phe Chieu Tim,cafe,16.086063,108.240566,Sơn Trà,4.6,3182,45000.0,83
+48,ThanhHong Coffee,cafe,16.054387,108.20971,Hải Châu,4.3,2941,60000.0,90
+49,Cafe153,cafe,16.090521,108.242841,Sơn Trà,4.9,4166,40000.0,87
+50,TigonCoffee,cafe,16.046324,108.238683,Ngũ Hành Sơn,4.6,979,45000.0,97
+51,LindaCoffee,cafe,16.060279,108.209356,Hải Châu,4.9,4291,25000.0,69
+52,MyPhuc Coffee,cafe,16.079996,108.213197,Hải Châu,4.4,2241,75000.0,81
+53,ThanhTruc Coffee,cafe,16.032275,108.188596,Hòa Vang,4.8,1134,75000.0,89
+54,TrucTam Coffee,cafe,16.090666,108.242368,Sơn Trà,4.1,607,75000.0,90
+55,Ca Phe Giai Khat Yen Trang,cafe,16.086422,108.240711,Sơn Trà,4.6,2230,60000.0,98
+56,NhatHa Coffee Ice Cream,cafe,16.058217,108.220745,Hải Châu,4.5,840,45000.0,97
+57,CaPhe Kien Viet,cafe,16.076432,108.219537,Hải Châu,4.3,399,30000.0,77
+58,HolidayCoffee,cafe,16.057433,108.206609,Hải Châu,4.1,2950,50000.0,74
+59,NgocAnh Coffee,cafe,16.067011,108.182019,Thanh Khê,4.5,1714,50000.0,88
+60,Loc Thu,cafe,16.07062,108.222724,Hải Châu,4.9,2036,30000.0,85
+61,HongAn Coffee,cafe,16.019604,108.194056,Cẩm Lệ,4.6,1556,25000.0,73
+62,GiaiKhat 115 Coffee,cafe,16.078955,108.217322,Hải Châu,4.2,1836,45000.0,87
+63,SaoMai Coffee,cafe,16.076455,108.219033,Hải Châu,4.6,3636,30000.0,77
+64,CafeThanh Hoa,cafe,16.054907,108.212129,Hải Châu,4.9,3906,30000.0,95
+65,Ca Phe Paris Da,cafe,16.073368,108.214039,Hải Châu,4.4,1770,35000.0,81
+66,CaPhe Delta,cafe,16.059875,108.212271,Hải Châu,4.3,3773,30000.0,87
+67,ThuyVan Coffee,cafe,16.082903,108.145975,Liên Chiểu,4.8,1532,60000.0,99
+68,NangMai Coffee,cafe,16.061021,108.211931,Hải Châu,4.6,812,75000.0,91
+69,Ca Phe Trung,cafe,16.056491,108.166631,Thanh Khê,4.6,1038,35000.0,95
+70,Ca Phe Cam Ni,cafe,16.052548,108.179632,Thanh Khê,4.3,1954,40000.0,97
+71,Ca Phe Bien Nho,cafe,16.055907,108.244418,Sơn Trà,4.2,2586,40000.0,98
+72,CayBang Coffee,cafe,16.089913,108.242034,Sơn Trà,4.9,1225,60000.0,86
+73,Cafe Giai Khat 417,cafe,16.069311,108.20515,Hải Châu,4.3,2801,60000.0,88
+74,CaPhe Win Win,cafe,16.022494,108.213658,Cẩm Lệ,4.8,3895,50000.0,94
+75,CaPhe Minh Khanh,cafe,16.085518,108.144568,Liên Chiểu,4.7,4089,75000.0,76
+76,CaPhe Hoa Co May,cafe,16.060738,108.210483,Hải Châu,4.6,4106,35000.0,92
+77,55Coffee,cafe,16.073342,108.177572,Thanh Khê,4.8,1414,60000.0,73
+78,PlanttreesCoffee,cafe,16.099613,108.135509,Liên Chiểu,4.1,1199,35000.0,65
+79,PhuongMai Coffee,cafe,16.088938,108.242146,Sơn Trà,4.8,823,60000.0,84
+80,Trung Nguyên Coffee,cafe,16.031191,108.224226,Hải Châu,4.4,4251,45000.0,80
+81,TrungDuong Coffee,cafe,16.073787,108.149357,Liên Chiểu,4.7,3351,60000.0,84
+82,Nha Que,cafe,16.073369,108.218055,Hải Châu,4.3,4045,30000.0,86
+83,CayTao Coffee,cafe,16.056093,108.22022,Hải Châu,4.1,1772,60000.0,98
+84,Ca Phe May Chieu,cafe,16.034448,108.223847,Hải Châu,4.7,2652,45000.0,82
+85,Ca Phe Vuon Noi,cafe,16.047886,108.181493,Thanh Khê,4.7,3725,45000.0,77
+86,CafeMuzik,cafe,16.065443,108.154702,Liên Chiểu,4.6,3983,30000.0,74
+87,LyNa Coffee,cafe,16.108174,108.131218,Liên Chiểu,4.2,1436,40000.0,65
+88,CafeNhu Quynh,cafe,16.10092,108.247462,Sơn Trà,4.5,2908,40000.0,77
+89,Cafe Yen Nhi,cafe,16.020968,108.212065,Cẩm Lệ,4.8,973,35000.0,98
+90,Homie Coffee,cafe,16.070754,108.209254,Thanh Khê,4.9,2174,50000.0,67
+91,N T Coffee,cafe,16.068568,108.195789,Thanh Khê,4.8,757,50000.0,85
+92,74Coffee,cafe,16.072104,108.178747,Thanh Khê,4.2,1802,75000.0,90
+93,Cafe61,cafe,16.064083,108.220407,Hải Châu,4.8,3257,45000.0,68
+94,TamCoffee,cafe,16.07561,108.211319,Hải Châu,4.3,4059,35000.0,68
+95,MeTrang Coffee,cafe,16.070422,108.224165,Hải Châu,4.9,1702,40000.0,66
+96,CaPhe Rang Dong,cafe,16.014041,108.197509,Cẩm Lệ,4.4,2378,75000.0,73
+97,Cafe Giai Khat 310,cafe,16.066527,108.206931,Hải Châu,4.5,1471,25000.0,82
+98,GiaiKhat Thanh Ha Coffee,cafe,16.070558,108.191594,Thanh Khê,4.4,3196,60000.0,72
+99,ThaoUyen Coffee,cafe,16.071264,108.201755,Hải Châu,4.6,2874,60000.0,95
+100,Ca Phe Thanh Huyen,cafe,16.068795,108.166809,Thanh Khê,4.6,1454,30000.0,90
+101,TuanCoffee,cafe,16.087188,108.143878,Liên Chiểu,4.2,1461,40000.0,98
+102,Ca Phe Phuong Nam,cafe,16.053515,108.169386,Thanh Khê,4.8,4119,75000.0,69
+103,MinhAnh Coffee,cafe,16.062656,108.208862,Hải Châu,4.8,2485,30000.0,65
+104,CaPhe Chau,cafe,16.018503,108.207173,Cẩm Lệ,4.7,1566,50000.0,76
+105,Cafe27,cafe,16.100675,108.247342,Sơn Trà,4.8,3570,75000.0,80
+106,CaPhe Bar Diem Tam Nguyen Thy,cafe,16.073115,108.220949,Hải Châu,4.2,2108,30000.0,98
+107,GocNho Coffee,cafe,16.038762,108.186723,Hòa Vang,4.8,4109,60000.0,67
+108,Cafe Manila,cafe,16.068639,108.150442,Liên Chiểu,4.6,768,35000.0,72
+109,CaPhe Dragon,cafe,16.079867,108.222885,Hải Châu,4.8,3143,50000.0,82
+110,CaPhe Vao Ha,cafe,16.089666,108.147129,Liên Chiểu,4.2,2088,50000.0,71
+111,TinaCoffee,cafe,16.071939,108.178892,Thanh Khê,4.2,850,30000.0,94
+112,BaoNgoc Coffee,cafe,16.099381,108.135638,Liên Chiểu,4.2,1525,30000.0,71
+113,CaPhe Muoi Thuong,cafe,16.070811,108.218771,Hải Châu,4.3,1661,45000.0,98
+114,DaKhuc Coffee,cafe,16.053943,108.220852,Hải Châu,4.8,718,30000.0,97
+115,CafeMusic,cafe,16.091767,108.242827,Sơn Trà,4.5,3830,50000.0,74
+116,J T Coffee,cafe,16.068568,108.195827,Thanh Khê,4.6,4009,40000.0,88
+117,Ca Phe Ly Thong,cafe,16.051521,108.170026,Thanh Khê,4.3,826,30000.0,72
+118,Cafe34,cafe,16.063909,108.223145,Hải Châu,4.7,4306,75000.0,79
+119,Ca Phe Phuong Linh,cafe,16.056712,108.177921,Thanh Khê,4.7,3239,25000.0,67
+120,CafeHai Ha,cafe,16.071769,108.231116,Sơn Trà,4.3,1332,75000.0,79
+121,GocPho Coffee,cafe,16.049953,108.214602,Hải Châu,4.6,1230,45000.0,69
+122,Cafe Thien Thanh,cafe,16.111323,108.129602,Liên Chiểu,4.8,2129,40000.0,96
+123,CaPhe Tung Lam,cafe,16.057413,108.211427,Hải Châu,4.3,400,25000.0,83
+124,CafeTri,cafe,16.066537,108.150734,Liên Chiểu,4.8,2772,40000.0,83
+125,Ca Phe Thanh Tuan,cafe,16.051681,108.169978,Thanh Khê,4.7,2703,25000.0,77
+126,YoungCafe,cafe,16.062702,108.22333,Hải Châu,4.3,4312,30000.0,83
+127,CafeBui,cafe,16.045535,108.209565,Hải Châu,4.9,1682,25000.0,95
+128,HoaCau Garden Coffee,cafe,16.061609,108.209029,Hải Châu,4.4,3570,45000.0,73
+129,SuminCoffee,cafe,16.038365,108.186341,Hòa Vang,4.2,2406,25000.0,92
+130,CaPhe Tan The Thao,cafe,16.070146,108.184696,Thanh Khê,4.7,297,75000.0,65
+131,BarCa Phe Quynh Anh,cafe,16.06978,108.217354,Hải Châu,4.8,1623,60000.0,79
+132,KimChi Coffee,cafe,16.086611,108.144119,Liên Chiểu,4.6,3056,30000.0,77
+133,Cafe Matrix,cafe,16.068912,108.151134,Liên Chiểu,4.6,2568,75000.0,80
+134,NiceCoffee,cafe,16.044762,108.222788,Hải Châu,4.4,1877,50000.0,92
+135,Cafe Tây Sơn,cafe,16.068661,108.208787,Hải Châu,4.9,3035,75000.0,99
+136,GiaiKhat Robben Coffee,cafe,16.057629,108.209762,Hải Châu,4.7,1345,35000.0,76
+137,CafeCao Nguyen,cafe,16.048269,108.212342,Hải Châu,4.4,1385,30000.0,82
+138,LuuLy Coffee,cafe,16.075053,108.230787,Sơn Trà,4.9,102,30000.0,72
+139,CafeThao Uyen,cafe,16.049072,108.21306,Hải Châu,4.4,3049,50000.0,93
+140,CaPhe Luna,cafe,16.064313,108.174796,Thanh Khê,4.4,3137,60000.0,99
+141,HaoHao Coffee,cafe,16.087039,108.240683,Sơn Trà,4.1,91,50000.0,99
+142,DuyThanh Coffee,cafe,16.057176,108.21294,Hải Châu,4.4,163,25000.0,91
+143,CaPhe Vuon Da Bien,cafe,16.076285,108.207586,Hải Châu,4.9,2397,30000.0,82
+144,LuckyCoffee,cafe,16.045705,108.222649,Hải Châu,4.6,1758,60000.0,77
+145,CafeToday,cafe,16.067566,108.207721,Hải Châu,4.3,2378,35000.0,93
+146,PhoCoffee,cafe,16.066326,108.221056,Hải Châu,4.6,1066,40000.0,66
+147,Ca Phe Giai Khat Thanh Van,cafe,16.054646,108.239974,Sơn Trà,4.7,327,40000.0,89
+148,CaPhe Tuoi Hong,cafe,16.070702,108.220439,Hải Châu,4.4,1453,25000.0,98
+149,DinhCoffee,cafe,16.050572,108.21618,Hải Châu,4.4,2478,60000.0,76
+150,BaoTran Coffee,cafe,16.094877,108.244364,Sơn Trà,4.4,3241,60000.0,68
+151,MatBien Coffee,cafe,16.069109,108.201351,Hải Châu,4.2,4272,25000.0,86
+152,CafeCat Tien,cafe,16.055289,108.212339,Hải Châu,4.3,1898,40000.0,69
+153,Ca Phe Thanh Thanh,cafe,16.058284,108.177416,Thanh Khê,4.5,2831,50000.0,81
+154,BachDat Coffee,cafe,16.062469,108.21769,Hải Châu,4.5,2946,40000.0,71
+155,CafeNew Life,cafe,16.066058,108.219876,Hải Châu,4.1,949,45000.0,70
+156,Ca Phe Van Anh,cafe,16.071264,108.192877,Thanh Khê,4.2,1957,30000.0,69
+157,LongCoffee,cafe,16.110991,108.129742,Liên Chiểu,4.2,1912,35000.0,67
+158,QuynhThuy Coffee,cafe,16.078218,108.214334,Hải Châu,4.2,3873,30000.0,85
+159,TrucXinh Coffee,cafe,16.068408,108.198772,Thanh Khê,4.2,2198,30000.0,88
+160,HoaLan Coffee,cafe,16.044576,108.184744,Thanh Khê,4.7,3458,25000.0,80
+161,Cafe Anh Linh,cafe,16.068724,108.201557,Hải Châu,4.4,3747,40000.0,88
+162,CaPhe Dan,cafe,16.062253,108.217955,Hải Châu,4.4,2218,45000.0,79
+163,Cafe33,cafe,16.066132,108.222638,Hải Châu,4.3,1648,25000.0,85
+164,QuynhMai Coffee,cafe,16.067144,108.182528,Thanh Khê,4.8,2236,60000.0,76
+165,CafePhuong Vy,cafe,16.075017,108.230452,Sơn Trà,4.1,2021,60000.0,96
+166,CaPhe Relax,cafe,16.031821,108.223926,Hải Châu,4.3,887,60000.0,71
+167,WifiThao Chi Coffee,cafe,16.068015,108.191824,Thanh Khê,4.4,2257,35000.0,69
+168,HongAnh Coffee,cafe,16.068888,108.201549,Hải Châu,4.7,1851,45000.0,80
+169,CaPhe Mien Nhiet Doi,cafe,16.057557,108.218894,Hải Châu,4.5,3211,60000.0,70
+170,PhuongCoffee,cafe,16.113946,108.12779,Liên Chiểu,4.5,4310,40000.0,92
+171,Ca Phe Jet,cafe,16.059902,108.212388,Hải Châu,4.7,3465,45000.0,99
+172,CafeGarden,cafe,16.065145,108.221619,Hải Châu,4.7,2870,75000.0,72
+173,Ca Phe Huong Xuan,cafe,16.056952,108.167399,Thanh Khê,4.4,2058,45000.0,96
+174,CafeBillards,cafe,16.068736,108.217669,Hải Châu,4.7,698,30000.0,87
+175,CaPhe Huy,cafe,16.076832,108.212032,Hải Châu,4.3,928,30000.0,65
+176,QanCafe Giai Khat,cafe,16.022675,108.214425,Cẩm Lệ,4.6,1511,45000.0,75
+177,CafeThuy Duong,cafe,16.071068,108.148888,Liên Chiểu,4.7,208,35000.0,70
+178,GiaiKhat Hong Anh Coffee,cafe,16.03773,108.222268,Hải Châu,4.2,3826,45000.0,90
+179,LyLy Coffee,cafe,16.084661,108.145294,Liên Chiểu,4.6,3064,50000.0,86
+180,NhaUyen Coffee,cafe,16.064377,108.219023,Hải Châu,4.8,3619,25000.0,79
+181,42Coffee,cafe,16.064516,108.209721,Hải Châu,4.4,866,60000.0,99
+182,Ca Phe Hoang Uyen,cafe,16.068202,108.193746,Thanh Khê,4.3,414,40000.0,92
+183,DuyenCoffee,cafe,16.070698,108.208812,Hải Châu,4.3,4409,25000.0,69
+184,Cafe Giai Khat Loc Vung,cafe,16.071073,108.143358,Liên Chiểu,4.8,2952,35000.0,89
+185,QuynhAnh Coffee,cafe,16.058564,108.20968,Hải Châu,4.5,3086,30000.0,92
+186,352Coffee,cafe,16.054985,108.218971,Hải Châu,4.6,614,40000.0,76
+187,CaPhe My,cafe,16.059365,108.208785,Hải Châu,4.7,74,25000.0,99
+188,CaPhe Anh Tien,cafe,16.064455,108.152247,Liên Chiểu,4.8,1886,50000.0,69
+189,UyenPhuong Coffee,cafe,16.106875,108.132065,Liên Chiểu,4.5,4460,25000.0,97
+190,ThienAnh Coffee,cafe,16.068115,108.19241,Thanh Khê,4.2,1935,40000.0,96
+191,HuongQue Coffee,cafe,16.061389,108.204492,Hải Châu,4.8,963,40000.0,69
+192,Cà phê Thật,cafe,16.020597,108.211212,Cẩm Lệ,4.4,3210,25000.0,98
+193,Cafe Thanh Thuy,cafe,16.062645,108.157187,Liên Chiểu,4.1,1881,40000.0,68
+194,HuongDuong Coffee,cafe,16.114508,108.127255,Liên Chiểu,4.3,3758,75000.0,98
+195,HongDuy Coffee,cafe,16.082785,108.146024,Liên Chiểu,4.3,2887,45000.0,93
+196,ChipChip Coffee,cafe,16.044781,108.239342,Ngũ Hành Sơn,4.7,1359,25000.0,98
+197,Cafe Mat Trang Xanh,cafe,16.06281,108.156758,Liên Chiểu,4.7,2700,30000.0,98
+198,Ca Phe Huong Ngoc Lan,cafe,16.056272,108.165999,Thanh Khê,4.6,1128,60000.0,89
+199,ThanhLan Coffee,cafe,16.067496,108.217617,Hải Châu,4.3,2267,60000.0,76
+200,Ca Phe 54,cafe,16.07012,108.150508,Liên Chiểu,4.9,1892,30000.0,67
+201,Cafe Kieu Diem,cafe,16.070563,108.147933,Liên Chiểu,4.2,407,75000.0,66
+202,Cafe461,cafe,16.066269,108.20662,Hải Châu,4.5,4288,50000.0,71
+203,Cafe Hai Quynh,cafe,16.053418,108.217623,Hải Châu,4.8,1297,45000.0,92
+204,CafeHuyen Trang,cafe,16.092907,108.243371,Sơn Trà,4.8,2947,60000.0,89
+205,Ca Phe Hung,cafe,16.07844,108.218486,Hải Châu,4.6,4254,60000.0,74
+206,CaPhe Diem Hen,cafe,16.063625,108.154693,Liên Chiểu,4.1,3784,30000.0,97
+207,DieuThu Coffee,cafe,16.060001,108.213401,Hải Châu,4.6,1097,45000.0,85
+208,Ca Phe Brown,cafe,16.071514,108.211783,Hải Châu,4.3,670,35000.0,69
+209,Cafe New Style,cafe,16.016178,108.202227,Cẩm Lệ,4.6,3097,75000.0,76
+210,CaPhe Kim Trung,cafe,16.063068,108.160234,Thanh Khê,4.3,3929,75000.0,76
+211,Cafe79,cafe,16.072104,108.218647,Hải Châu,4.7,59,75000.0,98
+212,CaPhe Khanh Vy,cafe,16.038535,108.186287,Hòa Vang,4.5,3882,40000.0,72
+213,CàPhê Da Nang Pho,cafe,16.08684,108.215165,Hải Châu,4.9,704,45000.0,98
+214,TrungHien Coffee,cafe,16.071496,108.203329,Hải Châu,4.7,4266,40000.0,74
+215,Cafe 50,cafe,16.064145,108.22149,Hải Châu,4.3,3453,45000.0,71
+216,HongCoffee,cafe,16.071888,108.178972,Thanh Khê,4.5,3382,45000.0,89
+217,CafeBen,cafe,16.064192,108.214329,Hải Châu,4.5,963,50000.0,71
+218,Ca Phe Quynh Huong,cafe,16.063238,108.166848,Thanh Khê,4.4,555,60000.0,69
+219,Cafe Golden Fish,cafe,16.070774,108.218733,Hải Châu,4.6,3499,45000.0,84
+220,Ca Phe Trau Cau,cafe,16.071182,108.155068,Liên Chiểu,4.6,555,35000.0,85
+221,157Coffee,cafe,16.071372,108.202447,Hải Châu,4.1,3492,50000.0,90
+222,CaPhe Nguyen Thao,cafe,16.087305,108.144421,Liên Chiểu,4.6,1644,50000.0,79
+223,PhucDuyen Coffee,cafe,16.111528,108.129516,Liên Chiểu,4.2,3086,35000.0,98
+224,TuUyen Coffee,cafe,16.062203,108.208949,Hải Châu,4.7,1636,30000.0,69
+225,Cafe Anh,cafe,16.017859,108.206829,Cẩm Lệ,4.4,900,75000.0,68
+226,CaPhe S Rock Coffee,cafe,16.084308,108.213902,Hải Châu,4.4,1855,75000.0,97
+227,CaPhe Han Pho,cafe,16.071661,108.222461,Hải Châu,4.8,1676,30000.0,66
+228,DiemHen Coffee,cafe,16.057217,108.211459,Hải Châu,4.2,1751,25000.0,68
+229,CaPhe Anh Hong,cafe,16.065362,108.149607,Liên Chiểu,4.5,3867,50000.0,74
+230,NhaKhuyen Coffee,cafe,16.078955,108.221297,Hải Châu,4.8,3580,45000.0,73
+231,Ca Phe Legend,cafe,16.051624,108.169994,Thanh Khê,4.2,3919,50000.0,84
+232,CafeHang Me,cafe,16.063928,108.222574,Hải Châu,4.7,1486,40000.0,97
+233,Internet424 Coffee,cafe,16.076434,108.148642,Liên Chiểu,4.5,1788,45000.0,99
+234,CafeGiai Khat 35,cafe,16.065532,108.218401,Hải Châu,4.7,1717,40000.0,83
+235,CaPhe Khanh Van,cafe,16.035007,108.178993,Hòa Vang,4.5,2189,35000.0,75
+236,GiaiKhat Duc Vuong,cafe,16.071537,108.187984,Thanh Khê,4.2,281,25000.0,97
+237,NgocCoffee,cafe,16.075555,108.230604,Sơn Trà,4.2,3177,35000.0,75
+238,CafeVu Hai,cafe,16.061429,108.220391,Hải Châu,4.5,1621,75000.0,82
+239,Coffee New Sky,cafe,16.068234,108.149432,Liên Chiểu,4.3,134,45000.0,83
+240,CaPhe Pho Xua,cafe,16.044463,108.222317,Hải Châu,4.5,4102,30000.0,83
+241,Cafe Den Bin,cafe,16.073388,108.220058,Hải Châu,4.2,3386,30000.0,68
+242,Holiday Beach Club,cafe,16.049745,108.249151,Ngũ Hành Sơn,4.3,1462,50000.0,90
+243,Beach Club,cafe,16.048291,108.249694,Ngũ Hành Sơn,4.4,3586,45000.0,67
+244,Breeze Bar,cafe,16.047368,108.250002,Danang,4.5,2287,60000.0,67
+245,Soul Kitchen,cafe,15.91405,108.339755,Ngũ Hành Sơn,4.5,3234,25000.0,96
+246,Kangaroo Bar - Burger,cafe,16.066664,108.243092,Sơn Trà,4.1,2232,30000.0,77
+247,Monkey Bar,cafe,16.142465,108.23209,Sơn Trà,4.5,1126,45000.0,71
+248,Vevy Milktea,cafe,16.06718,108.220258,Hải Châu,4.4,3683,30000.0,85
+249,SkyPub,cafe,16.065148,108.224065,Hải Châu,4.5,1714,50000.0,65
+250,Minh Qhang Liquor Room,cafe,16.067531,108.223837,Hải Châu,4.9,2672,45000.0,70
+251,dawn,cafe,16.064734,108.245852,Sơn Trà,4.3,3181,75000.0,98
+252,universal 2,cafe,16.064627,108.224033,Hải Châu,4.3,592,25000.0,66
+253,Crazy Cat Pub,cafe,16.047959,108.245229,Ngũ Hành Sơn,4.1,170,40000.0,88
+254,Crazy Cat’s Pub,cafe,16.047393,108.245477,Ngũ Hành Sơn,4.2,1680,30000.0,73
+255,7 Bridges Brewing Company,cafe,16.063306,108.230321,Sơn Trà,4.9,1315,50000.0,65
+256,Dude Bar,cafe,16.065301,108.224132,Hải Châu,4.6,59,25000.0,67
+257,K'tu Bar,cafe,15.913142,108.337964,Ngũ Hành Sơn,4.4,62,45000.0,93
+258,Sky 21 Bar,cafe,16.067571,108.245032,Sơn Trà,4.2,2971,35000.0,98
+259,Lebanese Bar and Grill,cafe,15.911102,108.344464,Ngũ Hành Sơn,4.6,2036,50000.0,88
+260,Shamrock Sports Bar Da Nang,cafe,16.050948,108.246365,Ngu Hanh Son,4.8,4364,30000.0,86
+261,F29,cafe,16.0982,108.224721,Hải Châu,4.2,3510,60000.0,82
+262,Heineken Bar & Kitchen,cafe,16.054079,108.202422,Hải Châu,4.9,2451,35000.0,86
+263,The Craftsman Cocktail Bar,cafe,16.046537,108.247011,Ngũ Hành Sơn,4.8,1407,45000.0,75
+264,18+ Station,cafe,16.076645,108.215904,Hải Châu,4.3,2826,75000.0,80
+265,Jasmine,cafe,15.912945,108.341546,Ngũ Hành Sơn,4.3,4318,50000.0,78
+266,Xich Lo,cafe,16.053952,108.232666,Sơn Trà,4.3,3411,25000.0,78
+267,Retro Kitchen and Bar,cafe,16.069686,108.224168,Hải Châu,4.2,4162,50000.0,99
+268,Bia tươi,cafe,16.047144,108.243941,Ngũ Hành Sơn,4.5,2773,30000.0,70
+269,Carol Lounge,cafe,16.082399,108.2204,Quận Hải Châu,4.2,3402,25000.0,69
+270,Maia,cafe,16.051524,108.248571,Ngũ Hành Sơn,4.1,2054,25000.0,65
+271,Paradise Beach Bar,cafe,16.053459,108.24813,Ngũ Hành Sơn,4.8,493,75000.0,71
+272,Heaven Bar,cafe,16.047516,108.244222,Ngũ Hành Sơn,4.7,2559,35000.0,83
+273,La Plage,cafe,15.913051,108.341406,Ngũ Hành Sơn,4.8,2334,25000.0,99
+274,Section 30,cafe,16.051304,108.246177,Sơn Trà,4.5,413,50000.0,89
+275,SKY36 NIGHTCLUB,cafe,16.077257,108.223642,Hải Châu,4.2,3915,40000.0,84
+276,Hybrid Pool & Lounge,cafe,16.051779,108.245913,Ngu Hanh Son,4.6,2192,30000.0,95
+277,Brothers grim,cafe,16.048028,108.24516,Ngũ Hành Sơn,4.4,3075,75000.0,89
+278,The workshop,cafe,16.042293,108.246366,Ngũ Hành Sơn,4.2,1160,45000.0,76
+279,Dirty fingers,cafe,16.042302,108.248212,Ngũ Hành Sơn,4.7,130,45000.0,91
+280,Blends social bar,cafe,16.047546,108.244364,Ngũ Hành Sơn,4.8,2910,60000.0,95
+281,Bon Mua,cafe,16.064406,108.246089,Sơn Trà,4.8,4356,25000.0,88
+282,Roadhouse,cafe,16.048401,108.246229,Ngũ Hành Sơn,4.8,3546,50000.0,73
+283,Game On,cafe,16.051077,108.245413,Sơn Trà,4.8,2587,35000.0,81
+284,Tê Bar - Speakeasy,cafe,16.067997,108.223434,Hải Châu,4.6,1925,30000.0,82
+285,Tiệm Bia Gà,cafe,16.064925,108.222885,Hải Châu,4.8,3126,40000.0,68
+286,Brewhaha,cafe,16.065008,108.22344,Hải Châu,4.8,1740,40000.0,73
+287,Simple Man Pub,cafe,16.066027,108.230199,Sơn Trà,4.3,2662,50000.0,78
+288,Faya Rastabar,cafe,16.045662,108.248222,Ngũ Hành Sơn,4.6,926,75000.0,65
+289,Cen Archery,cafe,16.074476,108.244076,Sơn Trà,4.7,2314,35000.0,80
+290,Aqua Betty,cafe,16.047563,108.245184,Ngũ Hành Sơn,4.3,849,50000.0,92
+291,Tipsy Corner Pub,cafe,16.054886,108.245473,Sơn Trà,4.6,2718,45000.0,90
+292,Liquid Pig,cafe,16.051107,108.245517,Sơn Trà,4.8,4005,35000.0,93
+293,Jungle Box,cafe,16.04917,108.244515,Ngũ Hành Sơn,4.6,2175,60000.0,78
+294,Dan Lounge,cafe,16.059582,108.246294,Sơn Trà,4.3,1529,75000.0,66
+295,Sova Lounge Da Nang,cafe,16.052034,108.245814,Ngũ Hành Sơn,4.8,595,35000.0,77
+296,Caliz,cafe,16.048573,108.247039,Ngũ Hành Sơn,4.5,2900,45000.0,74
+297,The Street Bar Billiards,cafe,16.052672,108.245667,Sơn Trà,4.4,1130,40000.0,78
+298,Hoi An Brewing Co,cafe,15.912832,108.338597,Ngũ Hành Sơn,4.4,493,40000.0,87
+299,Funky Donkey,cafe,16.047633,108.244701,Ngũ Hành Sơn,4.7,1851,35000.0,80
+300,Duy Tịnh Rooftop Bar Đà Nẵng - Dragon Bridge Fire Show,cafe,16.060527,108.231573,Sơn Trà,4.9,793,45000.0,68
+301,"Work Chill, Beer and Coffee",cafe,16.053609,108.241851,Sơn Trà,4.2,1267,45000.0,84
+302,Ortus Bistro & Beers,cafe,15.988748,108.276704,Ngũ Hành Sơn,4.7,1536,50000.0,90
+303,Tulip Craft Beer Da Nang - Bia Thủ Công,cafe,16.05683,108.222458,Hải Châu,4.7,466,45000.0,75
+304,Nhà Hàng Chay & Cà Phê Thúp An,restaurant,16.073852,108.203251,Hải Châu,4.2,2504,250000.0,97
+305,Tao Do,restaurant,16.056824,108.220761,Hải Châu,4.8,3600,350000.0,96
+306,An Bang Beach Club,restaurant,15.914178,108.339655,Ngũ Hành Sơn,4.9,570,100000.0,82
+307,Kim Cuc,restaurant,15.913393,108.340367,Ngũ Hành Sơn,4.1,1158,100000.0,93
+308,Thang Bom,restaurant,16.066353,108.201975,Hải Châu,4.4,2404,150000.0,67
+309,Mr Duc's,restaurant,16.066093,108.223371,Hải Châu,4.7,2494,70000.0,79
+310,Bánh bèo 291 Nguyễn Chí Thanh,restaurant,16.066938,108.220909,Hải Châu,4.8,502,250000.0,98
+311,N&M,restaurant,16.042683,108.224336,Hải Châu,4.2,4078,50000.0,81
+312,Phúc Đại Hỷ,restaurant,16.04255,108.22279,Hải Châu,4.9,106,70000.0,76
+313,Phú Gia 1,restaurant,16.042804,108.222844,Hải Châu,4.1,4148,250000.0,95
+314,Queen's Palace,restaurant,16.044319,108.223638,Hải Châu,4.1,3776,50000.0,97
+315,Cát Tường,restaurant,16.043515,108.22411,Hải Châu,4.3,781,250000.0,92
+316,Hương Cau,restaurant,16.048235,108.223139,Hải Châu,4.6,4268,40000.0,80
+317,Tra Que Water Wheel,restaurant,15.901677,108.340159,Ngũ Hành Sơn,4.1,1166,100000.0,82
+318,HQ Thai Food,restaurant,16.06977,108.222968,Hải Châu,4.3,2862,70000.0,80
+319,Nhà hàng chay,restaurant,16.070734,108.21509,Hải Châu,4.8,2699,50000.0,87
+320,Family,restaurant,16.067937,108.24337,Sơn Trà,4.7,1637,50000.0,98
+321,Karma Waters,restaurant,16.076558,108.220312,Hải Châu,4.7,2765,70000.0,78
+322,Quán cơm 08,restaurant,16.070646,108.209378,Thanh Khê,4.2,2130,70000.0,73
+323,Quán bún Liễu,restaurant,16.070426,108.209638,Hải Châu,4.5,1531,250000.0,89
+324,Bún chả cá Thủy,restaurant,16.07058,108.207266,Thanh Khê,4.6,1685,150000.0,96
+325,bê thui 100,restaurant,16.065888,108.200273,Hải Châu,4.3,669,250000.0,65
+326,phở phú gia,restaurant,16.077537,108.221931,Hải Châu,4.7,3316,200000.0,91
+327,Bê thui,restaurant,16.054984,108.220041,Hải Châu,4.4,3072,40000.0,70
+328,Dê nghia,restaurant,16.049591,108.23912,Ngũ Hành Sơn,4.4,2942,100000.0,85
+329,La Luna,restaurant,16.003177,108.265284,Ngũ Hành Sơn,4.4,3147,70000.0,95
+330,lunchplace,restaurant,16.135086,108.119522,Liên Chiểu,4.6,2735,70000.0,83
+331,The H`mong Sisters,restaurant,15.91387,108.340053,Ngũ Hành Sơn,4.2,3991,70000.0,72
+332,Lien Ka's,restaurant,15.91395,108.340041,Ngũ Hành Sơn,4.2,2355,200000.0,81
+333,Baby Mustard,restaurant,15.901383,108.336409,Ngũ Hành Sơn,4.5,1495,200000.0,90
+334,Au Lac,restaurant,16.071188,108.217462,Hải Châu,4.7,2291,40000.0,93
+335,The Amazing Taco | In Da Nang,restaurant,16.048517,108.236918,Ngũ Hành Sơn,4.4,3984,250000.0,81
+336,Tran,restaurant,16.071799,108.222629,Hải Châu,4.4,2241,200000.0,66
+337,Pho Bac Hai,restaurant,16.066209,108.223822,Hải Châu,4.2,957,200000.0,93
+338,LAU & NUONG HA NOI,restaurant,16.066338,108.220797,Hải Châu,4.9,3165,70000.0,82
+339,Quan Com Hue Ngon BBQ,restaurant,16.066296,108.221208,Hải Châu,4.5,159,350000.0,94
+340,Bé Man,restaurant,16.081809,108.247276,Sơn Trà,4.5,1048,200000.0,98
+341,Bánh tráng Trần,restaurant,16.069223,108.205109,Hải Châu,4.6,4032,70000.0,75
+342,The Purple Lantern,restaurant,15.912787,108.337026,Ngũ Hành Sơn,4.9,2438,150000.0,95
+343,Nhà hàng HanCook,restaurant,16.068911,108.204983,Hải Châu,4.1,1293,150000.0,83
+344,Drift Wood,restaurant,15.914312,108.336787,Ngũ Hành Sơn,4.2,704,150000.0,93
+345,An Bang beach village,restaurant,15.915667,108.336874,Ngũ Hành Sơn,4.5,4057,100000.0,93
+346,Suong,restaurant,15.913523,108.340517,Ngũ Hành Sơn,4.4,3985,350000.0,74
+347,Luna d'Autunno,restaurant,15.913776,108.34021,Ngũ Hành Sơn,4.4,2697,250000.0,92
+348,Hong Hanh,restaurant,15.913631,108.340401,Ngũ Hành Sơn,4.9,3536,70000.0,75
+349,Hai Trang,restaurant,15.913697,108.340315,Ngũ Hành Sơn,4.8,2015,50000.0,98
+350,Chay,restaurant,15.913586,108.340463,Ngũ Hành Sơn,4.9,245,100000.0,92
+351,Wood Fish Restaurant,restaurant,15.91304,108.340294,Ngũ Hành Sơn,4.7,3778,250000.0,97
+352,Quan Chay Sen Trang,restaurant,15.912654,108.340063,Ngũ Hành Sơn,4.5,188,70000.0,89
+353,Marimba,restaurant,15.912888,108.339009,Ngũ Hành Sơn,4.5,1597,150000.0,78
+354,Seaweed,restaurant,15.912632,108.339058,Ngũ Hành Sơn,4.2,1097,40000.0,94
+355,Tuan Trung,restaurant,15.912461,108.340275,Ngũ Hành Sơn,4.2,4333,40000.0,69
+356,Hoa T...,restaurant,15.912262,108.340202,Ngũ Hành Sơn,4.4,2383,50000.0,99
+357,Hau Sua & Tom Hum,restaurant,16.083512,108.247685,Sơn Trà,4.9,2706,70000.0,73
+358,Pho Bac 63,restaurant,16.076221,108.215533,Hải Châu,4.7,1692,200000.0,88
+359,Nha Hang Dong Duong,restaurant,16.078902,108.222957,Hải Châu,4.3,922,250000.0,82
+360,Quan Mi Quang,restaurant,16.072279,108.21889,Hải Châu,4.3,2362,70000.0,99
+361,Babylon Steakgarden,restaurant,16.041774,108.248358,Ngũ Hành Sơn,4.5,1621,250000.0,82
+362,Burger Bros,restaurant,16.048543,108.246541,Ngũ Hành Sơn,4.8,2278,100000.0,65
+363,Nha hang nam hien,restaurant,16.056081,108.245264,Sơn Trà,4.7,1722,350000.0,89
+364,Ông Minh,restaurant,16.080355,108.246626,Sơn Trà,4.4,530,150000.0,91
+365,Madame Lan,restaurant,16.081355,108.222967,Hải Châu,4.1,4255,100000.0,73
+366,Family Indian Restraurant,restaurant,16.066865,108.243401,Sơn Trà,4.4,1709,150000.0,75
+367,Nām Giã,restaurant,15.913275,108.340624,Ngũ Hành Sơn,4.2,981,70000.0,78
+368,quan pho hong,restaurant,16.07755,108.221773,Hải Châu,4.8,4421,100000.0,74
+369,Nha Hang Com Nieu Hong Phuc 3,restaurant,16.027208,108.062166,Hòa Vang,4.8,2878,40000.0,71
+370,Red Beach Resort & Spa,restaurant,16.094989,108.14677,Liên Chiểu,4.2,1046,70000.0,91
+371,Faifo Grill & Buffet Restaurant,restaurant,16.067671,108.208216,Hải Châu,4.5,2903,100000.0,88
+372,LUNA pub,restaurant,16.07981,108.223011,Hải Châu,4.3,1078,200000.0,92
+373,Sofia Restaurant,restaurant,16.070504,108.242386,Sơn Trà,4.5,1182,100000.0,70
+374,Mi Quang 1A,restaurant,16.072381,108.219128,Hải Châu,4.5,3119,100000.0,78
+375,Red Sky Bar & Restaurant,restaurant,16.062834,108.223228,Hải Châu,4.3,2070,50000.0,78
+376,Quan Com Ga A.HAI,restaurant,16.065328,108.220315,Hải Châu,4.8,2178,350000.0,97
+377,Bun cha,restaurant,16.008244,108.258323,Ngũ Hành Sơn,4.2,1264,40000.0,77
+378,I Like,restaurant,15.910412,108.339562,Ngũ Hành Sơn,4.4,3900,50000.0,75
+379,Tuyet Restaurant,restaurant,15.913422,108.340649,Ngũ Hành Sơn,4.5,658,150000.0,83
+380,Vueng Beo Hoi Quan,restaurant,16.055588,108.245789,Sơn Trà,4.5,932,40000.0,70
+381,Pizza 4 P's,restaurant,16.062707,108.222897,Hải Châu,4.7,3230,250000.0,83
+382,Quán Chay Vegetarian Restaurant Ngọc Chi,restaurant,16.065051,108.22271,Hải Châu,4.1,3609,40000.0,84
+383,Mi Quang Ba Vi,restaurant,16.062156,108.217684,Hải Châu,4.4,1105,150000.0,80
+384,Ba Duong Banh Xeo,restaurant,16.065226,108.219434,Hải Châu,4.8,4191,70000.0,74
+385,Pho 75,restaurant,16.067384,108.217808,Hải Châu,4.2,156,250000.0,81
+386,Hoa Tu,restaurant,16.061382,108.218569,Hải Châu,4.5,4007,350000.0,74
+387,Mi Total,restaurant,16.065141,108.220763,Hải Châu,4.7,3292,200000.0,92
+388,Suan Trang,restaurant,16.073757,108.214143,Hải Châu,4.8,2364,40000.0,99
+389,Bánh Xèo Bà Dưỡng,restaurant,16.058803,108.216035,Hải Châu,4.4,2877,350000.0,68
+390,cay me,restaurant,15.914221,108.335236,Ngũ Hành Sơn,4.4,771,50000.0,86
+391,Cung Dinh,restaurant,16.059379,108.216225,Hải Châu,4.7,2889,50000.0,80
+392,The Garden House,restaurant,16.059688,108.210314,Hải Châu,4.6,2790,150000.0,87
+393,Com Tâm Cô Nga,restaurant,16.056598,108.24217,Sơn Trà,4.3,2637,150000.0,82
+394,339 Restaurant and Bar,restaurant,15.902634,108.337618,Ngũ Hành Sơn,4.5,2690,150000.0,77
+395,Hang's Kitchen,restaurant,16.051234,108.240226,Sơn Trà,4.4,1459,50000.0,89
+396,Maharaja (Indian Restaurant),restaurant,16.068874,108.242764,Sơn Trà,4.3,561,50000.0,89
+397,Mote pizza,restaurant,16.073176,108.220377,Hải Châu,4.4,3792,150000.0,70
+398,Lau & Nuong,restaurant,16.06606,108.223402,Hải Châu,4.3,1341,50000.0,86
+399,Sala thai,restaurant,16.075529,108.219948,Hải Châu,4.3,3341,70000.0,97
+400,Soho,restaurant,16.065069,108.229875,Hải Châu,4.5,2568,70000.0,77
+401,Co Chi,restaurant,16.070527,108.220544,Hải Châu,4.3,2179,70000.0,80
+402,Bò Né Quôc Minh,restaurant,16.070516,108.22202,Hải Châu,4.4,2602,350000.0,81
+403,Bún Thịt Nướng Bà Ngọc,restaurant,16.077752,108.216518,Hải Châu,4.6,2159,250000.0,76
+404,Phố nướng Tokyo,restaurant,16.07061,108.242896,Sơn Trà,4.6,1872,200000.0,76
+405,My Casa,restaurant,16.071789,108.242721,Sơn Trà,4.3,3460,250000.0,94
+406,Cayme restaurant,restaurant,15.913788,108.336475,Ngũ Hành Sơn,4.6,1188,250000.0,83
+407,Suon Nuong Cao Boi,restaurant,16.062368,108.203722,Hải Châu,4.8,4012,150000.0,69
+408,The Chói's Kitchen,restaurant,16.070774,108.209335,Thanh Khê,4.4,2068,200000.0,82
+409,Kim Dy Restaurant,restaurant,16.065248,108.223499,Hải Châu,4.8,1009,100000.0,84
+410,French Bakery and Restaurant,restaurant,15.913591,108.336931,Ngũ Hành Sơn,4.9,3488,250000.0,90
+411,phú mỹ thành nhà hàng,restaurant,16.076183,108.207194,Hải Châu,4.8,2920,200000.0,65
+412,Tra Que Organic Restaurant,restaurant,15.900738,108.338211,Ngũ Hành Sơn,4.7,384,50000.0,93
+413,Sen Trang - Quan Chay,restaurant,15.904305,108.333981,Ngũ Hành Sơn,4.5,3761,70000.0,81
+414,quán nhậu lộc viên,restaurant,16.06595,108.155223,Liên Chiểu,4.1,3411,70000.0,79
+415,Restaurant SeaSun,restaurant,15.907897,108.348936,Ngũ Hành Sơn,4.2,3408,40000.0,99
+416,Minty Garden Cafe,restaurant,15.901328,108.338498,Ngũ Hành Sơn,4.7,3511,350000.0,65
+417,Quán Chay XUÂN,restaurant,16.071646,108.186169,Thanh Khê,4.8,651,200000.0,69
+418,Phú Hồng,restaurant,16.069585,108.222914,Hải Châu,4.7,3746,350000.0,92
+419,Quán An Bún Chả Cá,restaurant,16.074596,108.220624,Hải Châu,4.1,1463,150000.0,84
+420,Quán Ăn Tuk Tuk,restaurant,16.042645,108.243394,Ngũ Hành Sơn,4.4,2919,50000.0,74
+421,Long Hoa Vegetarian,restaurant,16.071124,108.150538,Liên Chiểu,4.4,1053,250000.0,65
+422,Thuoc Duong Bao An,restaurant,16.074468,108.241488,Sơn Trà,4.8,310,250000.0,66
+423,Giac NGO,restaurant,16.056193,108.237001,Sơn Trà,4.9,3214,70000.0,99
+424,Tiem An Vu Gia,restaurant,16.071065,108.198464,Thanh Khê,4.5,687,70000.0,86
+425,Mì Quảng Ếch,restaurant,16.061983,108.216348,Hải Châu,4.4,4423,250000.0,67
+426,Bún Chả Huệ Chi,restaurant,16.08485,108.229662,Hải Châu,4.4,200,200000.0,65
+427,meerkat,restaurant,16.07653,108.219732,Hải Châu,4.7,2547,50000.0,82
+428,Tree Coconut,restaurant,15.915679,108.33796,Ngũ Hành Sơn,4.5,1270,50000.0,71
+429,Xuân Tời,restaurant,16.078718,108.229723,Hải Châu,4.3,3797,40000.0,97
+430,Nhà Hàng Hành Là,restaurant,15.902561,108.334298,Ngũ Hành Sơn,4.8,924,40000.0,95
+431,Khaî Vi,restaurant,16.072454,108.191776,Thanh Khê,4.8,897,200000.0,89
+432,Quan Suoi Chanh,restaurant,16.165469,108.126242,Liên Chiểu,4.6,1842,150000.0,68
+433,Red Windows,restaurant,16.046088,108.246804,Ngũ Hành Sơn,4.3,279,70000.0,71
+434,Đổi gió,restaurant,16.059801,108.209354,Thanh Khê,4.7,3185,350000.0,79
+435,Chay 99 vegetarian,restaurant,16.067906,108.210084,Hải Châu,4.5,1385,50000.0,92
+436,Simpur,restaurant,16.07921,108.229075,Hải Châu,4.7,3380,250000.0,96
+437,Nan n Kabab,restaurant,16.06692,108.243399,Sơn Trà,4.3,2264,150000.0,89
+438,Am Thuc Chay Da Nang,restaurant,16.065144,108.221835,Hải Châu,4.8,2757,50000.0,95
+439,Dolphin Kitchen,restaurant,15.913214,108.340947,Ngũ Hành Sơn,4.1,1207,70000.0,88
+440,The Deck House,restaurant,15.914207,108.339568,Ngũ Hành Sơn,4.2,3533,100000.0,88
+441,Ka Kong,restaurant,16.066913,108.24445,Sơn Trà,4.5,582,50000.0,80
+442,미꽝 24 7,restaurant,16.06857,108.243204,Sơn Trà,4.4,1122,50000.0,96
+443,L’italiano,restaurant,16.051156,108.245681,Sơn Trà,4.2,3601,200000.0,86
+444,surf shack (burger),restaurant,16.048718,108.24653,Ngũ Hành Sơn,4.4,2911,70000.0,72
+445,Thai Market,restaurant,16.066142,108.224241,Hải Châu,4.7,278,40000.0,66
+446,Memory Lounge,restaurant,16.072666,108.225165,Hải Châu,4.2,1203,200000.0,71
+447,Samwon,restaurant,16.069034,108.237499,Sơn Trà,4.7,3737,40000.0,65
+448,Bún chả cá 109,restaurant,16.074389,108.220796,Hải Châu,4.9,1453,150000.0,65
+449,Phở 29,restaurant,16.066153,108.22276,Hải Châu,4.9,3516,150000.0,76
+450,Tre việ,restaurant,16.066233,108.224475,Hải Châu,4.1,420,200000.0,83
+451,Lam Vien Restaurant,restaurant,16.042231,108.246664,Ngũ Hành Sơn,4.6,106,70000.0,86
+452,Nhà hàng hải sản Bé Anh,restaurant,16.069232,108.242991,Sơn Trà,4.8,3787,250000.0,70
+453,Bé Bien,restaurant,16.068624,108.244962,Sơn Trà,4.4,4163,350000.0,94
+454,Minh Quang,restaurant,16.051286,108.237722,Sơn Trà,4.8,2519,200000.0,75
+455,Sóng Biển,restaurant,15.91144,108.339629,Ngũ Hành Sơn,4.8,520,250000.0,76
+456,Lasenta private beach,restaurant,15.912961,108.341683,Ngũ Hành Sơn,4.5,2393,250000.0,70
+457,NEM Restaurant,restaurant,16.067512,108.244956,Sơn Trà,4.8,4448,200000.0,69
+458,Hai San Thanh Hien 2,restaurant,16.059878,108.246209,Sơn Trà,4.2,3223,50000.0,70
+459,Pavilion,restaurant,16.074262,108.217083,Hải Châu,4.6,1939,40000.0,94
+460,Win Win,restaurant,15.912731,108.338996,Ngũ Hành Sơn,4.8,2913,50000.0,91
+461,The Fisherman,restaurant,15.913091,108.341291,Ngũ Hành Sơn,4.6,2795,350000.0,97
+462,Đà Nẵng cơm chay,restaurant,16.078461,108.219203,Hải Châu,4.7,3954,150000.0,95
+463,Tran local foods,restaurant,16.072344,108.222923,Hải Châu,4.7,448,100000.0,82
+464,Pro Gusto,restaurant,16.057158,108.20198,Hải Châu,4.2,3778,250000.0,88
+465,loving hut - vegan restaurant,restaurant,16.025216,108.249479,Ngũ Hành Sơn,4.6,738,350000.0,86
+466,Mì Quảng Giao Thủy,restaurant,16.076213,108.219311,Hải Châu,4.3,1060,70000.0,77
+467,phì lũ,restaurant,16.067087,108.220742,Hải Châu,4.3,2220,200000.0,73
+468,Mama Hotpot,restaurant,16.063147,108.241949,Sơn Trà,4.3,4260,250000.0,78
+469,Oasis Tapas Bar,restaurant,16.048149,108.246564,Ngũ Hành Sơn,4.7,4480,70000.0,73
+470,The Pizza Company,restaurant,16.066733,108.18703,Thanh Khê,4.1,2280,70000.0,65
+471,Qquán Chay Ďiêu Hoa,restaurant,16.078459,108.219094,Hải Châu,4.3,3456,200000.0,75
+472,Huong Khach Vegetarian,restaurant,16.064246,108.218581,Hải Châu,4.5,3557,150000.0,86
+473,Goom Vegan,restaurant,16.067251,108.220903,Hải Châu,4.5,3812,350000.0,71
+474,Ða Năng Com Chay 2,restaurant,16.070758,108.232954,Sơn Trà,4.7,1822,100000.0,82
+475,BIEN,restaurant,15.908159,108.347377,Ngũ Hành Sơn,4.7,1913,250000.0,93
+476,Quán Chay Hang Ngay,restaurant,16.056622,108.177462,Thanh Khê,4.6,2291,200000.0,99
+477,Bún Chả Hà Nội,restaurant,16.074628,108.218807,Hải Châu,4.6,4337,40000.0,95
+478,Hiri,restaurant,16.06395,108.221258,Hải Châu,4.2,1713,150000.0,81
+479,A tri,restaurant,16.103382,108.257821,Sơn Trà,4.7,3228,350000.0,83
+480,Phở hà nội,restaurant,16.058553,108.222748,Hải Châu,4.2,2580,40000.0,92
+481,Bò né,restaurant,16.070122,108.22289,Hải Châu,4.9,3883,250000.0,87
+482,"Quán chay Thúy, 122",restaurant,16.063976,108.218446,Hải Châu,4.2,4231,250000.0,88
+483,com ga,restaurant,16.065328,108.22001,Hải Châu,4.9,205,200000.0,73
+484,Bao An Macrobiotic,restaurant,16.075383,108.24096,Sơn Trà,4.7,1330,250000.0,71
+485,bun cha ha noi 58 Thái phien,restaurant,16.065117,108.221894,Hải Châu,4.2,826,200000.0,65
+486,Korean restaurant,restaurant,16.070945,108.209405,Hải Châu,4.3,1951,40000.0,83
+487,koko Green kafe 63,restaurant,16.060029,108.21927,Hải Châu,4.8,712,70000.0,97
+488,com hen 105,restaurant,16.058077,108.218156,Hải Châu,4.3,2245,150000.0,86
+489,Sổ Zách,restaurant,16.059107,108.221495,Hải Châu,4.1,3444,70000.0,93
+490,"Bánh xèo, Bún thịt nướng k25/16",restaurant,16.066108,108.223102,Hải Châu,4.7,2971,350000.0,66
+491,Nhà Hàng Chay Hoa Sen - Vegetarian Restaurant,restaurant,16.060939,108.209935,Hải Châu,4.6,1914,50000.0,76
+492,Mi Quang Thi 251,restaurant,16.058477,108.217198,Hải Châu,4.1,4359,200000.0,70
+493,Bun cha va beo 120,restaurant,16.06141,108.210777,Hải Châu,4.5,1431,70000.0,86
+494,Korean 30-17 Tran phu,restaurant,16.073974,108.222656,Hải Châu,4.3,4215,150000.0,89
+495,Bun thit nuong Nga 191,restaurant,16.065839,108.223786,Hải Châu,4.8,1880,150000.0,87
+496,Delicious spring rolls,restaurant,16.070569,108.207163,Hải Châu,4.4,4267,200000.0,91
+497,Snails,restaurant,16.069799,108.209625,Hải Châu,4.7,246,150000.0,65
+498,Dolphin Bar & Kitchen,restaurant,15.912722,108.341742,Ngũ Hành Sơn,4.6,2911,40000.0,75
+499,Tokbokki Ly,restaurant,16.051413,108.240571,Sơn Trà,4.8,862,200000.0,72
+500,Monsieur Crêpes,restaurant,16.048213,108.24565,Ngũ Hành Sơn,4.7,827,350000.0,98
+501,BBQ Grill Roaster,restaurant,16.048356,108.246628,Ngũ Hành Sơn,4.9,2014,200000.0,83
+502,Issun Boshi,restaurant,16.048996,108.246727,Ngũ Hành Sơn,4.8,1159,100000.0,70
+503,Vallhalla GRILL,restaurant,16.048456,108.246577,Ngũ Hành Sơn,4.8,3509,100000.0,96
+504,Quán ăn ngon Thìa Gỗ Danang-style,restaurant,16.076052,108.218388,Hải Châu,4.3,435,100000.0,90
+505,Temple Da Nang,restaurant,16.074127,108.245931,Sơn Trà,4.6,3737,40000.0,80
+506,Mumtaz,restaurant,16.04849,108.237182,Ngũ Hành Sơn,4.7,609,40000.0,88
+507,Bun Mam Van 20k,restaurant,16.066742,108.21705,Hải Châu,4.5,1059,200000.0,98
+508,Ba Vui Xoi Ga 25k,restaurant,16.064128,108.221062,Hải Châu,4.4,1709,70000.0,81
+509,Quan Tam Bun Mam Thit Quay 20k,restaurant,16.066916,108.217132,Hải Châu,4.5,3243,70000.0,92
+510,Bun Mam Co Loc,restaurant,16.067552,108.220169,Hải Châu,4.1,555,40000.0,78
+511,Food court and chè,restaurant,16.068289,108.214434,Hải Châu,4.3,4218,100000.0,99
+512,Phú Hồng,restaurant,16.069104,108.222913,Hải Châu,4.1,3122,40000.0,71
+513,Banh Canh Thu,restaurant,16.073048,108.220801,Hải Châu,4.8,4465,70000.0,84
+514,Banh Canh Nga,restaurant,16.07317,108.22079,Hải Châu,4.1,1070,350000.0,68
+515,Xoi Ga Be,restaurant,16.074893,108.218017,Hải Châu,4.3,394,200000.0,81
+516,Xoi Ga Ba Hoa,restaurant,16.074773,108.218037,Hải Châu,4.4,4105,40000.0,77
+517,Banh Beo Ba Be,restaurant,16.062948,108.219119,Hải Châu,4.3,2091,40000.0,86
+518,Quan Tam Banh Beo & Banh Loc,restaurant,16.064436,108.220786,Hải Châu,4.6,3740,50000.0,76
+519,Banh Canh Van,restaurant,16.060026,108.218396,Hải Châu,4.4,3186,70000.0,92
+520,Bún Bò Bà Diệu,restaurant,16.058561,108.210864,Hải Châu,4.6,3518,350000.0,96
+521,Quan Mau Banh Trang Thit Heo,restaurant,16.026826,108.209802,Cẩm Lệ,4.7,927,40000.0,83
+522,Oc Hut Hanh,restaurant,16.073039,108.213813,Hải Châu,4.1,1232,250000.0,93
+523,Bun Cha Ca Hon,restaurant,16.072537,108.220791,Hải Châu,4.1,634,50000.0,73
+524,Bun Mam Ba Dong,restaurant,16.057446,108.218187,Hải Châu,4.9,3559,250000.0,67
+525,Bun Thit Nuong Ba Trai,restaurant,16.078513,108.217333,Hải Châu,4.6,2911,350000.0,93
+526,Ram Nuong Thit Nuong,restaurant,16.072299,108.213179,Hải Châu,4.5,125,150000.0,89
+527,Tam Duoc Nem Lui 6k,restaurant,16.068164,108.223314,Hải Châu,4.4,757,40000.0,66
+528,Chè Thái Liên,restaurant,16.06061,108.21715,Hải Châu,4.6,4187,150000.0,72
+529,Hải sản Năm Đảnh,restaurant,16.104423,108.253598,Sơn Trà,4.3,3314,200000.0,93
+530,Chè Xuân Trang,restaurant,16.071271,108.220509,Hải Châu,4.1,1379,150000.0,67
+531,Yaourt muối Cây Bàng,restaurant,16.051819,108.234043,Sơn Trà,4.3,118,40000.0,83
+532,Sữa chua nếp cẩm Cô Phúc,restaurant,16.080151,108.218796,Hải Châu,4.4,376,150000.0,98
+533,Xôi gà Bà Bé,restaurant,16.069578,108.217239,Hải Châu,4.1,2043,250000.0,93
+534,Bánh mì chấm Pate,restaurant,16.056899,108.218088,Hải Châu,4.5,1811,350000.0,90
+535,KFC,restaurant,16.071236,108.218508,Hải Châu,4.6,1909,150000.0,96
+536,Bánh mì,restaurant,16.071711,108.239801,Sơn Trà,4.5,3240,70000.0,89
+537,Bún mắm Bà Thuyên,restaurant,16.067356,108.207435,Hải Châu,4.6,3417,100000.0,89
+538,Yaour Van Béo,restaurant,16.080285,108.218634,Hải Châu,4.8,2665,40000.0,71
+539,An Gia Cottage,restaurant,15.936505,108.309266,Ngũ Hành Sơn,4.6,340,70000.0,72
+540,Surf Spot,restaurant,16.04691,108.246054,Ngũ Hành Sơn,4.4,194,350000.0,84
+541,Lotteria,restaurant,16.03474,108.229307,Hải Châu,4.3,3918,200000.0,97
+542,Bahn My Chay,restaurant,16.058613,108.211238,Hải Châu,4.2,469,150000.0,76
+543,Street Food Cafes,restaurant,16.06744,108.233331,Sơn Trà,4.6,829,350000.0,76
+544,Street Food Cafe,restaurant,16.067314,108.241199,Sơn Trà,4.7,417,100000.0,75
+545,Banh Mi,restaurant,16.071528,108.212456,Hải Châu,4.7,2301,200000.0,90
+546,Pho 139,restaurant,16.042262,108.241287,Ngũ Hành Sơn,4.6,3216,150000.0,77
+547,Teddy Garden burgers,restaurant,16.068837,108.241629,Sơn Trà,4.7,2561,150000.0,80
+548,Good Banh My,restaurant,16.021941,108.213737,Cẩm Lệ,4.2,3779,100000.0,78
+549,Burger King,restaurant,16.053307,108.202586,Hải Châu,4.5,1645,200000.0,71
+550,quan pho tuan anh,restaurant,16.052987,108.240982,Sơn Trà,4.6,2932,150000.0,70
+551,BBQ Street Vendor,restaurant,16.054178,108.239243,Sơn Trà,4.2,1104,100000.0,78
+552,IVO DELI - Burger & Gelato,restaurant,16.07377,108.219681,Hải Châu,4.5,595,200000.0,94
+553,Bánh Mì Bamidon,restaurant,16.066143,108.222931,Hải Châu,4.8,2612,70000.0,68
+554,Cháo ếch Singapore NG,restaurant,16.057545,108.218152,Quận Hải Châu,4.2,2570,70000.0,72
+555,Căn tin,restaurant,16.049026,108.158229,Hòa Vang,4.4,1370,50000.0,97
+556,Vietnamese Food,restaurant,16.052852,108.202474,Hải Châu,4.7,1628,200000.0,82
+557,Sam,restaurant,16.053506,108.202366,Hải Châu,4.6,335,100000.0,65
+558,Kebab ngon,restaurant,16.055287,108.244703,Sơn Trà,4.8,1902,100000.0,98
+559,Phở Long Hói,restaurant,16.07349,108.242748,Sơn Trà,4.3,2788,200000.0,73
+560,BBQ Chicken,restaurant,16.054814,108.240803,Sơn Trà,4.8,4342,350000.0,86
+561,McDonald's,restaurant,16.060788,108.222288,Hải Châu,4.1,1599,40000.0,99
+562,Domino's,restaurant,16.060992,108.21876,Hải Châu,4.6,589,70000.0,95
+563,Caribow,restaurant,16.055159,108.247638,Sơn Trà,4.9,336,200000.0,86
+564,Herbal Pizza,restaurant,16.054759,108.247719,Sơn Trà,4.1,834,40000.0,91
+565,Pasta House,restaurant,16.053095,108.248132,Sơn Trà,4.7,89,150000.0,71
+566,Pizza,restaurant,16.050068,108.247769,Sơn Trà,4.8,324,100000.0,99
+567,Ba Mua,restaurant,16.055939,108.243653,Sơn Trà,4.2,2626,350000.0,81
+568,Quan Muoi Muoi,restaurant,16.059131,108.242788,Sơn Trà,4.5,2245,50000.0,90
+569,Che Lien 387,restaurant,16.055786,108.245644,Sơn Trà,4.4,4339,50000.0,80
+570,Quan Be Bi,restaurant,16.05975,108.238653,Sơn Trà,4.8,3047,100000.0,74
+571,Bánh canh cá nục Nhi-cơ sở 4,restaurant,16.058859,108.240182,Sơn Trà,4.7,3219,200000.0,88
+572,Streetfood,restaurant,16.054668,108.246151,Sơn Trà,4.3,3122,100000.0,71
+573,Quán cháo vịt cô chủ nhỏ,restaurant,16.04617,108.245475,Ngũ Hành Sơn,4.3,4192,350000.0,85
+574,Quan Tâm Bun Thit Nuong & Nem Lui,restaurant,16.06815,108.231954,Sơn Trà,4.9,1156,200000.0,78
+575,Belgian Waffle Bar,restaurant,16.052385,108.240855,Sơn Trà,4.5,2242,150000.0,84
+576,Burger House Da Nang,restaurant,16.069604,108.235876,Sơn Trà,4.8,271,150000.0,97
+577,Huế Thương Quán,restaurant,16.044669,108.24679,Ngũ Hành Sơn,4.2,1594,150000.0,76
+578,Waffle queen,restaurant,16.051723,108.24008,Sơn Trà,4.8,1766,100000.0,82
+579,Pho Thu,restaurant,16.072604,108.208991,Hải Châu,4.4,2346,200000.0,72
+580,Bảng Giá,restaurant,16.081802,108.216411,Hải Châu,4.5,4437,50000.0,81
+581,Com Ship Tam Noi 30k,restaurant,16.065691,108.239428,Sơn Trà,4.9,633,250000.0,79
+582,My Phuc,restaurant,16.062862,108.243603,Sơn Trà,4.4,3438,150000.0,95
+583,Quan 129,restaurant,16.048929,108.240995,Ngũ Hành Sơn,4.1,4080,50000.0,78
+584,Chan Ga Cho,restaurant,16.048565,108.244094,Ngũ Hành Sơn,4.9,2029,40000.0,91
+585,Pizza Hut,restaurant,16.054278,108.239688,Sơn Trà,4.7,214,350000.0,75
+586,Trường Thọ Ha Noi KeBab Rice Noodlse®,restaurant,16.081806,108.247242,Sơn Trà,4.9,1637,40000.0,66
+587,Wow Cơm Gà,restaurant,16.065148,108.23056,Sơn Trà,4.1,643,150000.0,88
+588,Jollibee,restaurant,16.071427,108.230386,Sơn Trà,4.9,100,70000.0,98
+589,Pho 24,restaurant,16.053341,108.202736,Hải Châu,4.3,2608,50000.0,73
+590,Asia Express,restaurant,16.053355,108.202399,Hải Châu,4.4,4361,350000.0,97
+591,Big Bowl,restaurant,16.053076,108.202603,Hải Châu,4.7,733,200000.0,84
+592,Quan Ut Com,restaurant,16.066596,108.236549,Sơn Trà,4.1,2482,150000.0,78
+593,Banh Mi Co Na,restaurant,16.079568,108.243287,Sơn Trà,4.4,2426,200000.0,85
+594,Banh My Kim (banh mi),restaurant,16.068869,108.224609,Hải Châu,4.1,517,200000.0,92
+595,Banh Mi Pho Cias,restaurant,16.053428,108.202382,Hải Châu,4.8,212,50000.0,88
+596,Bún bò hué Na,restaurant,16.05371,108.244533,Sơn Trà,4.7,825,50000.0,76
+597,Son Tra Resort & Spa,hotel,16.106017,108.294902,Sơn Trà,4.2,1737,600000.0,72
+598,Tan Vinh,hotel,16.067071,108.224161,Hải Châu,4.4,732,1200000.0,78
+599,Sanouva Danang Hotel,hotel,16.066985,108.220137,Hải Châu,4.4,4318,1200000.0,75
+600,Jimy,hotel,16.072038,108.242822,Sơn Trà,4.6,3049,1800000.0,75
+601,Danang Riverside,hotel,16.062493,108.230435,Sơn Trà,4.8,2721,4000000.0,70
+602,Muong Thanh,hotel,16.06488,108.233028,Sơn Trà,4.3,1096,2500000.0,93
+603,Rainbow,hotel,16.064497,108.223824,Hải Châu,4.6,4037,1800000.0,86
+604,Sun River,hotel,16.067392,108.224802,Hải Châu,4.7,299,600000.0,84
+605,Avora Hotel,hotel,16.066426,108.224638,Hải Châu,4.8,2911,4000000.0,97
+606,Happy Day,hotel,16.066821,108.224763,Hải Châu,4.3,3705,400000.0,70
+607,One Star,hotel,16.067259,108.224381,Hải Châu,4.8,449,850000.0,90
+608,Brilliant Hotel,hotel,16.066673,108.224712,Hải Châu,4.3,572,600000.0,87
+609,Newmoon,hotel,16.067647,108.224662,Hải Châu,4.9,3020,850000.0,65
+610,Paradise,hotel,16.067248,108.224826,Hải Châu,4.3,4462,2500000.0,72
+611,Hoang Linh,hotel,16.067266,108.224158,Hải Châu,4.7,2557,400000.0,75
+612,Minh Anh,hotel,16.067263,108.22427,Hải Châu,4.7,3517,1200000.0,71
+613,Thanh Thanh Hotel,hotel,16.067321,108.220119,Hải Châu,4.1,3187,600000.0,79
+614,Fulmar Hotel,hotel,16.069668,108.222964,Hải Châu,4.5,1187,2500000.0,71
+615,Hoa Việt Hotel,hotel,16.070395,108.223643,Hải Châu,4.8,1019,400000.0,66
+616,Hà Bổng Hotel,hotel,16.068082,108.243762,Sơn Trà,4.7,4335,600000.0,78
+617,Oc Tien Sa Hotel,hotel,16.0607,108.213738,Hai Chau,4.3,1324,1200000.0,77
+618,Little Home Hotel,hotel,16.066385,108.20876,Hải Châu,4.6,958,1200000.0,94
+619,Faifo Hotel,hotel,16.071265,108.209878,Hải Châu,4.4,3560,4000000.0,68
+620,Lam Hung Seaside Homestay Villa,hotel,15.908089,108.348188,Ngũ Hành Sơn,4.8,3241,850000.0,69
+621,Osaka Villa hotel,hotel,15.903562,108.329423,Ngũ Hành Sơn,4.6,3103,850000.0,73
+622,Hoàng Phương Hotel,hotel,16.040909,108.210766,Hải Châu,4.2,1738,850000.0,79
+623,Mayfair hotel& Apartment Da Nang,hotel,16.073613,108.241607,Sơn Trà,4.5,4313,4000000.0,91
+624,The Moon River Hotel,hotel,15.902157,108.341785,Ngũ Hành Sơn,4.2,2360,1200000.0,90
+625,Seasnail Homestay,hotel,15.909202,108.344075,Ngũ Hành Sơn,4.6,2114,1800000.0,88
+626,Vu's Bungalows,hotel,15.91233,108.337443,Ngũ Hành Sơn,4.2,1108,600000.0,82
+627,Dai Long hotel,hotel,16.062377,108.191886,Thanh Khê,4.8,2171,1800000.0,72
+628,Simbas hotel,hotel,15.926243,108.32322,Ngũ Hành Sơn,4.8,1990,4000000.0,83
+629,Da Nang Petro Hotel,hotel,16.075256,108.222632,Hải Châu,4.3,2669,1800000.0,70
+630,Star hotel,hotel,16.073522,108.24215,Sơn Trà,4.8,3345,1800000.0,81
+631,Bien Vang Hotel,hotel,16.070926,108.23526,Sơn Trà,4.2,4156,600000.0,79
+632,Fusion Suites,hotel,16.081078,108.24697,Sơn Trà,4.8,2823,1200000.0,77
+633,Newsky Hotel,hotel,16.06739,108.243386,Sơn Trà,4.2,3976,850000.0,95
+634,CaPhe Giai Khat 78,hotel,16.059352,108.20844,Hải Châu,4.2,1375,1200000.0,83
+635,Flóra Hotel,hotel,16.060712,108.218479,Hải Châu,4.2,3057,600000.0,78
+636,Sea Phoenix Hotel,hotel,16.040972,108.248363,Ngũ Hành Sơn,4.2,2037,2500000.0,90
+637,Khách sạn Hải An,hotel,16.075539,108.178744,Thanh Khê,4.2,3835,1200000.0,69
+638,Hung binh hotel,hotel,16.082407,108.220462,Hải Châu,4.3,4381,850000.0,80
+639,quan quan hotel,hotel,16.053695,108.209616,Hải Châu,4.7,3212,4000000.0,82
+640,Gon Go,hotel,15.974783,108.138005,Hòa Vang,4.3,2793,600000.0,71
+641,Dan Oasis Hotel,hotel,16.095494,108.252027,Sơn Trà,4.5,3005,1800000.0,91
+642,Nơi ở,hotel,16.060838,108.213638,Hải Châu,4.1,3404,850000.0,99
+643,San San Hotel,hotel,16.055316,108.245386,Sơn Trà,4.3,1449,850000.0,89
+644,Home,hotel,15.979818,108.249729,Ngũ Hành Sơn,4.1,3475,4000000.0,82
+645,La House,hotel,16.023284,108.225403,Cẩm Lệ,4.8,809,1200000.0,73
+646,Sea Snails Homestay,hotel,15.907283,108.347328,Ngũ Hành Sơn,4.4,931,400000.0,73
+647,An Bang Vera Villas,hotel,15.907652,108.347302,Ngũ Hành Sơn,4.7,2283,600000.0,95
+648,Blue An Bang Villa,hotel,15.906917,108.348289,Ngũ Hành Sơn,4.7,4051,1200000.0,65
+649,Tan Thanh Garden 2,hotel,15.907233,108.348797,Ngũ Hành Sơn,4.8,2572,850000.0,94
+650,silver hotel,hotel,16.063868,108.230095,Sơn Trà,4.5,785,400000.0,71
+651,Dang Ha Hotel,hotel,16.074474,108.241678,Sơn Trà,4.5,3570,2500000.0,88
+652,Zion Hostel,hotel,16.062806,108.218588,Hải Châu,4.4,2545,400000.0,73
+653,Iris Hotel,hotel,16.070155,108.213771,Hải Châu,4.8,3741,1200000.0,69
+654,Red Palace Hotel,hotel,16.05167,108.211934,Hải Châu,4.2,2730,4000000.0,81
+655,King Garden Hotel,hotel,16.051442,108.211442,Hải Châu,4.9,1383,2500000.0,69
+656,Zenta Hotel,hotel,16.048769,108.24842,Ngũ Hành Sơn,4.5,2069,850000.0,83
+657,Kara Beachside hotel,hotel,16.04393,108.246989,Ngũ Hành Sơn,4.8,514,850000.0,87
+658,Sunflower Hotel 2,hotel,16.07376,108.240944,Sơn Trà,4.4,1189,600000.0,82
+659,Santa Villa Hoi An,hotel,15.907794,108.348787,Ngũ Hành Sơn,4.1,596,1800000.0,78
+660,Khách sạn Bốn Mùa,hotel,16.042894,108.210088,Hải Châu,4.3,3779,600000.0,71
+661,Palazzo Boutique,hotel,16.049111,108.247731,Ngũ Hành Sơn,4.4,2351,4000000.0,71
+662,Cents Hotel,hotel,16.062848,108.230656,Sơn Trà,4.5,3140,4000000.0,87
+663,Little Raon Hotel,hotel,16.065603,108.244551,Sơn Trà,4.8,1746,1200000.0,99
+664,Tâm House Villa Hotel,hotel,16.057376,108.243063,Sơn Trà,4.7,4113,1800000.0,71
+665,Biệt Thự Hương Xưa,hotel,15.905013,108.312161,Ngũ Hành Sơn,4.5,2713,4000000.0,73
+666,hoàng kim khách sạn,hotel,16.130806,108.119611,Liên Chiểu,4.8,1132,1200000.0,76
+667,Orchide’es,hotel,16.068851,108.244176,Sơn Trà,4.6,3305,600000.0,89
+668,travidat,hotel,16.067533,108.244328,Sơn Trà,4.8,252,400000.0,87
+669,Dreamy House,hotel,16.067078,108.243846,Sơn Trà,4.7,3580,1200000.0,75
+670,nhà nghỉ tạm,hotel,16.085676,108.14436,Liên Chiểu,4.6,4430,1800000.0,94
+671,Sepon Blue Hotel,hotel,16.061807,108.237875,Sơn Trà,4.3,1457,1200000.0,73
+672,Local Beach Homestay,hotel,15.915559,108.33577,Ngũ Hành Sơn,4.6,2733,1200000.0,93
+673,Hilton Garden Inn Da Nang,hotel,16.080103,108.246418,Sơn Trà,4.7,2106,850000.0,75
+674,bella boutique Villa,hotel,16.077759,108.244415,Sơn Trà,4.3,3119,2500000.0,80
+675,Elena,hotel,16.048874,108.248382,Ngũ Hành Sơn,4.5,1647,600000.0,83
+676,Ruby Hotel,hotel,16.04918,108.248285,Ngũ Hành Sơn,4.6,3199,1200000.0,73
+677,Sunrise Hotel,hotel,16.049637,108.248124,Ngũ Hành Sơn,4.6,1542,850000.0,74
+678,Angel Hotels,hotel,16.048603,108.248186,Ngũ Hành Sơn,4.7,741,600000.0,96
+679,Son Tra Green Hotel,hotel,16.088189,108.244423,Sơn Trà,4.9,3858,2500000.0,81
+680,Nam Hotel & Spa,hotel,16.068645,108.238986,Sơn Trà,4.9,4399,1200000.0,97
+681,Mitisa Hotel Da Nang,hotel,16.060811,108.22027,Hải Châu,4.2,3227,1800000.0,66
+682,Solar Hotel,hotel,16.03099,108.225019,Hải Châu,4.8,1953,600000.0,81
+683,New Orient Hotel,hotel,16.082587,108.221431,Hải Châu,4.3,4415,600000.0,66
+684,New Life Hotel,hotel,16.033564,108.220686,Hải Châu,4.7,3618,4000000.0,66
+685,Robin Hotel Da Nang (correct location),hotel,16.0735,108.240491,Sơn Trà,4.8,4243,600000.0,69
+686,Thanh Nhung,hotel,16.071214,108.236005,Quận Sơn Trà,4.9,658,850000.0,74
+687,Lenid,hotel,16.071344,108.236363,Quận Sơn Trà,4.4,1633,1800000.0,90
+688,Tabii,hotel,16.072995,108.237272,Quận Sơn Trà,4.7,446,2500000.0,84
+689,Luxtery,hotel,16.070692,108.235792,Sơn Trà,4.2,2412,600000.0,87
+690,Herriott,hotel,16.071809,108.238651,Sơn Trà,4.5,1376,4000000.0,71
+691,Mari Gold,hotel,16.069296,108.241584,Sơn Trà,4.7,4349,400000.0,85
+692,Rosetta,hotel,16.068717,108.242313,Sơn Trà,4.4,3537,2500000.0,94
+693,D&C Hotel,hotel,16.066135,108.231085,Sơn Trà,4.4,4442,4000000.0,92
+694,Waikiki Hotel,hotel,16.073087,108.201278,Hải Châu,4.2,1994,1200000.0,75
+695,Hilary Hotel,hotel,16.073359,108.242939,Sơn Trà,4.8,3602,1200000.0,85
+696,Phu Thinh 2 Hotel,hotel,16.063273,108.239223,Sơn Trà,4.7,3587,4000000.0,72
+697,Dreams Hotel,hotel,16.042085,108.248275,Ngũ Hành Sơn,4.5,4471,4000000.0,77
+698,FC Hotel & Coffee,hotel,16.069717,108.224197,Hải Châu,4.1,959,1200000.0,67
+699,Peach House Villa,hotel,15.914274,108.337691,Ngũ Hành Sơn,4.4,2711,1200000.0,94
+700,Night Sky Hotel,hotel,16.088681,108.219575,Hải Châu,4.6,3588,4000000.0,81
+701,Thái Bình,hotel,16.087603,108.220115,Hải Châu,4.4,1835,1800000.0,91
+702,Đại Á,hotel,16.065957,108.222603,Hải Châu,4.6,1845,4000000.0,72
+703,Ocean Flower,hotel,16.069247,108.223881,Hải Châu,4.5,3408,4000000.0,82
+704,Tulip Hotel,hotel,16.07069,108.223885,Hải Châu,4.9,1504,400000.0,65
+705,Evelyn Hotel,hotel,16.06873,108.224072,Hải Châu,4.4,3309,1800000.0,99
+706,Fivitel Boutique da nang,hotel,16.064368,108.22063,Hải Châu,4.8,4350,1200000.0,71
+707,OYO Tuan Tho,hotel,16.02449,108.249848,Ngũ Hành Sơn,4.9,3074,400000.0,87
+708,Gia Bao Homestay,hotel,16.039307,108.247606,Ngũ Hành Sơn,4.8,3250,850000.0,71
+709,The Code,hotel,16.095289,108.251941,Sơn Trà,4.8,503,400000.0,89
+710,Aria Đà Nẵng,hotel,15.989659,108.272334,Ngũ Hành Sơn,4.5,3827,2500000.0,76
+711,Huy Hoang Hotel,hotel,16.072146,108.193915,Thanh Khê,4.4,1145,400000.0,94
+712,The Eden,hotel,16.07733,108.173733,Thanh Khê,4.6,2115,600000.0,92
+713,Mikazuki Đà Nẵng Hotel,hotel,16.093546,108.144419,Liên Chiểu,4.3,1375,1200000.0,98
+714,Nostalgia DS Hotel,hotel,16.039074,108.244214,Ngũ Hành Sơn,4.7,2183,600000.0,98
+715,Chi House Hotel & Apartment,hotel,16.061732,108.2452,Sơn Trà,4.2,676,1200000.0,76
+716,Hai Yen Hotel,hotel,16.0615,108.245303,Sơn Trà,4.8,2239,2500000.0,69
+717,DTC Hotel,hotel,16.062647,108.246067,Sơn Trà,4.7,1641,1800000.0,84
+718,Radisson,hotel,16.073884,108.244668,Sơn Trà,4.2,213,2500000.0,91
+719,The Memory - Danang,hotel,16.066999,108.243009,Sơn Trà,4.4,1375,1800000.0,74
+720,Rosabella Boutique Hotel,hotel,16.07365,108.241113,Sơn Trà,4.7,1145,1200000.0,79
+721,Sea'lavie Boutique Resort & Spa,hotel,15.908557,108.347866,Ngũ Hành Sơn,4.3,3185,1800000.0,75
+722,La Belle Vie Hottel,hotel,16.087346,108.219719,Hải Châu,4.8,2445,600000.0,89
+723,Ponte Boutique Da Nang,hotel,16.074608,108.242779,Sơn Trà,4.5,2987,2500000.0,84
+724,"Khách Sạn Sea Castle Hotel
+Sea Castle Hotel",hotel,16.068312,108.243309,Sơn Trà,4.1,3451,1200000.0,84
+725,Molila Villa Hoi An by Class6,hotel,15.907088,108.341251,Ngũ Hành Sơn,4.1,4500,600000.0,85
+726,Señorita boutique hotel,hotel,16.049798,108.247786,Ngũ Hành Sơn,4.5,2324,400000.0,65
+727,Haka Boutique Hotel,hotel,16.078959,108.244667,Sơn Trà,4.4,2057,2500000.0,89
+728,Lucia beach hotel,hotel,16.068814,108.243539,Sơn Trà,4.3,2136,850000.0,89
+729,Alyssa hotel,hotel,16.068666,108.238827,Sơn Trà,4.3,175,850000.0,68
+730,Ty house homestay da nang,hotel,16.043185,108.24645,Ngũ Hành Sơn,4.5,4403,850000.0,94
+731,Da nang beach hotel,hotel,16.052931,108.244791,Sơn Trà,4.3,2560,600000.0,99
+732,Dream house homestay,hotel,16.049848,108.24507,Ngũ Hành Sơn,4.2,2549,4000000.0,94
+733,Royal apartment,hotel,16.045426,108.246953,Ngũ Hành Sơn,4.3,1097,1200000.0,95
+734,S stay da nang,hotel,16.065927,108.244408,Sơn Trà,4.7,1324,400000.0,96
+735,Dr. Dan Hotel & Apartment,hotel,16.105513,108.25948,Sơn Trà,4.7,2806,400000.0,79
+736,New Day,hotel,16.104614,108.257255,Sơn Trà,4.7,4318,2500000.0,81
+737,Fusion Resort & Villas,hotel,15.97242,108.282288,Ngũ Hành Sơn,4.2,3446,2500000.0,65
+738,Altara Suites,hotel,16.077744,108.245137,Sơn Trà,4.9,3806,850000.0,95
+739,Tashi Park View Hotel & Apartment,hotel,16.076397,108.241811,Sơn Trà,4.9,1949,1200000.0,76
+740,Hong Chau,hotel,16.073526,108.242881,Sơn Trà,4.9,947,850000.0,80
+741,Pha Lê Hotel,hotel,16.066857,108.24303,Sơn Trà,4.6,4408,600000.0,65
+742,An Vu Villa Hoi An,hotel,15.905793,108.345641,Ngũ Hành Sơn,4.5,4323,400000.0,89
+743,Zuka Hotel & Apartments,hotel,16.067737,108.243665,Sơn Trà,4.6,2125,1200000.0,75
+744,Diamond Beach,hotel,16.074168,108.23957,Sơn Trà,4.5,3113,600000.0,82
+745,Alibaba,hotel,16.072063,108.24289,Sơn Trà,4.1,3566,400000.0,86
+746,Star near me Hotel,hotel,16.073517,108.241462,Sơn Trà,4.4,3033,850000.0,78
+747,Grand Sea View Hotel,hotel,16.04992,108.247102,Ngũ Hành Sơn,4.7,2648,1800000.0,77
+748,voco - Ma Belle Danang,hotel,16.074217,108.244652,Sơn Trà,4.2,4476,4000000.0,72
+749,Cherry Hotel & Apartments,hotel,16.054383,108.245817,Sơn Trà,4.8,638,1800000.0,96
+750,Hodi Hotel,hotel,16.05511,108.24455,Sơn Trà,4.1,963,400000.0,91
+751,Adela,hotel,16.052917,108.244057,Sơn Trà,4.8,802,1800000.0,71
+752,Sydney Da Nang,hotel,16.052336,108.244249,Sơn Trà,4.8,1631,400000.0,92
+753,Baan Taley Da Nang,hotel,16.050957,108.246646,Sơn Trà,4.5,3251,850000.0,67
+754,Raon,hotel,16.051052,108.246331,Sơn Trà,4.2,158,400000.0,99
+755,Malisa,hotel,16.060736,108.218695,Hải Châu,4.2,4476,1800000.0,72
+756,Mercury,hotel,16.060389,108.215838,Hải Châu,4.5,1016,400000.0,89
+757,Do Hai,hotel,16.060145,108.213966,Hải Châu,4.5,1808,1800000.0,70
+758,Madame Trang,hotel,16.061106,108.2348,Sơn Trà,4.4,1852,600000.0,65
+759,Khanh Vinh,hotel,16.062196,108.237344,Sơn Trà,4.1,3861,1800000.0,99
+760,Calix,hotel,16.061716,108.237354,Sơn Trà,4.7,2780,600000.0,95
+761,San Marino,hotel,16.061725,108.237526,Sơn Trà,4.5,2346,4000000.0,96
+762,Rivera Boutique,hotel,16.062252,108.237605,Sơn Trà,4.3,1428,1200000.0,92
+763,Mi An,hotel,16.062381,108.238345,Sơn Trà,4.7,1111,600000.0,89
+764,Golden Sun,hotel,16.062756,108.242083,Sơn Trà,4.9,881,1200000.0,99
+765,Arrive Apartment,hotel,16.062187,108.245457,Sơn Trà,4.8,734,850000.0,95
+766,An House,hotel,16.061901,108.245201,Sơn Trà,4.9,1291,2500000.0,95
+767,K House,hotel,16.06156,108.245259,Sơn Trà,4.8,2032,600000.0,85
+768,Ecogreen Boutique,hotel,16.049583,108.246775,Ngũ Hành Sơn,4.9,2430,2500000.0,75
+769,Samantha Apartment,hotel,16.053011,108.245089,Sơn Trà,4.2,546,1800000.0,65
+770,Sun Flower Apartment,hotel,16.048844,108.24678,Ngũ Hành Sơn,4.4,2569,850000.0,88
+771,Calla Lily,hotel,16.049051,108.246721,Ngũ Hành Sơn,4.1,4419,850000.0,93
+772,Pink Garden,hotel,16.049354,108.246853,Ngũ Hành Sơn,4.8,3160,1200000.0,91
+773,Charming,hotel,16.055605,108.243589,Sơn Trà,4.9,2681,1200000.0,78
+774,Adaline,hotel,16.035147,108.251467,Ngũ Hành Sơn,4.7,3507,4000000.0,69
+775,Ritzy Boutique,hotel,16.054699,108.244269,Sơn Trà,4.7,1359,2500000.0,78
+776,Platinum,hotel,16.053364,108.244652,Sơn Trà,4.5,3262,1800000.0,76
+777,Coala,hotel,16.049453,108.24682,Ngũ Hành Sơn,4.8,4465,600000.0,97
+778,Classic,hotel,16.05562,108.243641,Sơn Trà,4.3,2637,1800000.0,86
+779,Sofia Suite,hotel,16.054986,108.244181,Sơn Trà,4.5,2652,600000.0,89
+780,Thuc Thanh,hotel,16.05422,108.244443,Sơn Trà,4.2,2530,4000000.0,85
+781,LIVIE,hotel,16.049853,108.245838,Ngũ Hành Sơn,4.3,3128,400000.0,89
+782,Gold Time,hotel,16.05138,108.245478,Sơn Trà,4.2,1643,1800000.0,95
+783,Saluton,hotel,16.065572,108.239264,Sơn Trà,4.5,3693,850000.0,76
+784,Bac Nam,hotel,16.058283,108.244765,Sơn Trà,4.2,241,1800000.0,81
+785,Yellow Apricot,hotel,16.059847,108.244462,Sơn Trà,4.8,2743,1200000.0,99
+786,Sun Flower,hotel,16.06287,108.243333,Sơn Trà,4.4,4260,1800000.0,94
+787,White Sand,hotel,16.062838,108.242385,Sơn Trà,4.4,2682,4000000.0,71
+788,Hana,hotel,16.065136,108.241644,Sơn Trà,4.2,3726,2500000.0,94
+789,Lantana,hotel,16.064002,108.24042,Sơn Trà,4.2,1504,4000000.0,75
+790,Mangata,hotel,16.078865,108.245795,Sơn Trà,4.7,752,600000.0,86
+791,Peninsula,hotel,16.081568,108.247068,Sơn Trà,4.5,1068,4000000.0,72
+792,Sands,hotel,16.085997,108.248161,Sơn Trà,4.2,1728,4000000.0,79
+793,Grand Gold,hotel,16.093832,108.251435,Sơn Trà,4.3,3356,1200000.0,70
+794,Sontra Sea Hotel,hotel,16.099448,108.254565,Sơn Trà,4.5,439,1200000.0,81
+795,Temo House,hotel,16.06317,108.238937,Sơn Trà,4.4,274,4000000.0,85
+796,Andy,hotel,16.061892,108.238349,Sơn Trà,4.2,2635,1200000.0,95
+797,Sunny Beach,hotel,16.050546,108.24534,Sơn Trà,4.4,398,2500000.0,85
+798,Flower Hotel,hotel,16.05169,108.245594,Sơn Trà,4.8,2792,850000.0,69
+799,Blue-S,hotel,16.051431,108.245655,Sơn Trà,4.1,970,600000.0,85
+800,May Beach,hotel,16.051823,108.24607,Sơn Trà,4.9,1360,400000.0,67
+801,The Sail,hotel,16.051665,108.246468,Sơn Trà,4.5,382,2500000.0,86
+802,Santa Luxury,hotel,16.051704,108.246605,Sơn Trà,4.7,554,600000.0,96
+803,Cicilia,hotel,16.052086,108.246746,Sơn Trà,4.5,1055,1800000.0,72
+804,Golden Lotus Luxury,hotel,16.052254,108.246706,Sơn Trà,4.2,2278,2500000.0,71
+805,Monalisa Luxury,hotel,16.052688,108.246552,Sơn Trà,4.8,2304,2500000.0,98
+806,Thanh Tam,hotel,16.063542,108.240053,Sơn Trà,4.4,3173,1800000.0,86
+807,Nice House,hotel,16.06354,108.239684,Sơn Trà,4.3,4290,600000.0,97
+808,Fun House,hotel,16.063654,108.239973,Sơn Trà,4.5,3106,1200000.0,65
+809,King House,hotel,16.063738,108.239967,Sơn Trà,4.2,699,850000.0,71
+810,My Son,hotel,16.06356,108.239974,Sơn Trà,4.7,2605,400000.0,98
+811,Le Cap,hotel,16.060791,108.239489,Sơn Trà,4.1,301,4000000.0,91
+812,Oasis,hotel,16.063494,108.240446,Sơn Trà,4.5,4376,600000.0,79
+813,Lis Hotel,hotel,16.063583,108.239683,Sơn Trà,4.8,2169,850000.0,75
+814,Euro Star,hotel,16.056491,108.231967,Sơn Trà,4.6,3017,1200000.0,95
+815,Xenia,hotel,16.056537,108.231368,Sơn Trà,4.2,712,1200000.0,70
+816,Wink Danang Riverside,hotel,16.067708,108.22935,Hải Châu,4.3,990,4000000.0,75
+817,Legacy Hotel,hotel,16.067902,108.229302,Hải Châu,4.3,3625,600000.0,92
+818,H.Linh,hotel,16.067156,108.224819,Hải Châu,4.9,3863,2500000.0,95
+819,Haian,hotel,16.066154,108.224465,Hải Châu,4.7,2793,1800000.0,74
+820,Pariat,hotel,16.065376,108.224144,Hải Châu,4.6,1449,4000000.0,70
+821,Phu An,hotel,16.057679,108.222269,Hải Châu,4.8,1796,400000.0,99
+822,Fivitel,hotel,16.052013,108.232875,Sơn Trà,4.4,759,1200000.0,80
+823,Luk Inn & Hostel,hotel,16.048945,108.246303,Ngũ Hành Sơn,4.6,4442,850000.0,94
+824,Quốc Cường Center Hotel,hotel,16.057696,108.216961,Hải Châu,4.7,2641,4000000.0,75
+825,Moonlight Hotel Suites & Spa,hotel,16.065119,108.21999,Hải Châu,4.3,4254,1800000.0,66
+826,Dong Duong Hotel & Suites - Afternoon Tea Inclusive,hotel,16.065038,108.222357,Hải Châu,4.7,373,4000000.0,89
+827,VernalHome Boutique DaNang,hotel,16.040422,108.245577,Ngũ Hành Sơn,4.4,451,850000.0,92
+828,Golden lotus,hotel,16.050968,108.247119,Sơn Trà,4.3,3071,2500000.0,80
+829,Gom House,hotel,16.082286,108.245556,Sơn Trà,4.4,4437,850000.0,93
+830,Century Hotel,hotel,16.062611,108.24181,Sơn Trà,4.7,2223,850000.0,98
+831,Roliva Hotel & Apartment,hotel,16.071716,108.234866,Sơn Trà,4.2,2188,400000.0,88
+832,TA Boutique Hotel,hotel,16.048314,108.242112,Ngũ Hành Sơn,4.3,4091,1800000.0,77
+833,Chill Palace Hotel,hotel,16.067451,108.244436,Sơn Trà,4.5,2887,600000.0,79
+834,Hotel Rosa,hotel,16.074349,108.204456,Hải Châu,4.9,3024,600000.0,67
+835,Chin Stays,hotel,16.070602,108.223887,Hải Châu,4.5,1337,850000.0,94
+836,Under the coconut tree,hotel,15.913809,108.336772,Ngũ Hành Sơn,4.9,2445,1800000.0,84
+837,Ecodanang,hotel,16.06841,108.23891,Sơn Trà,4.6,2938,4000000.0,88
+838,Life Beach Villa,hotel,15.913952,108.33859,Ngũ Hành Sơn,4.1,420,600000.0,67
+839,Golden Lantern Homestay,hotel,15.901031,108.298168,Ngũ Hành Sơn,4.4,1239,850000.0,85
+840,Banyan Villa,hotel,15.913812,108.33885,Ngũ Hành Sơn,4.1,264,4000000.0,70
+841,An Bang Retreat,hotel,15.91318,108.3386,Ngũ Hành Sơn,4.6,1429,850000.0,70
+842,Nha me Lanh,hotel,16.073048,108.186386,Thanh Khê,4.5,1074,4000000.0,77
+843,Homestay Heo Đất,hotel,16.043435,108.212103,Hải Châu,4.5,2602,4000000.0,75
+844,An Bang Beach Homestay,hotel,15.913772,108.336528,Ngũ Hành Sơn,4.6,1033,400000.0,97
+845,Nhà trọ VTV,hotel,16.06144,108.210189,Hải Châu,4.2,3362,600000.0,93
+846,TruongVuHouse's,hotel,16.096948,108.135567,Liên Chiểu,4.3,2097,1200000.0,73
+847,sông Thu,hotel,16.06894,108.239661,Sơn Trà,4.8,2716,1200000.0,74
+848,Huệ Chi,hotel,16.081028,108.229678,Hải Châu,4.8,2123,600000.0,74
+849,Chị Hoa,hotel,16.075909,108.210805,Hải Châu,4.6,1824,400000.0,78
+850,Papa Mike Hostel Princess,hotel,16.084643,108.245624,Sơn Trà,4.3,234,600000.0,75
+851,Homestay Halley,hotel,16.043357,108.212013,Hải Châu,4.8,2270,4000000.0,77
+852,ChaChi homestay,hotel,16.063882,108.234316,Sơn Trà,4.8,359,400000.0,99
+853,The Happy Bird B&B,hotel,15.91502,108.334853,Ngũ Hành Sơn,4.6,1699,400000.0,98
+854,Moon Apartment with balcony,hotel,16.050063,108.245237,Sơn Trà,4.4,3084,4000000.0,98
+855,Moon apartment balcony,hotel,16.050206,108.2443,Sơn Trà,4.2,536,600000.0,65
+856,139nguyễn đucedm,hotel,16.062815,108.210163,Hải Châu,4.8,3777,4000000.0,74
+857,An Bang My Village Homestay,hotel,15.912784,108.336863,Ngũ Hành Sơn,4.3,220,2500000.0,99
+858,River Sunset Garden Villas & Homestay,hotel,15.906826,108.33517,Ngũ Hành Sơn,4.3,3180,4000000.0,95
+859,Hana Homestay Danang,hotel,16.056529,108.24453,Ngũ Hành Sơn,4.8,1334,400000.0,67
+860,Jolia’s House,hotel,16.038386,108.249785,Ngũ Hành Sơn,4.4,63,1800000.0,89
+861,Phoenix Guesthouse,hotel,15.912891,108.338257,Ngũ Hành Sơn,4.3,3551,4000000.0,79
+862,Lama Beach Villa,hotel,15.913209,108.338972,Ngũ Hành Sơn,4.4,4313,2500000.0,93
+863,Phoenix,hotel,15.912899,108.338256,Ngũ Hành Sơn,4.8,3192,850000.0,89
+864,ChiPa Homestay,hotel,16.058938,108.20946,Hải Châu,4.4,229,600000.0,83
+865,Lu peaceful homestay,hotel,16.055114,108.189185,Thanh Khê,4.6,507,400000.0,70
+866,Siro House Homestay,hotel,16.053925,108.240222,Sơn Trà,4.3,3496,400000.0,80
+867,Leila House - DaNang Central - 3BRs - Free Airport Shuttle,hotel,16.058253,108.216213,Hải Châu,4.6,2586,1800000.0,81
+868,Abogo Villa Pool Near Beach BBQ Free Da Nang,hotel,16.045223,108.246826,Ngũ Hành Sơn,4.4,3456,4000000.0,93
+869,Banana Homestay,hotel,16.078464,108.21915,Hải Châu,4.7,1832,4000000.0,71
+870,Bananaflower Homestay,hotel,16.078439,108.219154,Hải Châu,4.2,4400,4000000.0,82
+871,Tan Thanh Garden Homestay,hotel,15.90866,108.347453,Ngũ Hành Sơn,4.3,782,4000000.0,81
+872,Angel Homestay,hotel,16.050058,108.246638,Sơn Trà,4.5,837,1800000.0,82
+873,Ruby Beach,hotel,16.05071,108.245804,Sơn Trà,4.7,3942,600000.0,72
+874,Morri,hotel,16.051262,108.246094,Sơn Trà,4.8,253,4000000.0,68
+875,Nhà nghỉ Minh Thảo - Nơi lưu trú uy tín giá rẻ tại Sơn Trà Đà Nẵng,hotel,16.089674,108.242703,Sơn Trà,4.9,4277,400000.0,86
+876,Home River Villa,hotel,15.904928,108.346863,Ngũ Hành Sơn,4.9,798,1200000.0,97
+877,Truong Phat Beach Villa,hotel,15.908862,108.347198,Ngũ Hành Sơn,4.7,1046,600000.0,66
+878,Eco Wooden Villa,hotel,15.902592,108.349609,Ngũ Hành Sơn,4.6,1103,2500000.0,76
+879,Costal Village,hotel,15.912965,108.335732,Ngũ Hành Sơn,4.7,2959,400000.0,74
+880,Hoian Beachfront Homestay,hotel,15.909842,108.345189,Ngũ Hành Sơn,4.7,3868,850000.0,74
+881,Kavilla,hotel,15.909391,108.345579,Ngũ Hành Sơn,4.3,2355,1200000.0,94
+882,Trang Trong Homestay,hotel,15.905053,108.348537,Ngũ Hành Sơn,4.8,3292,850000.0,66
+883,House by the Sea,hotel,15.908783,108.345109,Ngũ Hành Sơn,4.2,4315,1200000.0,88
+884,Cashew Tree Bungalows,hotel,15.912508,108.336767,Ngũ Hành Sơn,4.7,2481,400000.0,82
+885,An Hải Home,hotel,16.06033,108.233501,Sơn Trà,4.6,2080,400000.0,88
+886,Bridges Danang Boutique Hotel,hotel,16.077892,108.242113,Sơn Trà,4.5,344,1200000.0,85
+887,COMIC Homestay,hotel,16.073479,108.155783,Liên Chiểu,4.7,2449,1800000.0,70
+888,Leon Homestay,hotel,16.099162,108.253936,Sơn Trà,4.3,4300,1800000.0,87
+889,HanaHihi Countryside View Guest House,hotel,15.949699,108.234219,Ngũ Hành Sơn,4.7,1714,400000.0,76
+890,Lya Homestay CMT8 Da Nang,hotel,16.010664,108.193397,Cẩm Lệ,4.3,4037,600000.0,75
+891,Win's homestay,hotel,16.036266,108.223387,Hải Châu,4.3,3279,1200000.0,67
+892,Đèo Hải Vân,tourist_spot,16.187449,108.130722,Liên Chiểu,4.5,3365,30000.0,79
+893,Thuỷ Sơn,tourist_spot,16.004304,108.263527,Ngũ Hành Sơn,4.4,158,50000.0,90
+894,Non Nuoc Beach,tourist_spot,16.020534,108.261744,Ngũ Hành Sơn,4.3,98,0.0,89
+895,Saturday Option,tourist_spot,16.099134,108.301182,Sơn Trà,4.5,3226,0.0,78
+896,Nhà chú Dũng,tourist_spot,15.908886,108.31763,Ngũ Hành Sơn,4.9,3268,0.0,91
+897,Fishing Village and Fleet,tourist_spot,16.101754,108.258963,Sơn Trà,4.7,1191,0.0,66
+898,Love Bridge,tourist_spot,16.051313,108.230905,Sơn Trà,4.2,2423,50000.0,95
+899,Cầu Tiên Sơn,tourist_spot,16.035269,108.235272,Ngũ Hành Sơn,4.5,104,50000.0,93
+900,Cầu Trần Thị Lý,tourist_spot,16.050179,108.229381,Hải Châu,4.1,3378,150000.0,93
+901,Cầu Thuận Phước,tourist_spot,16.094808,108.220013,Hải Châu,4.7,210,100000.0,76
+902,Giant Egg Plants,tourist_spot,16.074876,108.22458,Hải Châu,4.7,53,0.0,80
+903,Cau Nguyen Van Troi Bridge,tourist_spot,16.051089,108.229247,Hải Châu,4.1,1782,100000.0,98
+904,Basket Boats,tourist_spot,16.102047,108.260218,Sơn Trà,4.5,2434,0.0,65
+905,Khu Du Lịch Sinh Thái Suối Lương,tourist_spot,16.155917,108.109801,Liên Chiểu,4.6,3890,100000.0,74
+906,Cây đa đại thụ,tourist_spot,16.122616,108.331678,Sơn Trà,4.2,1481,30000.0,72
+907,Cây đa Đò Xu,tourist_spot,16.027678,108.221887,Cẩm Lệ,4.6,1605,30000.0,72
+908,Cầu Sông Hàn,tourist_spot,16.07214,108.226811,Hải Châu,4.1,1221,0.0,66
+909,Chợ đêm Helio,tourist_spot,16.037094,108.224819,Hải Châu,4.8,3244,150000.0,73
+910,Sunken Ship,tourist_spot,16.144002,108.230451,Sơn Trà,4.5,3022,0.0,82
+911,Mountain Stream and Waterfall,tourist_spot,16.157773,108.073156,Liên Chiểu,4.5,3762,0.0,68
+912,Pont main,tourist_spot,16.052077,108.215636,Hải Châu,4.6,2400,50000.0,71
+913,Làng đá mỹ nghệ Non Nước,tourist_spot,16.000952,108.266643,Ngũ Hành Sơn,4.2,152,30000.0,97
+914,Làng chiếu Cẩm Nê,tourist_spot,15.986732,108.177282,Cẩm Lệ,4.3,4438,100000.0,98
+915,Làng nước mắm Nam Ô,tourist_spot,16.112831,108.13009,Liên Chiểu,4.2,305,30000.0,74
+916,Dragon's Tail,tourist_spot,16.06108,108.224817,Hải Châu,4.1,2592,30000.0,77
+917,Dragon's Head,tourist_spot,16.061248,108.229655,Hải Châu,4.6,1009,30000.0,85
+918,Lang Bich hoa Da Nang,tourist_spot,16.06071,108.220025,Hải Châu,4.1,3978,50000.0,80
+919,Chùa Nam Sơn,tourist_spot,15.998799,108.205104,Cẩm Lệ,4.8,292,100000.0,99
+920,Covered rocks,tourist_spot,16.118647,108.130799,Liên Chiểu,4.8,3720,30000.0,91
+921,fishing boats,tourist_spot,16.117276,108.13195,Liên Chiểu,4.6,4484,0.0,80
+922,Queen Cobra,tourist_spot,16.043299,108.22599,Hải Châu,4.8,2554,0.0,72
+923,Khu Văn hóa Tâm linh Đà Sơn,tourist_spot,16.041857,108.147778,quận Liên Chiểu,4.7,3368,50000.0,99
+924,7 wonders,tourist_spot,16.09881,108.224414,Hải Châu,4.3,3695,150000.0,74
+925,Tượng Phật Phước Lý,tourist_spot,16.040563,108.148938,quận Liên Chiểu,4.8,3176,0.0,75
+926,Ban Co Peak,tourist_spot,16.118929,108.272004,Sơn Trà,4.8,4356,0.0,68
+927,Dragon Bridge West Viewpoint,tourist_spot,16.061614,108.224524,Hải Châu,4.6,163,150000.0,87
+928,Dragon Bridge East Viewpoint,tourist_spot,16.061807,108.229856,Hải Châu,4.4,3061,30000.0,87
+929,River Viewpoint,tourist_spot,16.07494,108.224714,Hải Châu,4.5,3844,30000.0,75
+930,View on Danang,tourist_spot,16.129528,108.259556,Sơn Trà,4.4,3129,100000.0,68
+931,Da Nang view,tourist_spot,16.126902,108.245883,Sơn Trà,4.2,3983,50000.0,71
+932,Bay View,tourist_spot,16.104236,108.30773,Sơn Trà,4.6,4029,100000.0,96
+933,Valley Viewpoint,tourist_spot,16.030842,108.16389,Hòa Vang,4.5,1370,50000.0,95
+934,View of the Bay and Intercontinental Beach,tourist_spot,16.123904,108.297152,Sơn Trà,4.3,370,50000.0,87
+935,View of the Bay,tourist_spot,16.132507,108.277813,Sơn Trà,4.8,4231,0.0,74
+936,View of Da Nang,tourist_spot,16.028298,108.1647,Hòa Vang,4.5,2826,50000.0,77
+937,Headland and View of Hai Van Mountains,tourist_spot,16.153713,108.248929,Sơn Trà,4.9,2554,0.0,71
+938,View of Bay and Hai Van Mountains,tourist_spot,16.152537,108.252749,Sơn Trà,4.6,3435,0.0,80
+939,Great of Hai Van Mountains,tourist_spot,16.143093,108.236153,Sơn Trà,4.5,2523,50000.0,78
+940,View of the Bay and Sunken Ship,tourist_spot,16.143754,108.231606,Sơn Trà,4.3,1642,150000.0,81
+941,This is a dead end! Jungle trekking from here!,tourist_spot,16.132352,108.314422,Sơn Trà,4.1,617,30000.0,91
+942,View of Son Tra and Asia Park,tourist_spot,16.026632,108.230268,Ngũ Hành Sơn,4.4,3547,0.0,71
+943,View of Marble Mountain (Ngu Hanh Son),tourist_spot,16.007661,108.249961,Ngũ Hành Sơn,4.2,1729,0.0,82
+944,Ha My Beach (Bien Ha My),tourist_spot,15.926868,108.322998,Ngũ Hành Sơn,4.1,3419,100000.0,83
+945,View of Da Nang Bay and Son Tra,tourist_spot,16.06347,108.131556,Liên Chiểu,4.9,77,30000.0,77
+946,View of Hai Van Mountains and Son Tra,tourist_spot,16.063617,108.133103,Liên Chiểu,4.2,89,100000.0,75
+947,Great View of Da Nang Bay,tourist_spot,16.138947,108.107713,Liên Chiểu,4.2,3603,0.0,89
+948,End of the Road?,tourist_spot,16.194385,108.087026,Liên Chiểu,4.8,1754,0.0,81
+949,Valley Viewpoint Looking to the Top of Hai Van,tourist_spot,16.178151,108.088939,Liên Chiểu,4.1,3278,100000.0,80
+950,Great View of Son Tra and Da Nang Bay,tourist_spot,16.153329,108.095213,Liên Chiểu,4.6,286,50000.0,96
+951,Highest Point of the Hai Van Road,tourist_spot,16.182558,108.085653,Liên Chiểu,4.9,3694,150000.0,99
+952,View of Dong Xanh Lake,tourist_spot,15.946779,108.082036,Hòa Vang,4.1,2099,0.0,89
+953,Great Mountain and Lake Viewpoint,tourist_spot,15.983616,108.090134,Hòa Vang,4.9,2668,150000.0,68
+954,Dam and Lake Viewpoint,tourist_spot,15.97835,108.078541,Hòa Vang,4.7,4062,150000.0,65
+955,View of Quarry and Son Tra,tourist_spot,16.034241,108.167541,Hòa Vang,4.8,4079,100000.0,82
+956,Valley and Cu De River Viewpoint,tourist_spot,16.157989,108.058068,Liên Chiểu,4.7,2203,0.0,73
+957,Upper Path Ends Here,tourist_spot,16.159727,108.058155,Liên Chiểu,4.7,934,0.0,98
+958,A Couple of Fjords to Cross Here,tourist_spot,16.149286,108.060537,Liên Chiểu,4.8,4270,50000.0,90
+959,Secret Beach,tourist_spot,16.194213,108.169013,Thanh Khê,4.5,4083,0.0,91
+960,Cape and View of the Bay,tourist_spot,16.118364,108.337563,Sơn Trà,4.5,52,0.0,88
+961,Valley and Quarry Viewpoint,tourist_spot,16.033684,108.157517,Hòa Vang,4.7,337,0.0,67
+962,Numerous War Bunkers and Gun Placements,tourist_spot,16.164617,108.127721,Liên Chiểu,4.5,585,0.0,86
+963,Great View of the Bay,tourist_spot,16.173205,108.092738,Liên Chiểu,4.8,943,100000.0,92
+964,Great Valley Viewpoint,tourist_spot,16.135618,108.085727,Liên Chiểu,4.3,4483,0.0,72
+965,Amazing Valley Viewpoint,tourist_spot,16.136798,108.089497,Liên Chiểu,4.6,2318,150000.0,99
+966,Great View Looking Towards Hai Van Mountains,tourist_spot,16.121614,108.097179,Liên Chiểu,4.7,1968,0.0,95
+967,Great View of the Valley,tourist_spot,16.144547,108.068875,Liên Chiểu,4.5,1697,50000.0,73
+968,New Path Across the River May 2021,tourist_spot,15.941389,108.072013,Hòa Vang,4.6,378,30000.0,71
+969,Great Valley View,tourist_spot,16.148516,108.058907,Liên Chiểu,4.4,2036,0.0,71
+970,Valley View at the Top of the Mountain,tourist_spot,16.147892,108.056394,Liên Chiểu,4.9,3061,100000.0,73
+971,Woodland Path on Mountain Ridge with Trenches,tourist_spot,16.152286,108.054905,Liên Chiểu,4.5,3438,0.0,93
+972,Trail Continues From Here,tourist_spot,16.162765,108.050431,Liên Chiểu,4.3,3593,100000.0,82
+973,Trenches Up a Mountain Ridge,tourist_spot,16.150712,108.072807,Liên Chiểu,4.4,355,100000.0,82
+974,Amazing Valley and River View,tourist_spot,16.146923,108.068889,Liên Chiểu,4.3,3273,0.0,73
+975,Great View of the Valley and the Bay,tourist_spot,16.134679,108.080625,Liên Chiểu,4.1,4340,0.0,71
+976,Great View of the Valley and Cu De River,tourist_spot,16.135561,108.0792,Liên Chiểu,4.3,2723,150000.0,74
+977,Crossroads Going West and South West,tourist_spot,16.126893,108.083994,Liên Chiểu,4.4,2890,30000.0,88
+978,Great View Looking Towards Hoa Trung,tourist_spot,16.126551,108.078705,Liên Chiểu,4.7,2092,150000.0,73
+979,Great Views of Son Tra and Da Nang Graveyard,tourist_spot,16.035416,108.145289,Hòa Vang,4.3,3273,0.0,68
+980,Gravel Road and Ford Across the Road,tourist_spot,16.124364,108.08571,Liên Chiểu,4.9,2031,30000.0,88
+981,Great View Looking Towards Hai Van,tourist_spot,16.126992,108.080954,Liên Chiểu,4.2,438,50000.0,99
+982,"Great Panorama of Hoa Phat, Ba Na Hills, Hai Van and Da Nang Bay (no view - overgrown)",tourist_spot,16.031973,108.137228,Hòa Vang,4.7,1853,0.0,83
+983,Steeper Central Path to Climb Up,tourist_spot,16.131849,108.079133,Liên Chiểu,4.2,625,0.0,74
+984,Dam Across the Lake,tourist_spot,15.987369,108.090481,Hòa Vang,4.3,3324,0.0,99
+985,Western Path to the Top and View of the Bay,tourist_spot,16.129901,108.078785,Liên Chiểu,4.5,4269,0.0,67
+986,Rào chắn,tourist_spot,16.116748,108.308438,Sơn Trà,4.1,78,50000.0,84
+987,Fishing harbor,tourist_spot,16.103405,108.239261,Sơn Trà,4.1,240,150000.0,71
+988,Son Tra view,tourist_spot,16.109214,108.251772,Sơn Trà,4.6,1798,0.0,88
+989,Small waterfall,tourist_spot,16.114523,108.255616,Sơn Trà,4.4,4356,0.0,89
+990,Hard to climb,tourist_spot,16.003942,108.263351,Ngũ Hành Sơn,4.5,2644,0.0,66
+991,Art in Paradise Da Nang 3D Museum,tourist_spot,16.095381,108.243077,Sơn Trà,4.9,452,100000.0,72
+992,Bảo tàng Phật giáo,tourist_spot,15.999431,108.254583,Ngũ Hành Sơn,4.3,1020,30000.0,67
+993,Dinh Dong Museum and Café,tourist_spot,16.101213,108.27551,Sơn Trà,4.4,709,30000.0,99
+994,Marble Mountains Museum,tourist_spot,16.003907,108.266031,Ngũ Hành Sơn,4.2,1141,0.0,91
+995,Driftwood Village,tourist_spot,15.900873,108.328082,Ngũ Hành Sơn,4.6,3041,100000.0,81

@@ -1,0 +1,8 @@
+Metric,LightGCN_Baseline,Temporal_GNN_Proposed,Improvement_Pct
+Recall@5,6.71,5.58,-16.83%
+Recall@10,10.7,9.11,-14.80%
+Recall@20,15.33,13.66,-10.92%
+NDCG@5,7.41,5.92,-20.19%
+NDCG@10,9.06,7.45,-17.74%
+NDCG@20,11.04,9.36,-15.26%
+Precision@10,4.93,4.23,-14.19%

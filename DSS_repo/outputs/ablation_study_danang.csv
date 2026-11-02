@@ -1,0 +1,5 @@
+Variant,Use_Time,Use_Spatial,HitRate@10,NDCG@10
+1. Full TGNN (Proposed),True,True,10.13,4.53
+2. TGNN w/o Time,False,True,7.58,3.59
+3. TGNN w/o Spatial,True,False,10.62,5.24
+4. LightGCN (Graph Only),False,False,10.41,5.35

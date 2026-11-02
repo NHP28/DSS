@@ -51,3 +51,10 @@ venv.bak/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Heavy raw datasets & large binary arrays
+DSS_repo/data/processed/
+*.npz
+*.tar.gz
+*.zip
+*.log

@@ -1,0 +1,10 @@
+{
+  "include": [
+    ".",
+    "DSS_repo"
+  ],
+  "extraPaths": [
+    "DSS_repo/src",
+    "DSS_repo"
+  ]
+}

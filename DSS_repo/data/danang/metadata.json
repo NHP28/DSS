@@ -1,0 +1,41 @@
+{
+  "dataset_name": "Da Nang Spatio-Temporal POI & Dynamic Mobility Dataset",
+  "city": "Da Nang, Vietnam",
+  "bounding_box": [
+    15.900738,
+    108.050431,
+    16.194385,
+    108.349609
+  ],
+  "num_pois": 996,
+  "num_users": 1500,
+  "num_checkins": 36210,
+  "num_social_edges": 7765,
+  "time_range": [
+    "2023-01-01 07:05:00",
+    "2023-12-31 21:57:00"
+  ],
+  "category_breakdown": {
+    "cafe": 304,
+    "hotel": 295,
+    "restaurant": 293,
+    "tourist_spot": 104
+  },
+  "district_breakdown": {
+    "Hải Châu": 359,
+    "Sơn Trà": 265,
+    "Ngũ Hành Sơn": 181,
+    "Liên Chiểu": 87,
+    "Thanh Khê": 55,
+    "Hòa Vang": 22,
+    "Cẩm Lệ": 16,
+    "Quận Sơn Trà": 3,
+    "Ngu Hanh Son": 2,
+    "Quận Hải Châu": 2,
+    "quận Liên Chiểu": 2,
+    "Danang": 1,
+    "Hai Chau": 1
+  },
+  "validated": true,
+  "created_at": "2026-11-02 20:05:49"
+}
