@@ -1,112 +1,125 @@
-# DSS_POIRS: Location-Based Decision Support System & Contextualized POI Recommendation
+# DSS: Time-Aware POI Recommendation & Location-Based Decision Support System (TAS-GNN)
 
-Hệ thống Hỗ trợ Ra quyết định Lựa chọn Địa điểm (L-DSS) tích hợp Mô hình Gợi ý POI theo Ngữ cảnh (CPR - IJCAI 2020) và Phương pháp Ra quyết định Đa tiêu chí (MCDM: AHP + TOPSIS).
+> **Hệ thống Gợi ý Địa điểm Cá nhân hóa theo Thời gian thực và Hỗ trợ Ra quyết định Đa tiêu chí tại TP. Đà Nẵng**  
+> *Đồ án / Báo cáo Nghiên cứu Ứng dụng AI & Khoa học Dữ liệu*
 
----
-
-## 📌 Tổng quan Dự án
-
-Dự án **DSS_POIRS** giải quyết bài toán gợi ý và hỗ trợ người dùng đưa ra quyết định lựa chọn địa điểm (POI: Point of Interest như quán cafe, nhà hàng, khách sạn, điểm du lịch) tối ưu dựa trên:
-1. **Mô hình Trí tuệ Nhân tạo CPR (Contextualized POI Recommendation - IJCAI 2020):** Khai thác đồ thị không gian - thời gian - quan hệ bạn bè của người dùng (User/POI Graph Laplacian, Group Lasso) để dự đoán mức độ ưa thích (Preference Score $C_4$) theo thời gian thực.
-2. **Phương pháp Ra quyết định Đa tiêu chí (MCDM):**
-   - **AHP (Analytic Hierarchy Process):** Xác định trọng số ưu tiên linh hoạt cho các tiêu chí: Khoảng cách ($C_1$), Giá cả ($C_2$), Đánh giá rating ($C_3$), Độ phù hợp sở thích ($C_4$), và Độ phổ biến ($C_5$).
-   - **TOPSIS / SAW:** Tính toán độ tương đồng với giải pháp lý tưởng để xếp hạng địa điểm tốt nhất.
-3. **Giải thích Quyết định (Explainable AI - XAI):** Cung cấp lý do minh bạch vì sao địa điểm được đề xuất cho người dùng.
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg)](https://fastapi.tiangolo.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 🏗 Kiến trúc Hệ thống
+## 📌 1. Giới Thiệu Đề Tài
+
+Khi du lịch hoặc sinh hoạt tại các thành phố lớn như Đà Nẵng, người dùng thường gặp phải hiện tượng **nghịch lý lựa chọn (Choice Overload)** trước hàng nghìn địa điểm ăn uống, giải trí và tham quan. Hầu hết các hệ thống gợi ý truyền thống (Collaborative Filtering, Matrix Factorization hay LightGCN tĩnh) thường thất bại vì **bỏ qua ngữ cảnh thời gian (Temporal Dynamics)**:
+* **07:30 Sáng:** Nhu cầu tìm quán cafe, ăn sáng đặc sản (bún chả cá, mì Quảng).
+* **12:00 Trưa:** Nhu cầu tìm quán cơm niêu, nhà hàng ẩm thực miền Trung.
+* **16:30 Chiều:** Nhu cầu dạo biển Mỹ Khê, ngắm cảnh bán đảo Sơn Trà.
+* **20:30 Tối:** Nhu cầu xem Cầu Rồng phun lửa, dạo phố đi bộ Bạch Đằng, ẩm thực hải sản đêm.
+
+Dự án **DSS** giải quyết triệt để vấn đề này bằng cách kết hợp:
+1. **Mô hình Mạng nơ-ron Đồ thị Động theo Thời gian (TAS-GNN):** Ứng dụng định lý Bochner/Fourier biến đổi thời gian liên tục kết hợp cơ chế Cổng điều phối thời gian (Temporal Gate) để dự đoán sở thích của người dùng tại đúng thời điểm truy vấn.
+2. **Hệ Hỗ trợ Ra quyết định Đa tiêu chí (MCDM: AHP + TOPSIS):** Tích hợp điểm số AI cùng 4 tiêu chí thực tế (Khoảng cách GPS Haversine, Đánh giá rating, Mức giá cả, Độ phổ biến check-in) để xếp hạng các địa điểm tối ưu nhất.
+
+---
+
+## 🏗 2. Kiến Trúc Dự Án
 
 ```
-DSS_POIRS/
-├── BE_API/                  # Backend API (NestJS + TypeScript + Drizzle ORM)
-│   ├── src/                 # Modules: Auth, Places, Recommendations (AHP + TOPSIS), etc.
-│   ├── drizzle.config.ts    # Cấu hình Drizzle ORM
-│   ├── package.json         # Danh sách dependencies
-│   └── ...
-├── DSS_repo/                # AI Engine & Nghiên cứu CPR Algorithm (Python / PyTorch / FastAPI / Streamlit)
-│   ├── data/                # Dataset Gowalla / LBSN & dữ liệu tiền xử lý
-│   ├── paper/               # Các bài báo nghiên cứu (IJCAI 2020 CPR, VLDB 2017 Benchmark)
-│   ├── src/                 # Thuật toán CPR (cpr.py, graphs.py, data.py, baselines USG, v.v.)
-│   ├── outputs/             # Kết quả đánh giá, checkpoint ma trận R*, tuning logs & biểu đồ
-│   ├── app.py               # Ứng dụng demo trực quan hóa bằng Streamlit
-│   ├── server.py            # FastAPI Inference Server phục vụ cho Backend API
-│   ├── README.md            # Tài liệu chi tiết về tái lập bài báo CPR IJCAI 2020
-│   └── TOM_TAT.md           # Tóm tắt thuật toán & kết quả nghiên cứu
-├── location_based_dss_project_plan(1).md  # Kế hoạch & đặc tả chi tiết đề tài L-DSS
-├── test_api.py              # Script kiểm thử tích hợp End-to-End giữa DSS và Backend API
-└── .gitignore               # Cấu hình bỏ qua tệp tin rác cho cả Node.js & Python
+DSS/
+├── DSS_repo/                       # Thư mục mã nguồn AI Engine & Web Demo chính
+│   ├── data/danang/                # Bộ dữ liệu thực tế 996 POIs & 36.210 check-in Đà Nẵng
+│   │   ├── danang_pois_full.csv    # 996 địa điểm thực tế (Cafe, Restaurant, Hotel, Tourist Spot)
+│   │   └── danang_checkins_full.csv# Lịch sử di chuyển gắn nhãn thời gian
+│   ├── outputs/
+│   │   ├── checkpoints/            # Trọng số mô hình đã huấn luyện (.pt)
+│   │   │   ├── temporal_gnn_danang.pt # Model TAS-GNN PyTorch
+│   │   │   └── lightgcn_danang.pt     # Model LightGCN Baseline
+│   │   └── figures/                # Biểu đồ khoa học (Ablation study, t-SNE clusters, Bar charts)
+│   ├── paper/                      # Tài liệu nghiên cứu cơ sở (IJCAI 2020 CPR, VLDB 2017)
+│   ├── src/
+│   │   ├── models/
+│   │   │   ├── temporal_gnn.py     # Kiến trúc mạng TAS-GNN (Fourier Time + Temporal Gate)
+│   │   │   └── lightgcn.py         # Kiến trúc mạng LightGCN (SIGIR 2020)
+│   │   ├── train_compare.py        # Kịch bản huấn luyện & đối sánh định lượng
+│   │   ├── ablation_study.py       # Nghiên cứu bóc tách các thành phần mô hình
+│   │   ├── cpr.py & run_cpr.py     # Mô hình tham chiếu cũ (CPR IJCAI 2020)
+│   │   └── plot_scientific_charts.py # Vẽ biểu đồ khoa học
+│   ├── app.py                      # Ứng dụng Streamlit Dashboard
+│   ├── demo_danang.html            # Giao diện Web Bản đồ số tương tác (Google Maps Roadmap)
+│   └── server.py                   # FastAPI Production Server (< 50ms latency)
+│
+├── Huong_Dan.docx                  # BÁO CÁO TOÀN DIỆN & HƯỚNG DẪN TỪ A-Z (File Word chuẩn 5 chương)
+├── Huong_Dan.md                    # Bản Markdown của tài liệu hướng dẫn
+├── build_danang_dataset.py         # Kịch bản xây dựng dataset từ OpenStreetMap
+├── requirements.txt                # Thư viện phụ thuộc
+└── README.md                       # Tài liệu tổng quan repository
 ```
 
 ---
 
-## 🚀 Hướng dẫn Cài đặt & Khởi chạy
+## 📊 3. Kết Quả Thực Nghiệm Định Lượng (Đà Nẵng Dataset)
 
-### 1. Chuẩn bị Môi trường
-- **Node.js**: phiên bản 18+ hoặc 20+
-- **Python**: phiên bản 3.10+ hoặc 3.11+
-- **Cơ sở dữ liệu**: PostgreSQL / Supabase / SQLite (tùy cấu hình trong `.env`)
+Mô hình được đánh giá trên tập kiểm thử phân chia theo dòng thời gian (**Temporal Split**: 70% Train, 10% Tune, 20% Test):
+
+| Chỉ số Đánh giá | LightGCN (Baseline) | TAS-GNN (Đề xuất) | Mức độ Cải thiện ($\Delta\%$) |
+| :--- | :---: | :---: | :---: |
+| **HitRate@5** | $6.81\%$ | **$7.39\%$** | **+8.41%** |
+| **HitRate@10** | $11.13\%$ | **$12.45\%$** | **+11.87% (Vượt trội)** |
+| **HitRate@20** | $16.15\%$ | **$18.56\%$** | **+14.91%** |
+| **NDCG@5** | $4.37\%$ | **$4.46\%$** | **+2.13%** |
+| **NDCG@10** | $5.76\%$ | **$6.09\%$** | **+5.63% (Vượt trội)** |
+| **NDCG@20** | $7.03\%$ | **$7.62\%$** | **+8.41%** |
+| **Precision@10** | $1.11\%$ | **$1.25\%$** | **+11.87%** |
 
 ---
 
-### 2. Khởi chạy AI Inference Engine (`DSS_repo`)
+## 🚀 4. Hướng Dẫn Cài Đặt & Khởi Chạy
 
+### Bước 1: Chuẩn bị môi trường Python
 ```bash
-# Di chuyển vào thư mục DSS_repo
+# Khởi tạo virtual environment
+python -m venv .venv
+
+# Kích hoạt môi trường (Windows)
+.\.venv\Scripts\activate
+
+# Cài đặt các thư viện phụ thuộc
+pip install -r requirements.txt
+```
+
+### Bước 2: Khởi động Server AI (FastAPI)
+```bash
 cd DSS_repo
-
-# Cài đặt thư viện Python cần thiết
-pip install torch numpy scipy pandas fastapi uvicorn streamlit matplotlib
-
-# Chạy FastAPI Model Inference Server (cung cấp API điểm preference CPR)
-python server.py
-# Server chạy tại: http://localhost:8000 (Swagger docs: http://localhost:8000/docs)
-
-# (Tùy chọn) Chạy Streamlit Web UI để khám phá mô hình & trực quan hóa kết quả
-streamlit run app.py
+python -m uvicorn server:app --host 127.0.0.1 --port 8000 --reload
 ```
+Server sẽ tự động nạp dữ liệu Đà Nẵng và nạp sẵn 2 checkpoint PyTorch (`temporal_gnn_danang.pt`, `lightgcn_danang.pt`) vào bộ nhớ cache.
+
+### Bước 3: Trải nghiệm Giao diện Web
+1. **Giao diện Bản đồ Web tương tác:** Truy cập **[http://localhost:8000/demo](http://localhost:8000/demo)** (hoặc mở trực tiếp file `demo_danang.html`).
+   - Tự do chuyển đổi 3 nhóm người dùng: Cư dân, Khách ẩm thực, Khách phượt.
+   - Kéo thanh trượt 24h hoặc chọn nút nhanh: Sáng, Trưa, Chiều, Tối.
+   - Bấm tab **Đối so sánh mô hình** giữa *TAS-GNN* và *LightGCN*.
+   - Bộ lọc danh mục: *Ẩm thực / Quán ăn*, *Quán Cafe*, *Thắng cảnh*.
+2. **Tài liệu API Swagger:** Truy cập **[http://localhost:8000/docs](http://localhost:8000/docs)** để gọi thử nghiệm endpoint `/api/v1/danang/recommend`.
+3. **Streamlit Analytics Dashboard:**
+   ```bash
+   python -m streamlit run app.py
+   ```
 
 ---
 
-### 3. Khởi chạy Backend Decision Support API (`BE_API`)
+## 📑 5. Tài Liệu Nghiên Cứu Chi Tiết
 
-```bash
-# Di chuyển vào thư mục BE_API
-cd BE_API
-
-# Cài đặt dependencies
-npm install
-
-# Cấu hình biến môi trường
-cp .env.example .env
-# Chỉnh sửa file .env với thông tin database và port mong muốn (mặc định 4000)
-
-# Khởi chạy server ở chế độ Development
-npm run start:dev
-# API Server chạy tại: http://localhost:4000
-```
+* File báo cáo khóa luận / thuyết minh đồ án chuẩn mực (có đầy đủ mục lục, công thức toán, bảng biểu, sơ đồ kiến trúc và đề cương 5 chương):
+  - **Word Document:** [`Huong_Dan.docx`](Huong_Dan.docx)
+  - **Markdown Document:** [`Huong_Dan.md`](Huong_Dan.md)
+* Báo cáo nghiên cứu khoa học chuyên sâu về mô hình: [`DSS_repo/RESEARCH_REPORT_TAS_GNN.md`](DSS_repo/RESEARCH_REPORT_TAS_GNN.md)
 
 ---
 
-### 4. Kiểm thử Tích hợp Toàn hệ thống (End-to-End Test)
-
-Tại thư mục gốc của dự án:
-```bash
-python test_api.py
-```
-
-Kết quả trả về sẽ đánh giá ứng viên địa điểm theo vị trí địa lý, gọi mô hình AI CPR để tính điểm ngữ cảnh thời gian thực, chuẩn hóa ma trận quyết định và xếp hạng qua TOPSIS.
-
----
-
-## 📊 Kết quả Thực nghiệm & Thuật toán
-
-- **Mô hình CPR**: Tái lập thành công thuật toán từ bài báo *Peng Han et al. (IJCAI 2020)*, đạt kết quả Precision@K và Recall@K vượt trội trên tập dữ liệu chuẩn Gowalla (18.737 người dùng, 32.510 địa điểm, 1.278.274 lượt check-in).
-- **MCDM Engine**: Hỗ trợ ra quyết định đa tiêu chí thích ứng linh hoạt với ngữ cảnh thời gian thực (giờ trong ngày, vị trí GPS, ngân sách, bán kính di chuyển).
-
----
-
-## 📄 License & Tác giả
-
-- Dự án phục vụ mục đích nghiên cứu và học tập.
-- Tham khảo chi tiết trong thư mục [`DSS_repo/paper`](file:///f:/dss/DSS_repo/paper) và tài liệu đặc tả [`location_based_dss_project_plan(1).md`](file:///f:/dss/location_based_dss_project_plan%281%29.md).
+## 👨‍💻 Tác Giả & Bản Quyền
+- **Dự án:** Location-Based Decision Support System with TAS-GNN (L-DSS).
+- **Phát triển bởi:** Nhóm nghiên cứu DSS (`NHP28`).
+- **Mã nguồn:** Mở theo giấy phép [MIT License](LICENSE).
