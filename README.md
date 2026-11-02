@@ -110,12 +110,36 @@ Server sẽ tự động nạp dữ liệu Đà Nẵng và nạp sẵn 2 checkpo
 
 ---
 
-## 📑 5. Tài Liệu Nghiên Cứu Chi Tiết
+---
 
-* File báo cáo khóa luận / thuyết minh đồ án chuẩn mực (có đầy đủ mục lục, công thức toán, bảng biểu, sơ đồ kiến trúc và đề cương 5 chương):
+## 🔬 5. Nghiên Cứu Tái Lập Bài Báo Gốc (CPR - IJCAI 2020)
+
+Dự án này có xuất phát điểm từ việc **tái lập thực nghiệm (Reproduction)** bài báo khoa học đỉnh cao:
+> **Paper:** Peng Han, Zhongxiao Li, Yong Liu, Peilin Zhao, Jing Li, Hao Wang, Shuo Shang.  
+> *Contextualized Point-of-Interest Recommendation.* **IJCAI 2020**, tr. 2484–2490.  
+> *(Bản PDF bài báo được lưu trữ trong thư mục `DSS_repo/paper/CPR_IJCAI2020.pdf`)*.
+
+### Vai trò của mô hình Paper (CPR):
+1. **Tái lập Bảng 1 của Paper trên Dataset Gowalla (18.737 users × 32.510 POIs):**
+   - Đã cài đặt đầy đủ thuật toán CPR (`DSS_repo/src/cpr.py`), đồ thị láng giềng k-NN không-thời gian (`graphs.py`), và mô hình đối chứng USG (`src/baselines/`).
+   - Đóng gói giao diện đối sánh khoa học bằng Streamlit:
+     ```bash
+     cd DSS_repo
+     python -m streamlit run app.py
+     ```
+2. **Cầu nối dẫn tới Mô hình Mới (TAS-GNN):**
+   - **Hạn chế của CPR:** Phương pháp ma trận hóa cổ điển (Group Lasso + Conjugate Gradient) yêu cầu ma trận dày chiếm tới ~2.4 GB RAM, thời gian tối ưu hóa lâu và không hỗ trợ suy luận theo giờ thực tế linh hoạt.
+   - **Bước nhảy vọt với TAS-GNN:** Nhóm nghiên cứu đã kế thừa tư tưởng không-thời gian của CPR nhưng **tái cấu trúc hoàn toàn sang Mạng nơ-ron đồ thị (Graph Neural Network)** trên PyTorch kết hợp **Vector liên tục Fourier**, đưa thời gian phản hồi API xuống dưới **50ms** và phục vụ thực tế cho 996 địa điểm tại TP. Đà Nẵng.
+
+---
+
+## 📑 6. Tài Liệu Nghiên Cứu Chi Tiết
+
+* File thuyết minh đồ án / khóa luận tốt nghiệp chuẩn 5 chương:
   - **Word Document:** [`Huong_Dan.docx`](Huong_Dan.docx)
   - **Markdown Document:** [`Huong_Dan.md`](Huong_Dan.md)
-* Báo cáo nghiên cứu khoa học chuyên sâu về mô hình: [`DSS_repo/RESEARCH_REPORT_TAS_GNN.md`](DSS_repo/RESEARCH_REPORT_TAS_GNN.md)
+* Báo cáo nghiên cứu khoa học chuyên sâu về mô hình TAS-GNN: [`DSS_repo/RESEARCH_REPORT_TAS_GNN.md`](DSS_repo/RESEARCH_REPORT_TAS_GNN.md)
+* Tài liệu chi tiết về quá trình tái lập paper CPR: [`DSS_repo/README.md`](DSS_repo/README.md)
 
 ---
 
