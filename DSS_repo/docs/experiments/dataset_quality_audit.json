@@ -1,0 +1,730 @@
+{
+  "audit_date_local": "2026-11-11",
+  "method": "Full CSV quality audit; legacy per-user diagnostics retained for comparison. Updated notebook defaults to global_time. No model retraining in this audit.",
+  "datasets": {
+    "danang": {
+      "directory": "outputs\\datasets\\datasets\\danang",
+      "metadata": {
+        "dataset_id": "danang",
+        "has_categories": true,
+        "timezone": "Asia/Ho_Chi_Minh",
+        "data_provenance": "OSM POIs; synthetic check-ins/ratings/prices/popularity",
+        "dataset_name": "Da Nang Spatio-Temporal POI & Dynamic Mobility Dataset",
+        "city": "Da Nang, Vietnam",
+        "bounding_box": [
+          15.900738,
+          108.050431,
+          16.194385,
+          108.349609
+        ],
+        "num_pois": 996,
+        "num_users": 1500,
+        "num_checkins": 36210,
+        "num_social_edges": 7765,
+        "time_range": [
+          "2023-01-01 07:05:00",
+          "2023-12-31 21:57:00"
+        ],
+        "category_breakdown": {
+          "cafe": 304,
+          "hotel": 295,
+          "restaurant": 293,
+          "tourist_spot": 104
+        },
+        "district_breakdown": {
+          "Hải Châu": 359,
+          "Sơn Trà": 265,
+          "Ngũ Hành Sơn": 181,
+          "Liên Chiểu": 87,
+          "Thanh Khê": 55,
+          "Hòa Vang": 22,
+          "Cẩm Lệ": 16,
+          "Quận Sơn Trà": 3,
+          "Ngu Hanh Son": 2,
+          "Quận Hải Châu": 2,
+          "quận Liên Chiểu": 2,
+          "Danang": 1,
+          "Hai Chau": 1
+        },
+        "validated": true,
+        "created_at": "2026-11-02 20:05:49",
+        "source_url": "https://raw.githubusercontent.com/NHP28/DSS/a3f6059c0594788e42c9746debf33d803723fb31/DSS_repo/data/danang/",
+        "source_revision": "a3f6059c0594788e42c9746debf33d803723fb31",
+        "poi_file": "danang_pois_full.csv",
+        "event_file": "danang_checkins_full.csv"
+      },
+      "fingerprint": "9f708b5dcab382b4436d6ab1fbaf1c5671d0755fe8af4d8aaa92a070fe7b1990",
+      "files": {
+        "danang_pois_full.csv": {
+          "bytes": 81642,
+          "sha256": "d3e6cd55b56ea8c4eadd2f7317268c24a779f4222eeaf775f3446f3fd85576dd"
+        },
+        "danang_checkins_full.csv": {
+          "bytes": 1655859,
+          "sha256": "5c623d4464c92954eb397c224f6aa5779ff4fedca6338a3a0c8779c28502b569"
+        }
+      },
+      "raw_csv": {
+        "pois": 996,
+        "events": 36210,
+        "missing_poi_cells": {
+          "l": 0,
+          "name": 0,
+          "category": 0,
+          "lat": 0,
+          "lon": 0,
+          "district": 0,
+          "rating": 0,
+          "user_ratings_total": 0,
+          "price_avg": 0,
+          "popularity": 0
+        },
+        "missing_event_cells": {
+          "u": 0,
+          "l": 0,
+          "ts": 0,
+          "datetime": 0,
+          "hour": 0,
+          "day_of_week": 0,
+          "is_weekend": 0
+        },
+        "duplicate_poi_ids": 0,
+        "duplicate_events_u_l_ts": 0,
+        "unknown_poi_references": 0,
+        "invalid_coordinates": 0
+      },
+      "loaded": {
+        "users": 1500,
+        "pois": 996,
+        "events": 36210,
+        "events_removed_by_load_data": 0,
+        "unique_user_poi_pairs": 32661,
+        "interaction_density_percent": 2.186144578313253,
+        "sparsity_percent": 97.81385542168675,
+        "repeat_event_percent": 9.80115990057995,
+        "catalog_pois_without_events": 295,
+        "events_per_user": {
+          "min": 9.0,
+          "p25": 15.0,
+          "median": 23.0,
+          "p75": 29.0,
+          "p90": 42.0,
+          "p95": 46.0,
+          "p99": 49.00999999999999,
+          "max": 50.0
+        },
+        "unique_pois_per_user": {
+          "min": 8.0,
+          "p25": 15.0,
+          "median": 21.0,
+          "p75": 26.0,
+          "p90": 34.100000000000136,
+          "p95": 39.0,
+          "p99": 43.0,
+          "max": 47.0
+        },
+        "events_per_poi": {
+          "min": 0.0,
+          "p25": 0.0,
+          "median": 32.0,
+          "p75": 53.0,
+          "p90": 73.5,
+          "p95": 91.5,
+          "p99": 226.74999999999932,
+          "max": 519.0
+        },
+        "users_per_poi": {
+          "min": 0.0,
+          "p25": 0.0,
+          "median": 31.0,
+          "p75": 50.0,
+          "p90": 70.0,
+          "p95": 84.0,
+          "p99": 170.6499999999994,
+          "max": 268.0
+        },
+        "top_1_percent_pois_event_share_percent": 8.707539353769677,
+        "category_counts": {
+          "cafe": 304,
+          "hotel": 295,
+          "restaurant": 293,
+          "tourist_spot": 104
+        },
+        "utc_start": "2023-01-01 00:05:00+00:00",
+        "utc_end": "2023-12-31 14:57:00+00:00",
+        "local_hour_mismatches": 0,
+        "local_weekday_mismatches": 0,
+        "timestamp_seconds_all_zero": true,
+        "events_in_shared_user_timestamp_groups": 0,
+        "shared_user_timestamp_groups": 0,
+        "consecutive_steps": 34710,
+        "steps_over_1000_kmh_and_1_km": 0,
+        "same_timestamp_steps_over_1_km": 0,
+        "movement_note": "Diagnostic flags from static catalog coordinates; not proof of invalid events or an automatic removal rule.",
+        "duplicate_coordinate_rows": 0,
+        "datetime_string_vs_local_timestamp_mismatches": 0,
+        "district_labels": {
+          "Hải Châu": 359,
+          "Sơn Trà": 265,
+          "Ngũ Hành Sơn": 181,
+          "Liên Chiểu": 87,
+          "Thanh Khê": 55,
+          "Hòa Vang": 22,
+          "Cẩm Lệ": 16,
+          "Quận Sơn Trà": 3,
+          "Ngu Hanh Son": 2,
+          "Quận Hải Châu": 2,
+          "quận Liên Chiểu": 2,
+          "Danang": 1,
+          "Hai Chau": 1
+        },
+        "normalized_district_labels": {
+          "hai chau": 362,
+          "son tra": 268,
+          "ngu hanh son": 183,
+          "lien chieu": 89,
+          "thanh khe": 55,
+          "hoa vang": 22,
+          "cam le": 16,
+          "danang": 1
+        },
+        "duplicate_normalized_name_coordinate_rows": 0,
+        "optional_numeric_ranges": {
+          "rating": {
+            "min": 4.1,
+            "max": 4.9,
+            "unique": 9
+          },
+          "user_ratings_total": {
+            "min": 52.0,
+            "max": 4500.0,
+            "unique": 891
+          },
+          "price_avg": {
+            "min": 0.0,
+            "max": 4000000.0,
+            "unique": 22
+          },
+          "popularity": {
+            "min": 65.0,
+            "max": 99.0,
+            "unique": 35
+          }
+        },
+        "category_event_counts": {
+          "cafe": 19275,
+          "restaurant": 10766,
+          "tourist_spot": 6169
+        },
+        "category_pois_with_events": {
+          "cafe": 304,
+          "restaurant": 293,
+          "tourist_spot": 104
+        }
+      },
+      "protocol": {
+        "train": 24673,
+        "validation": 3687,
+        "test": 7850,
+        "split_percentages": [
+          68.13863573598454,
+          10.182270091135045,
+          21.67909417288042
+        ],
+        "users_violating_own_temporal_order": 0,
+        "validation_novel_events": 3234,
+        "validation_users_without_novel_events": 24,
+        "test_novel_events": 6811,
+        "test_excluded_seen_events": 1039,
+        "test_excluded_seen_percent": 13.235668789808916,
+        "test_users_without_novel_events": 0,
+        "catalog_pois_unseen_in_train": 295,
+        "catalog_pois_unseen_in_fit": 295,
+        "test_events_with_pois_unseen_in_fit": 0,
+        "test_events_with_any_future_first_observed_fit_edge_percent": 98.36942675159236,
+        "mean_fraction_fit_edges_first_observed_after_test_query_percent": 25.09869571399852,
+        "temporal_overlap_note": "Measures graph edge availability relative to each query; does not measure accuracy inflation.",
+        "test_events_with_target_first_fit_observation_after_query": 66,
+        "name": "legacy_per_user"
+      },
+      "checkout_matches_cached_csv_ignoring_line_endings": true,
+      "processed_checksums_match_metadata": {},
+      "previous_full_run_fingerprint": "ee75d1d6751eb3ec47038858d2dfbd709cadc8fc5dc7d416c3ef8f03209c6422",
+      "previous_full_run_fingerprint_matches_current_aliases": false,
+      "pinned_download_checksums_match": {
+        "danang_pois_full.csv": true,
+        "danang_checkins_full.csv": true,
+        "metadata.json": true
+      },
+      "global_time_protocol": {
+        "name": "global_time",
+        "train": 25347,
+        "validation": 2025,
+        "test": 3883,
+        "validation_raw": 3621,
+        "test_raw": 7242,
+        "validation_cold_user_events_excluded": 1596,
+        "test_cold_user_events_excluded": 3359,
+        "train_end_utc": "2023-09-09 01:24:00+00:00",
+        "fit_end_utc": "2023-10-18 00:13:00+00:00",
+        "test_start_utc": "2023-10-18 00:22:00+00:00",
+        "catalog_assumption": "Static full catalog; eligibility/core filtering uses the full source (transductive).",
+        "history_assumption": "Frozen fit history; test events do not update the graph or seen set.",
+        "novel_test_events": 3055,
+        "repeated_test_events": 828,
+        "repeated_test_percent": 21.323718774143703
+      },
+      "upgraded_quality_profile": {
+        "users": 1500,
+        "pois": 996,
+        "events": 36210,
+        "missing_required_cells": 0,
+        "duplicate_events": 0,
+        "unreferenced_pois": 295,
+        "unique_user_poi_pairs": 32661,
+        "sparsity_percent": 97.81385542168675,
+        "repeat_event_percent": 9.801159900579947,
+        "hour_mismatches": 0,
+        "weekday_mismatches": 0,
+        "duplicate_coordinate_rows": 0,
+        "utc_start": "2023-01-01 00:05:00+00:00",
+        "utc_end": "2023-12-31 14:57:00+00:00",
+        "warnings": [
+          "hotel: 295 catalog POIs, zero interactions; recommendation quality is unverified.",
+          "Synthetic interactions/ratings/prices/popularity; results cannot establish real user preference quality.",
+          "District labels contain spelling/prefix variants; raw values are reported without silently editing the source.",
+          "Catalog lacks per-row OSM element IDs; source attribution cannot be verified POI by POI from this CSV alone."
+        ],
+        "category_coverage": {
+          "cafe": {
+            "catalog_pois": 304,
+            "active_pois": 304,
+            "events": 19275
+          },
+          "hotel": {
+            "catalog_pois": 295,
+            "active_pois": 0,
+            "events": 0
+          },
+          "restaurant": {
+            "catalog_pois": 293,
+            "active_pois": 293,
+            "events": 10766
+          },
+          "tourist_spot": {
+            "catalog_pois": 104,
+            "active_pois": 104,
+            "events": 6169
+          }
+        },
+        "data_provenance": "OSM POIs; synthetic check-ins/ratings/prices/popularity",
+        "source_metadata": {
+          "dataset_id": "danang",
+          "has_categories": true,
+          "timezone": "Asia/Ho_Chi_Minh",
+          "data_provenance": "OSM POIs; synthetic check-ins/ratings/prices/popularity",
+          "dataset_name": "Da Nang Spatio-Temporal POI & Dynamic Mobility Dataset",
+          "city": "Da Nang, Vietnam",
+          "bounding_box": [
+            15.900738,
+            108.050431,
+            16.194385,
+            108.349609
+          ],
+          "num_pois": 996,
+          "num_users": 1500,
+          "num_checkins": 36210,
+          "num_social_edges": 7765,
+          "time_range": [
+            "2023-01-01 07:05:00",
+            "2023-12-31 21:57:00"
+          ],
+          "category_breakdown": {
+            "cafe": 304,
+            "hotel": 295,
+            "restaurant": 293,
+            "tourist_spot": 104
+          },
+          "district_breakdown": {
+            "Hải Châu": 359,
+            "Sơn Trà": 265,
+            "Ngũ Hành Sơn": 181,
+            "Liên Chiểu": 87,
+            "Thanh Khê": 55,
+            "Hòa Vang": 22,
+            "Cẩm Lệ": 16,
+            "Quận Sơn Trà": 3,
+            "Ngu Hanh Son": 2,
+            "Quận Hải Châu": 2,
+            "quận Liên Chiểu": 2,
+            "Danang": 1,
+            "Hai Chau": 1
+          },
+          "validated": true,
+          "created_at": "2026-11-02 20:05:49",
+          "source_url": "https://raw.githubusercontent.com/NHP28/DSS/a3f6059c0594788e42c9746debf33d803723fb31/DSS_repo/data/danang/",
+          "source_revision": "a3f6059c0594788e42c9746debf33d803723fb31",
+          "poi_file": "danang_pois_full.csv",
+          "event_file": "danang_checkins_full.csv"
+        },
+        "user_event_distribution": {
+          "count": 1500.0,
+          "mean": 24.14,
+          "std": 10.541971136222958,
+          "min": 9.0,
+          "25%": 15.0,
+          "50%": 23.0,
+          "75%": 29.0,
+          "max": 50.0
+        },
+        "poi_event_distribution": {
+          "count": 996.0,
+          "mean": 36.355421686746986,
+          "std": 45.43567080643849,
+          "min": 0.0,
+          "25%": 0.0,
+          "50%": 32.0,
+          "75%": 53.0,
+          "max": 519.0
+        },
+        "movement_flags_over_1000_kmh_and_1_km": 0,
+        "same_timestamp_steps_over_1_km": 0,
+        "district_labels_raw": {
+          "Hải Châu": 359,
+          "Sơn Trà": 265,
+          "Ngũ Hành Sơn": 181,
+          "Liên Chiểu": 87,
+          "Thanh Khê": 55,
+          "Hòa Vang": 22,
+          "Cẩm Lệ": 16,
+          "Quận Sơn Trà": 3,
+          "Ngu Hanh Son": 2,
+          "Quận Hải Châu": 2,
+          "quận Liên Chiểu": 2,
+          "Danang": 1,
+          "Hai Chau": 1
+        },
+        "district_labels_normalized": {
+          "hai chau": 362,
+          "son tra": 268,
+          "ngu hanh son": 183,
+          "lien chieu": 89,
+          "thanh khe": 55,
+          "hoa vang": 22,
+          "cam le": 16,
+          "danang": 1
+        }
+      }
+    },
+    "gowalla": {
+      "directory": "outputs\\datasets\\datasets\\gowalla_full",
+      "metadata": {
+        "dataset_id": "gowalla",
+        "has_categories": false,
+        "timezone": "longitude_offset_approximation",
+        "data_provenance": "Real public Gowalla check-ins and coordinates from Stanford SNAP; categories unavailable",
+        "poi_file": "pois.csv",
+        "event_file": "checkins.csv",
+        "source_url": "https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz",
+        "source_sha256": "c1c3e19effba649b6c89aeab3c1f9459fad88cfdc2b460fc70fd54e295d83ea0",
+        "preprocess_version": 1,
+        "raw_events": 6442892,
+        "raw_valid_events": 6442863,
+        "invalid_events_removed": 29,
+        "duplicate_events_removed": 601,
+        "core": {
+          "min_user_pois": 15,
+          "min_poi_users": 10
+        },
+        "full_core": {
+          "users": 18737,
+          "pois": 32510,
+          "events": 1278102
+        },
+        "sample_max_users": null,
+        "sample_seed": 42,
+        "is_subset": false,
+        "num_users": 18737,
+        "num_pois": 32510,
+        "num_checkins": 1278102,
+        "processed_sha256": {
+          "pois.csv": "c2bb89c1dae5a4ff595c360df5ecc670aef6891d9a0cd7962e488c04fb70aad5",
+          "checkins.csv": "d2eb40ecc1f4955d86aec2b989e12511c6a3a6a581437dbd7091694a48fb8458"
+        }
+      },
+      "fingerprint": "664b045fe2e20b4559633fbf0979376707dbe237fdb659d3fd8ead30b9b839ec",
+      "files": {
+        "pois.csv": {
+          "bytes": 1382138,
+          "sha256": "c2bb89c1dae5a4ff595c360df5ecc670aef6891d9a0cd7962e488c04fb70aad5"
+        },
+        "checkins.csv": {
+          "bytes": 35693459,
+          "sha256": "d2eb40ecc1f4955d86aec2b989e12511c6a3a6a581437dbd7091694a48fb8458"
+        }
+      },
+      "raw_csv": {
+        "pois": 32510,
+        "events": 1278102,
+        "missing_poi_cells": {
+          "l": 0,
+          "lat": 0,
+          "lon": 0,
+          "category": 0
+        },
+        "missing_event_cells": {
+          "u": 0,
+          "l": 0,
+          "ts": 0,
+          "hour": 0,
+          "day_of_week": 0
+        },
+        "duplicate_poi_ids": 0,
+        "duplicate_events_u_l_ts": 0,
+        "unknown_poi_references": 0,
+        "invalid_coordinates": 0
+      },
+      "loaded": {
+        "users": 18737,
+        "pois": 32510,
+        "events": 1278102,
+        "events_removed_by_load_data": 0,
+        "unique_user_poi_pairs": 821931,
+        "interaction_density_percent": 0.13493304912055748,
+        "sparsity_percent": 99.86506695087944,
+        "repeat_event_percent": 35.69128285535896,
+        "catalog_pois_without_events": 0,
+        "events_per_user": {
+          "min": 15.0,
+          "p25": 25.0,
+          "median": 40.0,
+          "p75": 71.0,
+          "p90": 136.0,
+          "p95": 208.0,
+          "p99": 502.6399999999994,
+          "max": 1624.0
+        },
+        "unique_pois_per_user": {
+          "min": 15.0,
+          "p25": 19.0,
+          "median": 28.0,
+          "p75": 47.0,
+          "p90": 83.0,
+          "p95": 124.0,
+          "p99": 268.0,
+          "max": 973.0
+        },
+        "events_per_poi": {
+          "min": 10.0,
+          "p25": 15.0,
+          "median": 21.0,
+          "p75": 37.0,
+          "p90": 72.0,
+          "p95": 114.0,
+          "p99": 291.0,
+          "max": 4801.0
+        },
+        "users_per_poi": {
+          "min": 10.0,
+          "p25": 12.0,
+          "median": 15.0,
+          "p75": 24.0,
+          "p90": 44.0,
+          "p95": 69.0,
+          "p99": 176.0,
+          "max": 1991.0
+        },
+        "top_1_percent_pois_event_share_percent": 15.518949191848538,
+        "category_counts": {
+          "unknown": 32510
+        },
+        "utc_start": "2009-02-04 05:17:38+00:00",
+        "utc_end": "2010-10-23 02:12:19+00:00",
+        "local_hour_mismatches": 0,
+        "local_weekday_mismatches": 0,
+        "timestamp_seconds_all_zero": false,
+        "events_in_shared_user_timestamp_groups": 74,
+        "shared_user_timestamp_groups": 37,
+        "consecutive_steps": 1259328,
+        "steps_over_1000_kmh_and_1_km": 1150,
+        "same_timestamp_steps_over_1_km": 16,
+        "movement_note": "Diagnostic flags from static catalog coordinates; not proof of invalid events or an automatic removal rule.",
+        "duplicate_coordinate_rows": 281,
+        "category_event_counts": {
+          "unknown": 1278102
+        },
+        "category_pois_with_events": {
+          "unknown": 32510
+        }
+      },
+      "protocol": {
+        "train": 886143,
+        "validation": 128855,
+        "test": 263104,
+        "split_percentages": [
+          69.33272931268397,
+          10.081746214308405,
+          20.58552447300763
+        ],
+        "users_violating_own_temporal_order": 0,
+        "validation_novel_events": 79016,
+        "validation_users_without_novel_events": 662,
+        "test_novel_events": 160596,
+        "test_excluded_seen_events": 102508,
+        "test_excluded_seen_percent": 38.961019216735586,
+        "test_users_without_novel_events": 111,
+        "catalog_pois_unseen_in_train": 14,
+        "catalog_pois_unseen_in_fit": 6,
+        "test_events_with_pois_unseen_in_fit": 87,
+        "test_events_with_any_future_first_observed_fit_edge_percent": 99.96351252736561,
+        "mean_fraction_fit_edges_first_observed_after_test_query_percent": 19.28129816007508,
+        "temporal_overlap_note": "Measures graph edge availability relative to each query; does not measure accuracy inflation.",
+        "test_events_with_target_first_fit_observation_after_query": 1743,
+        "name": "legacy_per_user"
+      },
+      "processed_checksums_match_metadata": {
+        "pois.csv": true,
+        "checkins.csv": true
+      },
+      "global_time_protocol": {
+        "name": "global_time",
+        "train": 894671,
+        "validation": 109658,
+        "test": 207611,
+        "validation_raw": 127810,
+        "test_raw": 255621,
+        "validation_cold_user_events_excluded": 18152,
+        "test_cold_user_events_excluded": 48010,
+        "train_end_utc": "2010-08-08 18:51:11+00:00",
+        "fit_end_utc": "2010-09-03 13:18:56+00:00",
+        "test_start_utc": "2010-09-03 13:18:57+00:00",
+        "catalog_assumption": "Static full catalog; eligibility/core filtering uses the full source (transductive).",
+        "history_assumption": "Frozen fit history; test events do not update the graph or seen set.",
+        "novel_test_events": 135604,
+        "repeated_test_events": 72007,
+        "repeated_test_percent": 34.68361503003213
+      },
+      "upgraded_quality_profile": {
+        "users": 18737,
+        "pois": 32510,
+        "events": 1278102,
+        "missing_required_cells": 0,
+        "duplicate_events": 0,
+        "unreferenced_pois": 0,
+        "unique_user_poi_pairs": 821931,
+        "sparsity_percent": 99.86506695087944,
+        "repeat_event_percent": 35.69128285535896,
+        "hour_mismatches": 0,
+        "weekday_mismatches": 0,
+        "duplicate_coordinate_rows": 281,
+        "utc_start": "2009-02-04 05:17:38+00:00",
+        "utc_end": "2010-10-23 02:12:19+00:00",
+        "warnings": [
+          "Local time approximated by longitude; timezone boundaries and DST are not modeled.",
+          "Activity core excludes many rare users/POIs; this is not a cold-start benchmark.",
+          "Movement diagnostics found implausible-speed or simultaneous-location steps; flags use static catalog coordinates and are not automatic deletion rules."
+        ],
+        "category_coverage": {
+          "unknown": {
+            "catalog_pois": 32510,
+            "active_pois": 32510,
+            "events": 1278102
+          }
+        },
+        "data_provenance": "Real public Gowalla check-ins and coordinates from Stanford SNAP; categories unavailable",
+        "source_metadata": {
+          "dataset_id": "gowalla",
+          "has_categories": false,
+          "timezone": "longitude_offset_approximation",
+          "data_provenance": "Real public Gowalla check-ins and coordinates from Stanford SNAP; categories unavailable",
+          "poi_file": "pois.csv",
+          "event_file": "checkins.csv",
+          "source_url": "https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz",
+          "source_sha256": "c1c3e19effba649b6c89aeab3c1f9459fad88cfdc2b460fc70fd54e295d83ea0",
+          "preprocess_version": 1,
+          "raw_events": 6442892,
+          "raw_valid_events": 6442863,
+          "invalid_events_removed": 29,
+          "duplicate_events_removed": 601,
+          "core": {
+            "min_user_pois": 15,
+            "min_poi_users": 10
+          },
+          "full_core": {
+            "users": 18737,
+            "pois": 32510,
+            "events": 1278102
+          },
+          "sample_max_users": null,
+          "sample_seed": 42,
+          "is_subset": false,
+          "num_users": 18737,
+          "num_pois": 32510,
+          "num_checkins": 1278102,
+          "processed_sha256": {
+            "pois.csv": "c2bb89c1dae5a4ff595c360df5ecc670aef6891d9a0cd7962e488c04fb70aad5",
+            "checkins.csv": "d2eb40ecc1f4955d86aec2b989e12511c6a3a6a581437dbd7091694a48fb8458"
+          }
+        },
+        "user_event_distribution": {
+          "count": 18737.0,
+          "mean": 68.21273416235256,
+          "std": 93.32846793488265,
+          "min": 15.0,
+          "25%": 25.0,
+          "50%": 40.0,
+          "75%": 71.0,
+          "max": 1624.0
+        },
+        "poi_event_distribution": {
+          "count": 32510.0,
+          "mean": 39.31411873269763,
+          "std": 88.89235037952845,
+          "min": 10.0,
+          "25%": 15.0,
+          "50%": 21.0,
+          "75%": 37.0,
+          "max": 4801.0
+        },
+        "movement_flags_over_1000_kmh_and_1_km": 1150,
+        "same_timestamp_steps_over_1_km": 16,
+        "full_core_raw_event_retention_percent": 19.837396001671298
+      }
+    }
+  },
+  "raw_gowalla": {
+    "rows": 6442892,
+    "invalid_time": 0,
+    "invalid_coordinates": 29,
+    "negative_ids": 0,
+    "invalid_any": 29,
+    "null_cells": 0,
+    "users": 107092,
+    "pois": 1280969,
+    "sha256": "c1c3e19effba649b6c89aeab3c1f9459fad88cfdc2b460fc70fd54e295d83ea0",
+    "poi_coordinate_bbox_diagonal_over_1_km": 14,
+    "poi_coordinate_bbox_diagonal_km": {
+      "min": 0.0,
+      "p25": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 599.2090585490764
+    },
+    "coordinate_note": "Bounding-box diagonal is a screening statistic; not an actual observed movement.",
+    "matches_pinned_sha256": true
+  },
+  "gowalla_retention_percent": {
+    "users": 17.49617151607963,
+    "pois": 2.5379224633851405,
+    "events": 19.837396001671298
+  },
+  "notebook": {
+    "cells": 49,
+    "code_cells": 24,
+    "executed_cells_saved": 0,
+    "saved_output_count": 0
+  }
+}

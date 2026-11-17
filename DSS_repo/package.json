@@ -1,0 +1,16 @@
+{
+  "name": "danang-dss", "private": true,
+  "workspaces": ["apps/api"],
+  "scripts": {
+    "dev:fe": "npm --prefix FE run dev",
+    "dev:web": "npm run dev:fe",
+    "dev:api": "npm run dev -w @dss/api",
+    "build:fe": "npm --prefix FE run build",
+    "build:api": "npm run build -w @dss/api",
+    "build": "npm run build:api && npm run build:fe",
+    "typecheck": "npm run typecheck --workspaces && npm --prefix FE run typecheck",
+    "test": "npm run test -w @dss/api",
+    "db:init": "npm run db:init -w @dss/api"
+  },
+  "engines": {"node": ">=22.0.0"}
+}

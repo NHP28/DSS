@@ -58,7 +58,7 @@ OpenStreetMap API + Dữ liệu Đà Nẵng ──> [Tiền xử lý & Khử tr�
 FastAPI Server (server.py) / NestJS Backend (BE_API)
        │ (RESTful JSON APIs)
        ▼
-Giao diện Bản đồ Web tương tác (demo_danang.html) & Bảng điều khiển Quản trị (app.py)
+Giao diện Bản đồ Web tương tác (FE/public/demo_danang.html) & Bảng điều khiển Quản trị (app.py)
 ```
 
 ---
@@ -161,9 +161,9 @@ Mô hình được huấn luyện trên giao thức phân chia thời gian thự
 * **Endpoint API chính:**
   - `POST /api/v1/danang/recommend`: Nhận `userId`, `hour`, `topK`, `category` (restaurant, cafe, tourist_spot), chạy mô hình TAS-GNN và trả về danh sách địa điểm đề xuất kèm lời giải thích ngữ cảnh theo giờ.
   - `GET /api/v1/danang/pois`: Lấy danh sách địa điểm theo bộ lọc quận/huyện và danh mục.
-  - `GET /demo`: Phục vụ trực tiếp giao diện Web demo.
+  - `GET /`: Trả thông tin API dạng JSON; frontend được phục vụ riêng từ thư mục `FE`.
 
-### 6.2. Giao Diện Bản Đồ Tương Tác (`DSS_repo/demo_danang.html`)
+### 6.2. Giao Diện Bản Đồ Tương Tác (`DSS_repo/FE/public/demo_danang.html`)
 * **Thiết kế giao diện:** Tối ưu hóa UI/UX với chủ đề Dark Mode hiện đại, bản đồ vệ tinh/roadmap số Google Maps ổn định 100% tại Việt Nam.
 * **Các tính năng tương tác người dùng:**
   - **Persona Selector:** 3 đối tượng người dùng giả lập (Cư dân địa phương, Khách du lịch ẩm thực sành ăn, Khách phượt tham quan check-in).
@@ -192,14 +192,23 @@ python src/train_compare.py
 *(Kết quả huấn luyện và checkpoint `.pt` sẽ được lưu tự động trong `outputs/checkpoints/`)*.
 
 ### Bước 3: Khởi Động AI Backend Service
-Khởi chạy server FastAPI phục vụ API và Web:
+Khởi chạy server FastAPI phục vụ API:
 ```bash
 cd f:\dss\DSS_repo
 python -m uvicorn server:app --host 127.0.0.1 --port 8000 --reload
 ```
 
 ### Bước 4: Trải Nghiệm & Thử Nghiệm Trên Trình Duyệt
-1. **Giao diện Web Demo trực quan:** Truy cập [http://localhost:8000/demo](http://localhost:8000/demo)
+
+Mở terminal khác để chạy frontend riêng:
+
+```powershell
+cd F:\dss\DSS_repo\FE
+npm.cmd ci
+npm.cmd run dev
+```
+
+1. **Giao diện Web Demo trực quan:** Truy cập [http://127.0.0.1:3000/demo_danang.html](http://127.0.0.1:3000/demo_danang.html)
 2. **Tài liệu API Swagger tương tác:** Truy cập [http://localhost:8000/docs](http://localhost:8000/docs)
 3. **Ứng dụng Phân tích Đánh giá Khoa học (Streamlit Dashboard):**
    ```bash

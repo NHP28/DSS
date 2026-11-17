@@ -1,3 +1,49 @@
+# Đà Nẵng DSS — Next.js / NestJS / MySQL / Colab
+
+Phiên bản ứng dụng mới:
+
+- **Frontend:** `FE` — Next.js App Router, TypeScript, Tailwind CSS, bản đồ Leaflet/OSM; dependency và lệnh chạy riêng.
+- **Backend:** `apps/api` — NestJS, MySQL, lọc địa điểm, AHP/TOPSIS, phản hồi người dùng.
+- **Mô hình:** `ml` — train độc lập, validation/early stopping, export artifact và inference HTTP.
+- **Colab:** [DSS_POI_Colab.ipynb](notebooks/DSS_POI_Colab.ipynb) — tự tải dữ liệu Đà Nẵng + Gowalla, train riêng cả hai bộ, không upload dữ liệu.
+
+Đọc **[hướng dẫn chạy đầy đủ](docs/RUNNING.md)** và **[review mô hình](docs/MODEL_REVIEW.md)**.
+
+```text
+DSS_repo/
+├── FE/                 # Frontend độc lập: src, public, package.json, package-lock.json
+├── apps/api/           # Backend NestJS
+├── ml/                 # Model + Python inference API
+├── server.py           # Python API cũ, không phục vụ HTML
+├── src/                # Mã nghiên cứu Python
+└── data/, outputs/     # Dữ liệu và artifact
+```
+
+FE giao tiếp với backend qua HTTP. Xem [FE/README.md](FE/README.md) để chạy riêng frontend.
+
+```powershell
+cd F:\dss\DSS_repo
+npm.cmd ci
+npm.cmd --prefix FE ci
+python -m pip install -r ml/requirements.txt
+node tools/local-mysql.mjs start   # MySQL binary có sẵn trên máy, cổng 3307
+npm.cmd run db:init
+# Ba terminal:
+python -m uvicorn ml.serve:app --host 127.0.0.1 --port 8000
+npm.cmd run dev:api
+npm.cmd run dev:fe
+```
+
+Mở http://127.0.0.1:3000. Nếu chưa có artifact, chạy notebook hoặc `python -m ml.poi_model --epochs 20`.
+Ứng dụng hiển thị fallback theo giờ khi AI chưa sẵn sàng. Docker/MySQL có sẵn: xem hướng dẫn chi tiết.
+
+Lượt kiểm tra seed 42, CPU, tối đa 12 epoch: TAS-GNN HR@10 **12,63%**, LightGCN **8,66%**, hourly popularity **10,53%**.
+Dữ liệu tương tác là mô phỏng; chưa thể suy rộng kết quả cho người dùng thực. [Raw metrics](docs/experiments/seed42_cpu.json).
+
+Tài liệu bên dưới mô tả thí nghiệm CPR và demo cũ, được giữ để đối chiếu.
+
+---
+
 # Tái lập paper CPR — Contextualized POI Recommendation (IJCAI 2020)
 
 **Paper:** Peng Han, Zhongxiao Li, Yong Liu, Peilin Zhao, Jing Li, Hao Wang, Shuo Shang. *Contextualized Point-of-Interest Recommendation.* IJCAI 2020, tr. 2484–2490.

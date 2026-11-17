@@ -15,3 +15,26 @@ env/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Next.js / NestJS
+node_modules/
+.next/
+dist/
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local
+*.log
+.pytest_cache/
+outputs/colab/
+outputs/imported/
+outputs/active_artifact.json
+outputs/smoke/
+outputs/qa/
+notebooks/colab_data.zip
+.runtime/
+.cache/
+outputs/datasets/
+outputs/gowalla_smoke/
+outputs/gowalla/
+dss_colab_v2/

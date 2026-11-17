@@ -19,8 +19,9 @@ from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, FileResponse
 import torch
+from ml.artifacts import ROOT as PROJECT_ROOT, active_artifact, serving_model_path, model_metadata
+from ml.poi_model import restore_bundle, dataset_fingerprints
 
 if sys.platform == "win32":
     try:
@@ -84,32 +85,58 @@ hourly_cat_popularity = ck_df.groupby(["hour", "l"]).size().unstack(fill_value=0
 
 device = torch.device("cpu")
 
-# Load LightGCN
-lightgcn_model = LightGCN(num_users, num_items, embedding_dim=64, num_layers=3).to(device)
-lgcn_pt = os.path.join(CHECKPOINT_DIR, "lightgcn_danang.pt")
-if os.path.exists(lgcn_pt):
-    lightgcn_model.load_state_dict(torch.load(lgcn_pt, map_location=device))
-    lightgcn_model.build_normalized_adj(train_pairs)
-    lightgcn_model.eval()
-    print("[Server] Đã nạp thành công checkpoint LightGCN!")
+# Use the activated Colab export in the legacy HTML demo as well.
+colab_models = {}
+if active_artifact() or os.getenv("MODEL_PATH"):
+    torch.set_num_threads(min(4, torch.get_num_threads()))
+    selected = serving_model_path()
+    configured_lightgcn = active_artifact().get("lightgcnPath")
+    light_path = (PROJECT_ROOT / configured_lightgcn if configured_lightgcn and not os.getenv("MODEL_PATH")
+                  else selected.with_name("lightgcn.pt"))
+    raw_hash, canonical_hashes = dataset_fingerprints(DATA_DIR)
+    for name, path in (("tas_gnn", selected), ("lightgcn", light_path)):
+        model, bundle = restore_bundle(path)
+        if not {raw_hash, *canonical_hashes}.intersection({bundle["dataset_sha256"], *bundle.get("dataset_sha256_aliases", [])}):
+            raise ValueError("Colab artifact does not match the local Da Nang data")
+        if set(bundle["poi_ids"]) != set(pois_df["l"].astype(int)):
+            raise ValueError("Colab artifact does not match the local POI catalog")
+        trained = set(bundle.get("trained_user_ids", bundle["user_ids"]))
+        indices = {poi: index for index, poi in enumerate(bundle["poi_ids"])}
+        with torch.inference_mode():
+            embeddings = model.embeddings()
+        colab_models[name] = {"model": model, "bundle": bundle, "embeddings": embeddings,
+                              "users": {user: index for index, user in enumerate(bundle["user_ids"]) if user in trained},
+                              "order": [indices[int(poi)] for poi in pois_df["l"]]}
+    bundle = colab_models["tas_gnn"]["bundle"]
+    train_seen = {(bundle["user_ids"][int(user)], bundle["poi_ids"][int(item)])
+                  for user, item in bundle["fit_pairs"]}
+    print(f"[Server] Colab models loaded: {bundle.get('run_id')}, seed {bundle['seed']}")
+else:
+    # Load LightGCN
+    lightgcn_model = LightGCN(num_users, num_items, embedding_dim=64, num_layers=3).to(device)
+    lgcn_pt = os.path.join(CHECKPOINT_DIR, "lightgcn_danang.pt")
+    if os.path.exists(lgcn_pt):
+        lightgcn_model.load_state_dict(torch.load(lgcn_pt, map_location=device))
+        lightgcn_model.build_normalized_adj(train_pairs)
+        lightgcn_model.eval()
+        print("[Server] Đã nạp thành công checkpoint LightGCN!")
 
-# Load ST-GNN / TAS-GNN
-tgnn_model = TemporalGNN(
-    num_users, num_items, coords=coords, category_ids=cat_ids,
-    embedding_dim=64, time_dim=32, num_layers=3, use_time=True, use_spatial=True
-).to(device)
-tgnn_pt = os.path.join(CHECKPOINT_DIR, "temporal_gnn_danang.pt")
-if os.path.exists(tgnn_pt):
-    tgnn_model.load_state_dict(torch.load(tgnn_pt, map_location=device))
-    tgnn_model.build_normalized_adj(train_pairs)
-    tgnn_model.eval()
-    print("[Server] Đã nạp thành công checkpoint Spatio-Temporal GNN!")
+    # Load ST-GNN / TAS-GNN
+    tgnn_model = TemporalGNN(
+        num_users, num_items, coords=coords, category_ids=cat_ids,
+        embedding_dim=64, time_dim=32, num_layers=3, use_time=True, use_spatial=True
+    ).to(device)
+    tgnn_pt = os.path.join(CHECKPOINT_DIR, "temporal_gnn_danang.pt")
+    if os.path.exists(tgnn_pt):
+        tgnn_model.load_state_dict(torch.load(tgnn_pt, map_location=device))
+        tgnn_model.build_normalized_adj(train_pairs)
+        tgnn_model.eval()
+        print("[Server] Đã nạp thành công checkpoint Spatio-Temporal GNN!")
 
-# Cache graph embeddings
-with torch.no_grad():
-    u_emb_lgcn, i_emb_lgcn = lightgcn_model.forward()
-    u_emb_tgnn, i_emb_tgnn = tgnn_model.get_graph_embeddings()
-
+    # Cache graph embeddings
+    with torch.no_grad():
+        u_emb_lgcn, i_emb_lgcn = lightgcn_model.forward()
+        u_emb_tgnn, i_emb_tgnn = tgnn_model.get_graph_embeddings()
 
 # ----------------- PYDANTIC SCHEMAS -----------------
 class RecommendRequest(BaseModel):
@@ -140,6 +167,8 @@ class POIItem(BaseModel):
     explanation: str
 
 class RecommendResponse(BaseModel):
+    artifact: Optional[Dict[str, Any]] = None
+    source: Optional[str] = None
     model: str
     userId: int
     queryTime: str
@@ -247,6 +276,17 @@ def compute_model_scores(u: int, hr: int, wd: int, user_lat: Optional[float] = N
     sim_dt = now.replace(hour=hr, minute=30)
     ts = float(sim_dt.timestamp())
 
+    if colab_models:
+        results = []
+        for name in ("tas_gnn", "lightgcn"):
+            loaded = colab_models[name]
+            user = loaded["users"].get(u)
+            with torch.inference_mode():
+                values = (loaded["bundle"]["hourly_counts"][hr] if user is None else
+                          loaded["model"].scores(user, hr, wd, ts, loaded["embeddings"]))
+            results.append(values.numpy()[loaded["order"]].astype(float).copy())
+        return tuple(results)
+
     is_cold_start = u < 0 or u >= num_users
 
     if is_cold_start:
@@ -272,6 +312,7 @@ def compute_model_scores(u: int, hr: int, wd: int, user_lat: Optional[float] = N
 def health():
     return {
         "status": "healthy",
+        "artifact": model_metadata(colab_models["tas_gnn"]["bundle"]) if colab_models else None,
         "city": "Da Nang, Vietnam",
         "totalPois": num_items,
         "totalUsers": num_users,
@@ -306,18 +347,9 @@ def score_candidates_cpr(req: CprScoreRequest):
     results = []
     hr = min(max(0, req.hourOfDay), 23)
     wd = datetime.datetime.now().weekday()
-    now = datetime.datetime.now().replace(hour=hr, minute=30)
-    ts = float(now.timestamp())
+    u = req.userId if req.userId is not None else -1
+    scores_tgnn, _ = compute_model_scores(u, hr, wd)
 
-    u = req.userId if (req.userId is not None and 0 <= req.userId < num_users) else 0
-
-    # Lấy embedding user tại thời điểm hr
-    with torch.no_grad():
-        scores_tgnn = tgnn_model.predict_for_user_at_time(
-            u, ts, hr, wd, users_emb=u_emb_tgnn, items_emb=i_emb_tgnn
-        ).numpy()
-
-    # Chuẩn hóa min-max điểm GNN về [0, 1] cho C4
     min_s = float(scores_tgnn.min())
     max_s = float(scores_tgnn.max())
     range_s = max_s - min_s if max_s > min_s else 1.0
@@ -467,6 +499,8 @@ def get_recommendation(req: RecommendRequest):
     final_lgcn = build_items(top_lgcn_candidates, scores_lgcn)
 
     return RecommendResponse(
+        artifact=model_metadata(colab_models["tas_gnn"]["bundle"]) if colab_models else None,
+        source=("tas_gnn" if u in colab_models["tas_gnn"]["users"] else "hourly_popularity") if colab_models else None,
         model="ST-GNN-POI & MCDM (AHP + TOPSIS)" if req.enableDSS else "Spatio-Temporal GNN (TAS-GNN)",
         userId=u,
         queryTime=query_str,
@@ -582,22 +616,22 @@ def get_full_dss_recommendation(req: DssRecommendRequest):
     )
 
 
-# Serve Web Demo trực tiếp từ Root hoặc /demo
-@app.get("/demo", response_class=HTMLResponse)
-@app.get("/", response_class=HTMLResponse)
-def get_demo_page():
-    demo_file = os.path.join(ROOT, "demo_danang.html")
-    if os.path.exists(demo_file):
-        with open(demo_file, "r", encoding="utf-8") as f:
-            return HTMLResponse(content=f.read())
-    return HTMLResponse(content="<h2>Web Demo đang được biên dịch...</h2>")
+@app.get("/")
+def api_info():
+    return {
+        "service": "Da Nang POI Recommendation API",
+        "docs": "/docs",
+        "frontend": "http://127.0.0.1:3000",
+        "legacyDemo": "http://127.0.0.1:3000/demo_danang.html",
+    }
 
 
 if __name__ == "__main__":
     import uvicorn
     print("\n" + "=" * 60)
     print(" KHỞI CHẠY SERVER FASTAPI L-DSS RECOMMENDATION ENGINE")
-    print(" Truy cập Web Demo tại: http://localhost:8000/demo")
+    print(" Frontend chạy riêng trong FE: http://127.0.0.1:3000")
+    print(" Web Demo cũ: http://127.0.0.1:3000/demo_danang.html")
     print(" API Documentation tại: http://localhost:8000/docs")
     print("=" * 60)
     uvicorn.run(app, host="0.0.0.0", port=8000)

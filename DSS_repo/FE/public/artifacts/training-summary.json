@@ -1,0 +1,389 @@
+{
+  "runId": "dss_full_global_time_641d6a1a",
+  "runMode": "full",
+  "protocol": "global_time",
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "servingDataset": "danang",
+  "servingModel": "tas_gnn",
+  "servingSeed": 42,
+  "datasets": [
+    {
+      "id": "danang",
+      "users": 1500,
+      "pois": 996,
+      "events": 36210,
+      "split": {
+        "name": "global_time",
+        "train": 25347,
+        "validation": 2025,
+        "test": 3883,
+        "validation_raw": 3621,
+        "test_raw": 7242,
+        "validation_cold_user_events_excluded": 1596,
+        "test_cold_user_events_excluded": 3359,
+        "train_end_utc": "2023-09-09 01:24:00+00:00",
+        "fit_end_utc": "2023-10-18 00:13:00+00:00",
+        "test_start_utc": "2023-10-18 00:22:00+00:00",
+        "catalog_assumption": "Static full catalog; eligibility/core filtering uses the full source (transductive).",
+        "history_assumption": "Frozen fit history; test events do not update the graph or seen set.",
+        "novel_test_events": 3055,
+        "repeated_test_events": 828,
+        "repeated_test_percent": 21.323718774143703,
+        "test_item_cold_events": 0
+      },
+      "models": [
+        {
+          "name": "tas_gnn",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.16661211129296236,
+              "std": 0.0018225087930703826
+            },
+            "NDCG@10": {
+              "mean": 0.0909781914726545,
+              "std": 0.0011170440532028813
+            },
+            "MRR@10": {
+              "mean": 0.06817533923916903,
+              "std": 0.00094951783771274
+            }
+          }
+        },
+        {
+          "name": "tas_no_category",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.15941080196399346,
+              "std": 0.0053586597524533305
+            },
+            "NDCG@10": {
+              "mean": 0.08627949106270554,
+              "std": 0.005407942482643286
+            },
+            "MRR@10": {
+              "mean": 0.06430454887901696,
+              "std": 0.005331314788943912
+            }
+          }
+        },
+        {
+          "name": "tas_no_time",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.12744135297326786,
+              "std": 0.002000033036532826
+            },
+            "NDCG@10": {
+              "mean": 0.0699928442626246,
+              "std": 0.0004171796581500718
+            },
+            "MRR@10": {
+              "mean": 0.05262917933130699,
+              "std": 0.0007058308240671645
+            }
+          }
+        },
+        {
+          "name": "bpr_mf",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.12515002727768687,
+              "std": 0.003821992337836776
+            },
+            "NDCG@10": {
+              "mean": 0.06839200370169451,
+              "std": 0.0016372983340421105
+            },
+            "MRR@10": {
+              "mean": 0.0511208098442141,
+              "std": 0.0011048196797163064
+            }
+          }
+        },
+        {
+          "name": "tas_no_space",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.11456628477905073,
+              "std": 0.022826583792616883
+            },
+            "NDCG@10": {
+              "mean": 0.05693738585482719,
+              "std": 0.014491128093327074
+            },
+            "MRR@10": {
+              "mean": 0.03959213363468683,
+              "std": 0.012182345758087975
+            }
+          }
+        },
+        {
+          "name": "lightgcn",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.11412984178941625,
+              "std": 0.0010522259422796453
+            },
+            "NDCG@10": {
+              "mean": 0.0629359318854685,
+              "std": 0.0010391579056653465
+            },
+            "MRR@10": {
+              "mean": 0.0474520042605149,
+              "std": 0.0009680511686960461
+            }
+          }
+        },
+        {
+          "name": "geo_hourly",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.10703764320785597,
+              "std": 0.0
+            },
+            "NDCG@10": {
+              "mean": 0.0522804002258717,
+              "std": 0.0
+            },
+            "MRR@10": {
+              "mean": 0.03596433117709714,
+              "std": 0.0
+            }
+          }
+        },
+        {
+          "name": "hourly_popularity",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.08772504091653027,
+              "std": 0.0
+            },
+            "NDCG@10": {
+              "mean": 0.04178407986985823,
+              "std": 0.0
+            },
+            "MRR@10": {
+              "mean": 0.028042371340243684,
+              "std": 0.0
+            }
+          }
+        },
+        {
+          "name": "popularity",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.050409165302782326,
+              "std": 0.0
+            },
+            "NDCG@10": {
+              "mean": 0.02077726438374859,
+              "std": 0.0
+            },
+            "MRR@10": {
+              "mean": 0.01206751876964643,
+              "std": 0.0
+            }
+          }
+        }
+      ],
+      "categoryCoverage": {
+        "cafe": {
+          "catalog_pois": 304,
+          "active_pois": 304,
+          "events": 19275
+        },
+        "hotel": {
+          "catalog_pois": 295,
+          "active_pois": 0,
+          "events": 0
+        },
+        "restaurant": {
+          "catalog_pois": 293,
+          "active_pois": 293,
+          "events": 10766
+        },
+        "tourist_spot": {
+          "catalog_pois": 104,
+          "active_pois": 104,
+          "events": 6169
+        }
+      }
+    },
+    {
+      "id": "gowalla",
+      "users": 18737,
+      "pois": 32510,
+      "events": 1278102,
+      "split": {
+        "name": "global_time",
+        "train": 894671,
+        "validation": 109658,
+        "test": 207611,
+        "validation_raw": 127810,
+        "test_raw": 255621,
+        "validation_cold_user_events_excluded": 18152,
+        "test_cold_user_events_excluded": 48010,
+        "train_end_utc": "2010-08-08 18:51:11+00:00",
+        "fit_end_utc": "2010-09-03 13:18:56+00:00",
+        "test_start_utc": "2010-09-03 13:18:57+00:00",
+        "catalog_assumption": "Static full catalog; eligibility/core filtering uses the full source (transductive).",
+        "history_assumption": "Frozen fit history; test events do not update the graph or seen set.",
+        "novel_test_events": 135604,
+        "repeated_test_events": 72007,
+        "repeated_test_percent": 34.68361503003213,
+        "test_item_cold_events": 4175
+      },
+      "models": [
+        {
+          "name": "geo_hourly",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.056429013893395476,
+              "std": 0.0
+            },
+            "NDCG@10": {
+              "mean": 0.03112108000026849,
+              "std": 0.0
+            },
+            "MRR@10": {
+              "mean": 0.02345364396705065,
+              "std": 0.0
+            }
+          }
+        },
+        {
+          "name": "tas_no_space",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.055204861213533525,
+              "std": 0.000790920913893734
+            },
+            "NDCG@10": {
+              "mean": 0.031128990750191265,
+              "std": 0.0005655014003419682
+            },
+            "MRR@10": {
+              "mean": 0.02383165095253234,
+              "std": 0.0005074971503827443
+            }
+          }
+        },
+        {
+          "name": "lightgcn",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.05496396369821933,
+              "std": 0.00046880241051852444
+            },
+            "NDCG@10": {
+              "mean": 0.031217079378049364,
+              "std": 0.00020013187457925175
+            },
+            "MRR@10": {
+              "mean": 0.02401594984243726,
+              "std": 0.00015260910135771075
+            }
+          }
+        },
+        {
+          "name": "bpr_mf",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.054836140526828114,
+              "std": 0.0006969113608053893
+            },
+            "NDCG@10": {
+              "mean": 0.030439634944353783,
+              "std": 0.0007326028924027353
+            },
+            "MRR@10": {
+              "mean": 0.023039098517329246,
+              "std": 0.0007322383866061146
+            }
+          }
+        },
+        {
+          "name": "tas_gnn",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.0532162276432357,
+              "std": 0.0010219706518849717
+            },
+            "NDCG@10": {
+              "mean": 0.029548535659969007,
+              "std": 0.0007125516511946692
+            },
+            "MRR@10": {
+              "mean": 0.02239015791234015,
+              "std": 0.000628387668327988
+            }
+          }
+        },
+        {
+          "name": "tas_no_time",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.051389831175088246,
+              "std": 0.0005302061591529947
+            },
+            "NDCG@10": {
+              "mean": 0.028851630148702977,
+              "std": 0.0004420841478895358
+            },
+            "MRR@10": {
+              "mean": 0.022021580617012905,
+              "std": 0.00041807687622920744
+            }
+          }
+        },
+        {
+          "name": "popularity",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.023996342290787884,
+              "std": 0.0
+            },
+            "NDCG@10": {
+              "mean": 0.011621089936628389,
+              "std": 0.0
+            },
+            "MRR@10": {
+              "mean": 0.007958900402338648,
+              "std": 0.0
+            }
+          }
+        },
+        {
+          "name": "hourly_popularity",
+          "metrics": {
+            "HR@10": {
+              "mean": 0.02356862629420961,
+              "std": 0.0
+            },
+            "NDCG@10": {
+              "mean": 0.0113407175578005,
+              "std": 0.0
+            },
+            "MRR@10": {
+              "mean": 0.007670241852677475,
+              "std": 0.0
+            }
+          }
+        }
+      ],
+      "categoryCoverage": {
+        "unknown": {
+          "catalog_pois": 32510,
+          "active_pois": 32510,
+          "events": 1278102
+        }
+      }
+    }
+  ],
+  "assetBase": "/artifacts/dss_full_global_time_641d6a1a",
+  "verifiedFiles": 124
+}

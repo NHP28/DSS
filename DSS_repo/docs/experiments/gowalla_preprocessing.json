@@ -1,0 +1,34 @@
+{
+  "dataset_id": "gowalla",
+  "poi_file": "pois.csv",
+  "event_file": "checkins.csv",
+  "has_categories": false,
+  "timezone": "longitude_offset_approximation",
+  "data_provenance": "Real public Gowalla check-ins and coordinates from Stanford SNAP; categories unavailable",
+  "source_url": "https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz",
+  "source_sha256": "c1c3e19effba649b6c89aeab3c1f9459fad88cfdc2b460fc70fd54e295d83ea0",
+  "preprocess_version": 1,
+  "raw_events": 6442892,
+  "raw_valid_events": 6442863,
+  "invalid_events_removed": 29,
+  "duplicate_events_removed": 601,
+  "core": {
+    "min_user_pois": 15,
+    "min_poi_users": 10
+  },
+  "full_core": {
+    "users": 18737,
+    "pois": 32510,
+    "events": 1278102
+  },
+  "sample_max_users": null,
+  "sample_seed": 42,
+  "is_subset": false,
+  "num_users": 18737,
+  "num_pois": 32510,
+  "num_checkins": 1278102,
+  "processed_sha256": {
+    "pois.csv": "c2bb89c1dae5a4ff595c360df5ecc670aef6891d9a0cd7962e488c04fb70aad5",
+    "checkins.csv": "d2eb40ecc1f4955d86aec2b989e12511c6a3a6a581437dbd7091694a48fb8458"
+  }
+}

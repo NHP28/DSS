@@ -50,7 +50,8 @@ DSS/
 │   │   ├── evaluate_time_aware.py  # Đánh giá time-aware next-POI
 │   │   ├── train_compare.py        # Huấn luyện & đối sánh
 │   │   └── showcase_personas.py    # Phân tích định tính 3 nhóm người dùng
-│   ├── demo_danang.html            # Bản đồ số tương tác (Leaflet + Google Roadmap + AHP-TOPSIS Panel)
+│   ├── FE/                         # Frontend Next.js độc lập, package/lockfile riêng
+│   │   └── public/demo_danang.html # Demo bản đồ HTML cũ (Leaflet + AHP-TOPSIS Panel)
 │   └── server.py                   # FastAPI Server tích hợp AHP-TOPSIS & endpoint CPR cho NestJS
 │
 ├── BE_API/                         # Backend NestJS quản lý dữ liệu L-DSS (Drizzle ORM)
@@ -100,7 +101,17 @@ cd DSS_repo
 python server.py
 ```
 * **Swagger API Documentation:** [http://localhost:8000/docs](http://localhost:8000/docs)
-* **Web Demo Bản Đồ Tương Tác:** [http://localhost:8000/demo](http://localhost:8000/demo)
+
+Chạy frontend trong terminal riêng:
+
+```powershell
+cd F:\dss\DSS_repo\FE
+npm.cmd ci
+npm.cmd run dev
+```
+
+* **Web Demo Bản Đồ Tương Tác:** [http://127.0.0.1:3000/demo_danang.html](http://127.0.0.1:3000/demo_danang.html)
+* **Giao diện Next.js chính:** [hướng dẫn chạy FE + NestJS + Python inference](DSS_repo/docs/RUNNING.md).
 
 ### Bước 3: Chạy Kịch bản Đối soát Baseline độc lập
 ```bash
