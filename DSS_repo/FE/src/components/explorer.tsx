@@ -9,12 +9,13 @@ import TrainingArtifacts from './training-artifacts';
 
 const PoiMap = dynamic(()=>import('./poi-map'),{ssr:false,loading:()=> <div className="map-loading">Đang tải bản đồ…</div>});
 const presets = {balanced:'Cân bằng',proximity:'Gần tôi nhất',budget:'Tiết kiệm',ai_centric:'Hợp sở thích'};
+const categoryTabs = {'':{label:'Tất cả',symbol:'✦'},...categories};
 const criterionLabels = ['Khoảng cách','Đánh giá','Chi phí','Phù hợp','Phổ biến'];
 const weekdays = ['Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy','Chủ nhật'];
 const scenarios = [
   {id:'morning',symbol:'☕',title:'Cafe sáng gần bạn',description:'08:00 · dưới 60.000đ · trong 5 km'},
   {id:'evening',symbol:'♨',title:'Một bữa tối thảnh thơi',description:'19:00 · dưới 200.000đ · trong 8 km'},
-  {id:'personal',symbol:'✦',title:'Khám phá theo sở thích',description:'Chọn người dùng có lịch sử để trải nghiệm'},
+  {id:'personal',symbol:'✦',title:'Khám phá theo sở thích',description:'Tất cả danh mục · người dùng có lịch sử'},
 ];
 
 export default function Explorer() {
@@ -30,7 +31,7 @@ export default function Explorer() {
   const [loading,setLoading] = useState(false);
   const [error,setError] = useState('');
   const [notice,setNotice] = useState('');
-  const [tab,setTab] = useState('cafe');
+  const [tab,setTab] = useState('');
   const [selected,setSelected] = useState<number|null>(null);
   const [compare,setCompare] = useState<Place[]>([]);
   const [search,setSearch] = useState('');
@@ -45,7 +46,7 @@ export default function Explorer() {
       if (id!==requestId.current) return;
       setResult(data);setAppliedForm({...query,weightLevels:[...query.weightLevels]});
       setLocation({latitude:query.latitude,longitude:query.longitude});
-      setTab(data.groups.find(g=>g.category===(query.category||'cafe'))?.category||data.groups[0]?.category||'cafe');
+      setTab(query.category);
       setSelected(null);setCompare([]);setSearch('');setFiltersOpen(false);
     } catch(e) {if(id===requestId.current){setError((e as Error).message || 'Không thể kết nối máy chủ.');setResult(null);}}
     finally {if(id===requestId.current)setLoading(false);}
@@ -65,11 +66,13 @@ export default function Explorer() {
       latitude:form.latitude,longitude:form.longitude,dayOfWeek:form.dayOfWeek,
       ...(id==='morning'?{hour:8,category:'cafe',maxPrice:'60000',radiusKm:5,preset:'proximity'}:
         id==='evening'?{hour:19,category:'restaurant',maxPrice:'200000',radiusKm:8,preset:'balanced'}:
-        {hour:form.hour,category:'cafe',userId:String(user?.id??''),preset:'ai_centric'})};
+        {hour:form.hour,userId:String(user?.id??''),preset:'ai_centric'})};
     setActiveScenario(id);setForm(query);setSection('explore');void getResults(query);
   };
   const group = result?.groups.find(g=>g.category===tab);
-  const places = (group?.items||[]).filter(p=>searchText(p.name+' '+p.district).includes(searchText(search.trim())));
+  // Interleave category ranks without comparing TOPSIS scores across categories.
+  const suggestions = tab ? group?.items||[] : (result?.groups||[]).flatMap(g=>g.items).sort((a,b)=>a.rank-b.rank);
+  const places = suggestions.filter(p=>searchText(p.name+' '+p.district).includes(searchText(search.trim())));
   const selectedPlace = places.find(p=>p.id===selected);
   const addCompare = (p:Place)=>{
     if(compare.some(x=>x.id===p.id))setCompare(compare.filter(x=>x.id!==p.id));
@@ -89,7 +92,7 @@ export default function Explorer() {
     finally{setPendingFeedback(null);}
   };
   const selectCategory=(category:string)=>{
-    setTab(category);setSelected(null);
+    setTab(category);setSelected(null);setSearch('');
     if(appliedForm?.category&&appliedForm.category!==category){
       const query={...form,category};setForm(query);setActiveScenario(null);void getResults(query);
     }
@@ -139,7 +142,7 @@ export default function Explorer() {
             <label className="filter-field"><span><SlidersHorizontal size={15}/>ƯU TIÊN CỦA BẠN</span><select value={form.preset} onChange={e=>{setForm(previous=>({...previous,preset:e.target.value,customWeights:false}));setActiveScenario(null);}}>{Object.entries(presets).map(([key,label])=><option key={key} value={key}>{label}</option>)}</select></label>
             <button className="primary-button search-button" disabled={loading} type="submit">{loading?<RotateCw size={17} className="spin"/>:<Sparkles size={17}/>} {loading?'Đang tìm…':'Tìm địa điểm'}<ArrowRight size={17}/></button>
           </div>
-          <div className="filter-footer"><span><span className="location-dot"/>Trong bán kính {form.radiusKm} km <span className="separator">·</span> {form.userId===''?'Dành cho khách mới':`Người dùng #${form.userId}`}</span><button type="button" className="text-button" onClick={()=>setFiltersOpen(!filtersOpen)} aria-expanded={filtersOpen}><SlidersHorizontal size={14}/>Bộ lọc chi tiết<ChevronDown size={14}/></button></div>
+          <div className="filter-footer"><span><span className="location-dot"/>Trong bán kính {form.radiusKm} km <span className="separator">·</span> {form.userId===''?'Dành cho khách mới':`Người dùng #${form.userId}`} <span className="separator">·</span> {form.category?categories[form.category]?.label:'Tất cả danh mục'}</span><button type="button" className="text-button" onClick={()=>setFiltersOpen(!filtersOpen)} aria-expanded={filtersOpen}><SlidersHorizontal size={14}/>Bộ lọc chi tiết<ChevronDown size={14}/></button></div>
           {filtersOpen&&<div className="advanced-filters">
             <label>Người dùng<select value={form.userId} onChange={e=>change('userId',e.target.value)}><option value="">Khách mới (cold start)</option>{users.map(u=><option value={u.id} key={u.id}>{u.display_name}</option>)}</select></label>
             <label>Ngày trong tuần<select value={form.dayOfWeek} onChange={e=>change('dayOfWeek',Number(e.target.value))}>{weekdays.map((d,i)=><option value={i} key={d}>{d}</option>)}</select></label>
@@ -161,23 +164,24 @@ export default function Explorer() {
           <span><Clock3 size={14}/>{String(appliedForm.hour).padStart(2,'0')}:00 · {weekdays[appliedForm.dayOfWeek]}</span>
           <span><Compass size={14}/>{appliedForm.userId===''?'Khách mới':`Người dùng #${appliedForm.userId}`}</span>
           <span><MapPin size={14}/>Trong {appliedForm.radiusKm} km</span>
+          <span>{appliedForm.category?categories[appliedForm.category]?.label:'Tất cả danh mục'}</span>
           <span>{appliedForm.maxPrice!==''?`Tối đa ${money(Number(appliedForm.maxPrice))}`:'Không giới hạn ngân sách'}</span>
         </div>}
         {result?.artifact?.runId&&<div className="artifact-context"><FlaskConical size={15}/><span>Bộ model Đà Nẵng · seed {result.artifact.seed} · {result.artifact.selectedEpoch} epoch</span><button onClick={()=>setSection('about')}>Xem kết quả huấn luyện<ArrowRight size={14}/></button></div>}
         {result?.warning&&<div className="notice-bar"><Info size={16}/>{result.warning}</div>}
         {result?.smokeRun&&<div className="notice-bar">Artifact đang dùng chỉ là lượt chạy kiểm tra trên tập con, chưa phải mô hình huấn luyện đầy đủ.</div>}
         {error?<div className="error-panel" role="alert"><Info size={28}/><h3>Chưa tải được gợi ý</h3><p>{error}</p><p>Thử kết nối lại để tiếp tục tìm địa điểm.</p><button className="primary-button" disabled={loading} onClick={()=>void getResults(form)}>Thử lại<RotateCw size={16}/></button></div>:<>
-          <div className="results-toolbar"><div className="category-tabs" role="tablist" aria-label="Danh mục địa điểm">{Object.entries(categories).map(([key,c])=><button role="tab" aria-selected={tab===key} key={key} disabled={loading} className={tab===key?'category-tab active':'category-tab'} onClick={()=>selectCategory(key)}><span>{c.symbol}</span>{c.label}<small>{result?.groups.find(g=>g.category===key)?.total||0}</small></button>)}</div><label className="inline-search"><Search size={16}/><input aria-label="Tìm trong kết quả" placeholder="Tìm tên hoặc khu vực…" value={search} onChange={e=>setSearch(e.target.value)}/></label></div>
+          <div className="results-toolbar"><div className="category-tabs" role="tablist" aria-label="Danh mục địa điểm">{Object.entries(categoryTabs).map(([key,c])=><button role="tab" aria-selected={tab===key} key={key} disabled={loading} className={tab===key?'category-tab active':'category-tab'} onClick={()=>selectCategory(key)}><span>{c.symbol}</span>{c.label}{(!appliedForm?.category||appliedForm.category===key)&&<small>{key?(result?.groups.find(g=>g.category===key)?.total||0):(result?.totalCandidates||0)}</small>}</button>)}</div><label className="inline-search"><Search size={16}/><input aria-label="Tìm trong kết quả" placeholder="Tìm tên hoặc khu vực…" value={search} onChange={e=>setSearch(e.target.value)}/></label></div>
           <div className="explore-grid" aria-busy={loading}>
             <section className="place-list" aria-label="Danh sách địa điểm">
-              <div className="list-meta"><span>{loading?'Đang cập nhật…':`${places.length} gợi ý hàng đầu`}</span><span><ArrowDownUp size={12}/>Điểm phù hợp</span></div>
+              <div className="list-meta"><span>{loading?'Đang cập nhật…':`${places.length} gợi ý${tab?' hàng đầu':' · theo từng danh mục'}`}</span><span><ArrowDownUp size={12}/>{tab?'Điểm phù hợp':'Thứ hạng trong danh mục'}</span></div>
               {loading&&!result?Array.from({length:3},(_,i)=><div key={i} className="skeleton-card"/>):places.map(p=><article key={p.id} id={`place-${p.id}`} className={selected===p.id?'place-card selected':'place-card'}>
-                <button className={`place-visual ${p.category}`} onClick={()=>setSelected(p.id)} aria-label={`Xem ${p.name} trên bản đồ`}><span className="visual-window"/><span className="visual-line"/><span className="visual-symbol">{categories[p.category]?.symbol}</span><span className="rank-tag">{String(p.rank).padStart(2,'0')}</span></button>
-                <div className="place-content"><div className="place-topline"><span className="place-district">{p.district}</span><button className="icon-button" disabled={loading||pendingFeedback!==null} aria-label={`${savedPlaces.has(`${appliedForm?.userId}:${p.id}`)?'Đã lưu':'Lưu'} ${p.name}`} aria-pressed={savedPlaces.has(`${appliedForm?.userId}:${p.id}`)} onClick={()=>void feedback(p,'like')}><Heart size={16} fill={savedPlaces.has(`${appliedForm?.userId}:${p.id}`)?'currentColor':'none'}/></button></div><button className="place-name" onClick={()=>setSelected(p.id)}>{p.name}</button><div className="place-facts"><span><Star size={12} fill="currentColor"/>{p.rating.toFixed(1)}</span><span>·</span><span title="Khoảng cách đường chim bay">{p.distanceKm.toFixed(1)} km</span><span>·</span><span>{money(p.price_avg)}</span></div><div className="place-bottom"><span className="score-pill" title="Điểm TOPSIS tương đối trong danh mục; không phải xác suất"><Sparkles size={11}/>{Math.round(p.topsisScore*100)} điểm</span><button className={compare.some(x=>x.id===p.id)?'compare-button checked':'compare-button'} aria-pressed={compare.some(x=>x.id===p.id)} onClick={()=>addCompare(p)}>{compare.some(x=>x.id===p.id)?<Check size={12}/>:<GitCompareArrows size={12}/>}So sánh</button></div></div>
+                <button className={`place-visual ${p.category}`} onClick={()=>setSelected(p.id)} aria-label={`Xem ${p.name} trên bản đồ`}><span className="visual-window"/><span className="visual-line"/><span className="visual-symbol">{categories[p.category]?.symbol}</span><span className="rank-tag" title={`Hạng ${p.rank} trong ${categories[p.category]?.label}`}>{String(p.rank).padStart(2,'0')}</span></button>
+                <div className="place-content"><div className="place-topline"><span className="place-district">{!tab&&`${categories[p.category]?.label} · `}{p.district}</span><button className="icon-button" disabled={loading||pendingFeedback!==null} aria-label={`${savedPlaces.has(`${appliedForm?.userId}:${p.id}`)?'Đã lưu':'Lưu'} ${p.name}`} aria-pressed={savedPlaces.has(`${appliedForm?.userId}:${p.id}`)} onClick={()=>void feedback(p,'like')}><Heart size={16} fill={savedPlaces.has(`${appliedForm?.userId}:${p.id}`)?'currentColor':'none'}/></button></div><button className="place-name" onClick={()=>setSelected(p.id)}>{p.name}</button><div className="place-facts"><span><Star size={12} fill="currentColor"/>{p.rating.toFixed(1)}</span><span>·</span><span title="Khoảng cách đường chim bay">{p.distanceKm.toFixed(1)} km</span><span>·</span><span>{money(p.price_avg)}</span></div><div className="place-bottom"><span className="score-pill" title="Điểm TOPSIS tương đối trong danh mục; không phải xác suất"><Sparkles size={11}/>{Math.round(p.topsisScore*100)} điểm</span><button className={compare.some(x=>x.id===p.id)?'compare-button checked':'compare-button'} aria-pressed={compare.some(x=>x.id===p.id)} onClick={()=>addCompare(p)}>{compare.some(x=>x.id===p.id)?<Check size={12}/>:<GitCompareArrows size={12}/>}So sánh</button></div></div>
               </article>)}
               {!loading&&!places.length&&<div className="empty-state"><Search size={28}/><h3>Chưa có địa điểm phù hợp</h3><p>Thử tăng bán kính, đổi danh mục hoặc bỏ giới hạn ngân sách.</p></div>}
             </section>
-            <section className="map-panel" aria-label="Bản đồ khám phá"><PoiMap places={places} selected={selected} onSelect={selectFromMap} latitude={location.latitude} longitude={location.longitude}/><div className="map-caption"><MapPin size={14}/>{categories[tab]?.label} quanh bạn<span>ĐÀ NẴNG</span></div>
+            <section className="map-panel" aria-label="Bản đồ khám phá"><PoiMap places={places} selected={selected} onSelect={selectFromMap} latitude={location.latitude} longitude={location.longitude}/><div className="map-caption"><MapPin size={14}/>{tab?categories[tab]?.label:'Địa điểm'} quanh bạn<span>ĐÀ NẴNG</span></div>
               {selectedPlace&&<div className="map-detail"><button className="detail-close icon-button" aria-label="Đóng chi tiết" onClick={()=>setSelected(null)}><X size={16}/></button><span className="eyebrow">ĐỊA ĐIỂM #{selectedPlace.rank}</span><h3>{selectedPlace.name}</h3><p>{selectedPlace.explanation}</p><div className="detail-actions"><a target="_blank" rel="noreferrer" href={`https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=${location.latitude}%2C${location.longitude}%3B${selectedPlace.latitude}%2C${selectedPlace.longitude}`}><Navigation size={14}/>Chỉ đường</a><button disabled={loading||pendingFeedback!==null} onClick={()=>void feedback(selectedPlace,'visit')}><Check size={14}/>{pendingFeedback===selectedPlace.id?'Đang lưu…':'Đã ghé'}</button></div></div>}
             </section>
           </div>

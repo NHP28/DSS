@@ -44,6 +44,8 @@ Từ thư mục `DSS_repo` cũng có thể dùng `npm.cmd run dev:fe` hoặc
 
 - Chọn **Cafe sáng gần bạn**, **Một bữa tối thảnh thơi** hoặc **Khám phá theo sở thích** để gửi truy vấn thực tới API.
   Kịch bản cá nhân hóa chỉ bật khi đã tải được danh sách người dùng; nguồn gợi ý hiển thị theo kết quả thực tế trả về.
+- **Khám phá theo sở thích** tìm trong tất cả danh mục. Tab **Tất cả** hiển thị xen kẽ gợi ý theo thứ hạng trong từng danh mục;
+  chọn tab riêng để xem cà phê, nhà hàng, khách sạn hoặc tham quan. TOPSIS không so điểm giữa các danh mục.
 - Bật **Tự điều chỉnh** để thay đổi năm mức ưu tiên. FE chuyển các mức 1–9 thành ma trận AHP đối ứng, nhất quán;
   bấm **Tìm địa điểm** để API tính lại trọng số và xếp hạng TOPSIS.
 - Khi sửa bộ lọc, thông báo nhắc áp dụng thay đổi; phần ngữ cảnh kết quả vẫn chỉ người dùng, giờ/ngày và ngân sách của lần tìm thành công gần nhất.
