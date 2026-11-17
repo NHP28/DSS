@@ -23,6 +23,12 @@ Frontend gọi `/api/*`; Next.js proxy tới NestJS qua HTTP. NestJS gọi dịc
 Python inference; FE không import code Python, checkpoint hoặc dữ liệu model.
 Để lấy dữ liệu/gợi ý, chạy các dịch vụ backend theo [hướng dẫn](../docs/RUNNING.md).
 
+Bản đồ nền dùng Esri World Street Map và dự phòng OpenStreetMap. Khi một nguồn
+không tải được tile, FE chuyển sang nguồn còn lại; nếu cả hai lỗi, bản đồ hiện
+thông báo và nút **Thử tải lại**. Marker và danh sách địa điểm vẫn thao tác được.
+Trình duyệt cần truy cập Internet để tải lớp nền. Nguồn Esri đã được kiểm tra
+bằng tile thực tại trung tâm Đà Nẵng sau khi nguồn OSM gặp lỗi phân giải DNS.
+
 ## Kiểm tra và build
 
 ```powershell

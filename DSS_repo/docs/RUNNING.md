@@ -185,7 +185,8 @@ Python không còn phục vụ trang tại `/` hoặc `/demo`.
 - Khi thiếu AI/artifact không khớp fingerprint hoặc ID, dùng hourly popularity và hiển thị rõ nguồn.
   Khách mới dùng baseline từ artifact, không mượn embedding của user khác.
 - Điểm model được min-max theo catalog, là điểm xếp hạng tương đối, không phải xác suất.
-- Bản đồ cần kết nối tới máy chủ tile OSM. Các minh họa trên thẻ là đồ họa danh mục, không phải ảnh thực địa.
+- Bản đồ cần kết nối tới máy chủ tile Esri hoặc OpenStreetMap. FE tự chuyển nguồn khi tải lỗi,
+  hiện thông báo/nút thử lại nếu cả hai nguồn đều lỗi. Các minh họa trên thẻ là đồ họa danh mục, không phải ảnh thực địa.
 
 | Method | Endpoint | Chức năng |
 |---|---|---|
