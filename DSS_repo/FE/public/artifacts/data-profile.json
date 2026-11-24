@@ -1,0 +1,404 @@
+{
+ "danang": {
+  "pois": 996,
+  "users": 1500,
+  "checkins": 36210,
+  "friendships": 7765,
+  "timeRange": [
+   "2023-01-01 07:05:00",
+   "2023-12-31 21:57:00"
+  ],
+  "boundingBox": [
+   15.900738,
+   108.050431,
+   16.194385,
+   108.349609
+  ],
+  "density": 0.02186,
+  "checkinsPerUser": {
+   "min": 9,
+   "median": 23.0,
+   "mean": 24.1,
+   "max": 50
+  },
+  "poisWithoutCheckins": 295,
+  "categories": [
+   {
+    "key": "cafe",
+    "pois": 304,
+    "checkins": 19275
+   },
+   {
+    "key": "restaurant",
+    "pois": 293,
+    "checkins": 10766
+   },
+   {
+    "key": "tourist_spot",
+    "pois": 104,
+    "checkins": 6169
+   },
+   {
+    "key": "hotel",
+    "pois": 295,
+    "checkins": 0
+   }
+  ],
+  "districts": [
+   {
+    "name": "Hải Châu",
+    "pois": 363
+   },
+   {
+    "name": "Sơn Trà",
+    "pois": 268
+   },
+   {
+    "name": "Ngũ Hành Sơn",
+    "pois": 183
+   },
+   {
+    "name": "Liên Chiểu",
+    "pois": 89
+   },
+   {
+    "name": "Thanh Khê",
+    "pois": 55
+   },
+   {
+    "name": "Hòa Vang",
+    "pois": 22
+   },
+   {
+    "name": "Cẩm Lệ",
+    "pois": 16
+   }
+  ],
+  "byHour": [
+   {
+    "hour": 0,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 1,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 2,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 3,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 4,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 5,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 6,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 7,
+    "cafe": 3569,
+    "restaurant": 747,
+    "tourist_spot": 0,
+    "total": 4316
+   },
+   {
+    "hour": 8,
+    "cafe": 3467,
+    "restaurant": 770,
+    "tourist_spot": 0,
+    "total": 4237
+   },
+   {
+    "hour": 9,
+    "cafe": 3425,
+    "restaurant": 783,
+    "tourist_spot": 0,
+    "total": 4208
+   },
+   {
+    "hour": 10,
+    "cafe": 2692,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 2692
+   },
+   {
+    "hour": 11,
+    "cafe": 0,
+    "restaurant": 1565,
+    "tourist_spot": 0,
+    "total": 1565
+   },
+   {
+    "hour": 12,
+    "cafe": 0,
+    "restaurant": 1441,
+    "tourist_spot": 0,
+    "total": 1441
+   },
+   {
+    "hour": 13,
+    "cafe": 0,
+    "restaurant": 1481,
+    "tourist_spot": 0,
+    "total": 1481
+   },
+   {
+    "hour": 14,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 15,
+    "cafe": 793,
+    "restaurant": 0,
+    "tourist_spot": 728,
+    "total": 1521
+   },
+   {
+    "hour": 16,
+    "cafe": 729,
+    "restaurant": 0,
+    "tourist_spot": 753,
+    "total": 1482
+   },
+   {
+    "hour": 17,
+    "cafe": 745,
+    "restaurant": 0,
+    "tourist_spot": 750,
+    "total": 1495
+   },
+   {
+    "hour": 18,
+    "cafe": 970,
+    "restaurant": 995,
+    "tourist_spot": 992,
+    "total": 2957
+   },
+   {
+    "hour": 19,
+    "cafe": 931,
+    "restaurant": 998,
+    "tourist_spot": 981,
+    "total": 2910
+   },
+   {
+    "hour": 20,
+    "cafe": 995,
+    "restaurant": 973,
+    "tourist_spot": 961,
+    "total": 2929
+   },
+   {
+    "hour": 21,
+    "cafe": 959,
+    "restaurant": 1013,
+    "tourist_spot": 1004,
+    "total": 2976
+   },
+   {
+    "hour": 22,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   },
+   {
+    "hour": 23,
+    "cafe": 0,
+    "restaurant": 0,
+    "tourist_spot": 0,
+    "total": 0
+   }
+  ],
+  "byWeekday": [
+   5147,
+   5229,
+   5206,
+   5227,
+   5157,
+   5094,
+   5150
+  ]
+ },
+ "gowalla": {
+  "users": 18737,
+  "pois": 32510,
+  "checkins": 1278102,
+  "source": "Stanford SNAP loc-gowalla, lọc lặp ≥15 POI/người dùng và ≥10 người dùng/POI",
+  "note": "Check-in thật, không có danh mục, giá hay đánh giá."
+ },
+ "schema": {
+  "danang_pois_full.csv": [
+   {
+    "column": "l",
+    "type": "số nguyên",
+    "meaning": "Mã địa điểm (0–995)",
+    "origin": "OpenStreetMap"
+   },
+   {
+    "column": "name",
+    "type": "chuỗi",
+    "meaning": "Tên địa điểm",
+    "origin": "OpenStreetMap"
+   },
+   {
+    "column": "category",
+    "type": "chuỗi",
+    "meaning": "cafe · restaurant · hotel · tourist_spot",
+    "origin": "OpenStreetMap"
+   },
+   {
+    "column": "lat",
+    "type": "số thực",
+    "meaning": "Vĩ độ",
+    "origin": "OpenStreetMap"
+   },
+   {
+    "column": "lon",
+    "type": "số thực",
+    "meaning": "Kinh độ",
+    "origin": "OpenStreetMap"
+   },
+   {
+    "column": "district",
+    "type": "chuỗi",
+    "meaning": "Quận/huyện",
+    "origin": "OpenStreetMap"
+   },
+   {
+    "column": "rating",
+    "type": "số thực",
+    "meaning": "Điểm đánh giá 1–5",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "user_ratings_total",
+    "type": "số nguyên",
+    "meaning": "Số lượt đánh giá",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "price_avg",
+    "type": "số thực",
+    "meaning": "Giá trung bình (đồng)",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "popularity",
+    "type": "số nguyên",
+    "meaning": "Độ phổ biến 0–100",
+    "origin": "Mô phỏng"
+   }
+  ],
+  "danang_checkins_full.csv": [
+   {
+    "column": "u",
+    "type": "số nguyên",
+    "meaning": "Mã người dùng (0–1499)",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "l",
+    "type": "số nguyên",
+    "meaning": "Mã địa điểm",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "ts",
+    "type": "số nguyên",
+    "meaning": "Thời điểm check-in (Unix giây)",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "datetime",
+    "type": "chuỗi",
+    "meaning": "Giờ địa phương Asia/Ho_Chi_Minh",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "hour",
+    "type": "số nguyên",
+    "meaning": "Giờ trong ngày 0–23",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "day_of_week",
+    "type": "số nguyên",
+    "meaning": "Thứ: 0 = thứ Hai … 6 = Chủ nhật",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "is_weekend",
+    "type": "0/1",
+    "meaning": "Cuối tuần",
+    "origin": "Mô phỏng"
+   }
+  ],
+  "danang_social_full.csv": [
+   {
+    "column": "u1",
+    "type": "số nguyên",
+    "meaning": "Người dùng thứ nhất",
+    "origin": "Mô phỏng"
+   },
+   {
+    "column": "u2",
+    "type": "số nguyên",
+    "meaning": "Người dùng thứ hai (bạn bè)",
+    "origin": "Mô phỏng"
+   }
+  ]
+ },
+ "graph": {
+  "nodes": {
+   "User": 1500,
+   "POI": 996,
+   "Category": 4,
+   "District": 7,
+   "TimeSlot": 5
+  },
+  "relationships": {
+   "VISITED": 32661,
+   "FRIEND_OF": 7765,
+   "IN_CATEGORY": 996,
+   "LOCATED_IN": 996,
+   "NEAR": 4980,
+   "BUSY_AT": 1977,
+   "ACTIVE_AT": 4968
+  }
+ }
+}

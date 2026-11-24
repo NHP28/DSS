@@ -1,0 +1,9 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {"name": "ml", "runtimeExecutable": "python", "runtimeArgs": ["-m", "uvicorn", "ml.serve:app", "--host", "127.0.0.1", "--port", "8000", "--app-dir", "DSS_repo"], "port": 8000},
+    {"name": "api-memory", "runtimeExecutable": "npm", "runtimeArgs": ["--prefix", "DSS_repo", "run", "dev:api:memory"], "port": 4000},
+    {"name": "api", "runtimeExecutable": "npm", "runtimeArgs": ["--prefix", "DSS_repo", "run", "dev:api"], "port": 4000},
+    {"name": "web", "runtimeExecutable": "npm", "runtimeArgs": ["--prefix", "DSS_repo/FE", "run", "dev"], "port": 3000}
+  ]
+}

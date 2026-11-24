@@ -1,0 +1,193 @@
+{
+  "generatedAt": "2026-11-24T05:24:12+00:00",
+  "dataset": {
+    "users": 1500,
+    "pois": 996,
+    "events": 36210,
+    "trainEvents": 28360,
+    "testEvents": 7850,
+    "novelTestEvents": 6811
+  },
+  "protocol": "Chia 80/20 theo thời gian cho từng người dùng; chỉ tính sự kiện test tại địa điểm chưa ghé trong train; xếp hạng trên toàn bộ catalog trừ các địa điểm đã ghé; đánh giá toàn bộ sự kiện với giờ và thứ thật.",
+  "notes": {
+    "feature_gbm": "HistGradientBoosting, max_depth=4, 39,435 dòng huấn luyện, mẫu âm 4:1",
+    "bpr_mf": "dim 64, 30 epoch, Adam lr 0.005 (chọn trên validation)",
+    "user_knn": "cosine trên ma trận số lượt ghé",
+    "item_knn": "cosine, 50 láng giềng",
+    "gnn": "checkpoint huấn luyện trên 70% đầu, đồ thị lan truyền dựng từ 80% đầu; không huấn luyện lại",
+    "hour_prev_distance": "được biết vị trí check-in ngay trước sự kiện test; các phương pháp khác thì không"
+  },
+  "models": [
+    {
+      "key": "popularity",
+      "label": "Phổ biến chung",
+      "group": "heuristic",
+      "main": false,
+      "usesPrevLocation": false,
+      "trainSeconds": 0.0,
+      "metrics": {
+        "HR@5": 0.02173,
+        "NDCG@5": 0.010137,
+        "MRR@5": 0.006455,
+        "HR@10": 0.061224,
+        "NDCG@10": 0.022852,
+        "MRR@10": 0.011671,
+        "HR@20": 0.111878,
+        "NDCG@20": 0.035592,
+        "MRR@20": 0.015133
+      }
+    },
+    {
+      "key": "hourly_popularity",
+      "label": "Phổ biến theo giờ",
+      "group": "heuristic",
+      "main": false,
+      "usesPrevLocation": false,
+      "trainSeconds": 0.0,
+      "metrics": {
+        "HR@5": 0.06328,
+        "NDCG@5": 0.03778,
+        "MRR@5": 0.029492,
+        "HR@10": 0.105271,
+        "NDCG@10": 0.051257,
+        "MRR@10": 0.034996,
+        "HR@20": 0.163706,
+        "NDCG@20": 0.066071,
+        "MRR@20": 0.039082
+      }
+    },
+    {
+      "key": "hour_prev_distance",
+      "label": "Giờ × khoảng cách liền trước",
+      "group": "heuristic",
+      "main": false,
+      "usesPrevLocation": true,
+      "trainSeconds": 0.0,
+      "metrics": {
+        "HR@5": 0.098958,
+        "NDCG@5": 0.065384,
+        "MRR@5": 0.054412,
+        "HR@10": 0.146381,
+        "NDCG@10": 0.080477,
+        "MRR@10": 0.0605,
+        "HR@20": 0.217883,
+        "NDCG@20": 0.098496,
+        "MRR@20": 0.065414
+      }
+    },
+    {
+      "key": "user_knn",
+      "label": "User-KNN",
+      "group": "ml",
+      "main": false,
+      "usesPrevLocation": false,
+      "trainSeconds": 0.02,
+      "metrics": {
+        "HR@5": 0.06328,
+        "NDCG@5": 0.040927,
+        "MRR@5": 0.033598,
+        "HR@10": 0.103509,
+        "NDCG@10": 0.053834,
+        "MRR@10": 0.038864,
+        "HR@20": 0.154896,
+        "NDCG@20": 0.066744,
+        "MRR@20": 0.042365
+      }
+    },
+    {
+      "key": "item_knn",
+      "label": "Item-KNN",
+      "group": "ml",
+      "main": false,
+      "usesPrevLocation": false,
+      "trainSeconds": 0.02,
+      "metrics": {
+        "HR@5": 0.057701,
+        "NDCG@5": 0.039298,
+        "MRR@5": 0.033282,
+        "HR@10": 0.091029,
+        "NDCG@10": 0.049975,
+        "MRR@10": 0.037629,
+        "HR@20": 0.138159,
+        "NDCG@20": 0.061742,
+        "MRR@20": 0.040784
+      }
+    },
+    {
+      "key": "bpr_mf",
+      "label": "BPR-MF",
+      "group": "ml",
+      "main": false,
+      "usesPrevLocation": false,
+      "trainSeconds": 47.17,
+      "metrics": {
+        "HR@5": 0.04067,
+        "NDCG@5": 0.026303,
+        "MRR@5": 0.021619,
+        "HR@10": 0.062399,
+        "NDCG@10": 0.033227,
+        "MRR@10": 0.024417,
+        "HR@20": 0.099251,
+        "NDCG@20": 0.042432,
+        "MRR@20": 0.026884
+      }
+    },
+    {
+      "key": "feature_gbm",
+      "label": "Gradient Boosting (đặc trưng)",
+      "group": "ml",
+      "main": false,
+      "usesPrevLocation": false,
+      "trainSeconds": 11.5,
+      "metrics": {
+        "HR@5": 0.077081,
+        "NDCG@5": 0.048959,
+        "MRR@5": 0.039825,
+        "HR@10": 0.139333,
+        "NDCG@10": 0.068997,
+        "MRR@10": 0.048044,
+        "HR@20": 0.204375,
+        "NDCG@20": 0.085443,
+        "MRR@20": 0.052558
+      }
+    },
+    {
+      "key": "lightgcn",
+      "label": "LightGCN",
+      "group": "gnn",
+      "main": false,
+      "usesPrevLocation": false,
+      "trainSeconds": 0.0,
+      "metrics": {
+        "HR@5": 0.068125,
+        "NDCG@5": 0.043706,
+        "MRR@5": 0.035729,
+        "HR@10": 0.111291,
+        "NDCG@10": 0.05763,
+        "MRR@10": 0.041456,
+        "HR@20": 0.161503,
+        "NDCG@20": 0.070276,
+        "MRR@20": 0.044902
+      }
+    },
+    {
+      "key": "tas_gnn",
+      "label": "TAS-GNN",
+      "group": "gnn",
+      "main": true,
+      "usesPrevLocation": false,
+      "trainSeconds": 0.0,
+      "metrics": {
+        "HR@5": 0.073851,
+        "NDCG@5": 0.044636,
+        "MRR@5": 0.035181,
+        "HR@10": 0.124504,
+        "NDCG@10": 0.060875,
+        "MRR@10": 0.041802,
+        "HR@20": 0.185582,
+        "NDCG@20": 0.07619,
+        "MRR@20": 0.045938
+      }
+    }
+  ]
+}

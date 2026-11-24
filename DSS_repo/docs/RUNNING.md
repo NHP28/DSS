@@ -14,13 +14,70 @@ FE/Next.js :3000 ── /api proxy ── apps/api/NestJS :4000 ── ml/Python
                                hoặc :3307
 ```
 
+## 0. Chạy nhanh bản hiện tại
+
+Thành phần mới so với mô tả bên dưới: Neo4j (đồ thị tri thức), đăng nhập theo tài khoản, model lấy từ
+`outputs/checkpoints` (không cần file zip Colab).
+
+```powershell
+cd DSS_repo
+npm.cmd ci
+npm.cmd --prefix FE ci
+python -m pip install -r ml/requirements.txt
+Copy-Item apps/api/.env.example apps/api/.env   # rồi đổi AUTH_SECRET thành chuỗi ngẫu nhiên ≥ 32 ký tự
+```
+
+**Cách A, đầy đủ (cần Docker Desktop đang chạy):**
+
+```powershell
+docker compose up -d --wait        # MySQL :3306 và Neo4j :7474/:7687
+npm.cmd run db:init                # nạp 996 địa điểm, 36.210 check-in, tạo 4 tài khoản demo
+python tools/build_kg.py           # dựng đồ thị tri thức: 2.512 nút, 54.343 cạnh
+```
+
+Nếu Docker báo cổng 3306 đã bị chiếm (máy có sẵn MySQL khác, kể cả trong WSL): tạo file `.env` cạnh
+`compose.yaml` với dòng `MYSQL_HOST_PORT=3307`, đổi `DB_PORT=3307` trong `apps/api/.env`, rồi chạy lại lệnh trên.
+
+Ba terminal:
+
+```powershell
+python -m uvicorn ml.serve:app --host 127.0.0.1 --port 8000
+npm.cmd run dev:api
+npm.cmd run dev:fe
+```
+
+**Cách B, không cần Docker (dự phòng cho buổi demo):** API đọc thẳng CSV và giữ tài khoản, cài đặt,
+phản hồi trong bộ nhớ (mất khi tắt API). Không có Neo4j nên nút "Vì sao gợi ý?" và khung xem đồ thị báo chưa bật.
+
+```powershell
+python -m uvicorn ml.serve:app --host 127.0.0.1 --port 8000
+npm.cmd run dev:api:memory
+npm.cmd run dev:fe
+```
+
+Mở http://127.0.0.1:3000.
+
+- **Tài khoản demo:** `demo_cafe`, `demo_amthuc`, `demo_thamquan`, `demo_dadang`; mật khẩu là `DEMO_PASSWORD` trong `apps/api/.env`.
+- **Model:** `ml.serve` nạp `outputs/checkpoints/temporal_gnn_danang.pt` và `lightgcn_danang.pt`. Nếu có
+  `MODEL_PATH` hoặc `outputs/active_artifact.json` (gói Colab đã nhập) thì gói đó được ưu tiên.
+- **Chạy lại bảng so sánh (có biểu đồ):** mở lần lượt `notebooks/01_du_lieu_va_baseline_heuristic.ipynb`, `02_baseline_machine_learning.ipynb`,
+  `03_so_sanh_voi_gnn.ipynb` bằng VS Code hoặc Jupyter rồi chọn Run All; hoặc chạy cả ba một lệnh: `python tools/build_notebooks.py`.
+  Bản không có biểu đồ: `python src/benchmark_ml.py` (cùng kết quả). **Cập nhật số liệu trang Dữ liệu:** `python tools/export_data_profile.py`.
+- **Ảnh và sao thật từ Google Maps (tùy chọn):** cần API key, xem [GOOGLE_PLACES.md](GOOGLE_PLACES.md).
+- **Kiểm tra:** `python -m pytest tests -q`, `npm.cmd test`, `npm.cmd --prefix FE run build`.
+
+Neo4j Browser: http://127.0.0.1:7474 (user `neo4j`, mật khẩu `NEO4J_PASSWORD`). Thử:
+`MATCH (p:POI {id: 1})<-[:VISITED]-(u:User)-[:VISITED]->(q:POI) RETURN p.name, q.name, count(u) AS n ORDER BY n DESC LIMIT 10`
+
+Các mục 1–6 bên dưới mô tả chi tiết từng phần; riêng mục 3 (nhập gói Colab) là tùy chọn.
+
 ## 1. Cài dependency
 
 Yêu cầu Node.js 22+, Python 3.11+, MySQL 8.4 hoặc Docker.
 Trên PowerShell dùng `npm.cmd` nếu `npm.ps1` bị ExecutionPolicy chặn.
 
 ```powershell
-cd F:\dss\DSS_repo
+cd DSS_repo
 npm.cmd ci
 npm.cmd --prefix FE ci
 python -m pip install -r ml/requirements.txt
@@ -143,7 +200,7 @@ npm.cmd run dev:api
 Terminal 3, chạy riêng từ `FE`:
 
 ```powershell
-cd F:\dss\DSS_repo\FE
+cd DSS_repo/FE
 npm.cmd run dev
 ```
 

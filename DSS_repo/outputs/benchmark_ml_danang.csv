@@ -1,0 +1,10 @@
+﻿model,label,group,HR@5,NDCG@5,MRR@5,HR@10,NDCG@10,MRR@10,HR@20,NDCG@20,MRR@20,train_seconds
+popularity,Phổ biến chung,heuristic,2.17,1.01,0.65,6.12,2.29,1.17,11.19,3.56,1.51,0.0
+hourly_popularity,Phổ biến theo giờ,heuristic,6.33,3.78,2.95,10.53,5.13,3.5,16.37,6.61,3.91,0.0
+hour_prev_distance,Giờ × khoảng cách liền trước,heuristic,9.9,6.54,5.44,14.64,8.05,6.05,21.79,9.85,6.54,0.0
+user_knn,User-KNN,ml,6.33,4.09,3.36,10.35,5.38,3.89,15.49,6.67,4.24,0.02
+item_knn,Item-KNN,ml,5.77,3.93,3.33,9.1,5.0,3.76,13.82,6.17,4.08,0.02
+bpr_mf,BPR-MF,ml,4.07,2.63,2.16,6.24,3.32,2.44,9.93,4.24,2.69,47.17
+feature_gbm,Gradient Boosting (đặc trưng),ml,7.71,4.9,3.98,13.93,6.9,4.8,20.44,8.54,5.26,11.5
+lightgcn,LightGCN,gnn,6.81,4.37,3.57,11.13,5.76,4.15,16.15,7.03,4.49,0.0
+tas_gnn,TAS-GNN,gnn,7.39,4.46,3.52,12.45,6.09,4.18,18.56,7.62,4.59,0.0

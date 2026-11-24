@@ -1,3 +1,5 @@
+> **Tài liệu của phiên bản cũ.** Số liệu và kiến trúc hiện hành xem [docs/TRA_LOI_GOP_Y.md](docs/TRA_LOI_GOP_Y.md) và [docs/RUNNING.md](docs/RUNNING.md).
+
 # BÁO CÁO THUYẾT MINH VÀ TRÌNH BÀY DỰ ÁN VỚI GIẢNG VIÊN HƯỚNG DẪN
 ## Hệ Thống Gợi Ý Địa Điểm Cá Nhân Hóa (TAS-GNN) Kết Hợp Hỗ Trợ Ra Quyết Định Đa Tiêu Chí (L-DSS) Tại TP. Đà Nẵng
 
