@@ -6,6 +6,10 @@
 
 ---
 
+> **Bổ sung 24/11/2026:** phần trả lời góp ý của giảng viên (dataset, mô hình, cơ chế thời gian, Neo4j,
+> baseline ML, chỉ số, website, trang cài đặt) nằm ở `DSS_repo/docs/TRA_LOI_GOP_Y.md`; cách chạy bản hiện tại ở
+> `DSS_repo/docs/RUNNING.md` mục 0. So với baseline ML: Gradient Boosting 13,93%, TAS-GNN 12,45%, LightGCN 11,13% (HR@10).
+
 ## MỤC LỤC
 1. [Tổng Quan Đề Tài & Bài Toán Giải Quyết](#1-tổng-quan-đề-tài--bài-toán-giải-quyết)
 2. [Kiến Trúc Tổng Thể Hệ Thống (End-to-End Architecture)](#2-kiến-trúc-tổng-thể-hệ-thống)
@@ -203,7 +207,7 @@ python -m uvicorn server:app --host 127.0.0.1 --port 8000 --reload
 Mở terminal khác để chạy frontend riêng:
 
 ```powershell
-cd F:\dss\DSS_repo\FE
+cd DSS_repo/FE
 npm.cmd ci
 npm.cmd run dev
 ```

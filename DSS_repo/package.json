@@ -1,6 +1,9 @@
 {
-  "name": "danang-dss", "private": true,
-  "workspaces": ["apps/api"],
+  "name": "danang-dss",
+  "private": true,
+  "workspaces": [
+    "apps/api"
+  ],
   "scripts": {
     "dev:fe": "npm --prefix FE run dev",
     "dev:web": "npm run dev:fe",
@@ -10,7 +13,12 @@
     "build": "npm run build:api && npm run build:fe",
     "typecheck": "npm run typecheck --workspaces && npm --prefix FE run typecheck",
     "test": "npm run test -w @dss/api",
-    "db:init": "npm run db:init -w @dss/api"
+    "db:init": "npm run db:init -w @dss/api",
+    "dev:api:memory": "npm run dev:memory -w @dss/api",
+    "kg:build": "python tools/build_kg.py",
+    "benchmark": "python src/benchmark_ml.py"
   },
-  "engines": {"node": ">=22.0.0"}
+  "engines": {
+    "node": ">=22.0.0"
+  }
 }

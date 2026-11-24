@@ -9,7 +9,7 @@ và chạy độc lập với mã Python/API/model.
 Yêu cầu Node.js 22+.
 
 ```powershell
-cd F:\dss\DSS_repo\FE
+cd DSS_repo/FE
 npm.cmd ci
 Copy-Item .env.example .env.local
 npm.cmd run dev

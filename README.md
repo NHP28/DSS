@@ -8,6 +8,11 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> **Cập nhật 24/11/2026 theo góp ý của giảng viên:** thêm đăng nhập theo tài khoản, 8 chủ đề du lịch,
+> trang cài đặt mô hình, đồ thị tri thức Neo4j, bảng so sánh với baseline machine learning và các trang
+> Mô hình / Đánh giá / Dữ liệu. Trả lời từng góp ý: [DSS_repo/docs/TRA_LOI_GOP_Y.md](DSS_repo/docs/TRA_LOI_GOP_Y.md).
+> Cách chạy: [DSS_repo/docs/RUNNING.md](DSS_repo/docs/RUNNING.md).
+
 ---
 
 ## 📌 1. Giới Thiệu & Đặt Vấn Đề
@@ -69,13 +74,21 @@ DSS/
 
 Thực hiện đánh giá trên $6.811$ sự kiện kiểm thử theo thời gian (**Temporal Split**), che các địa điểm đã tương tác trong tập huấn luyện:
 
-| Phương pháp | Loại mô hình | HR@5 | HR@10 | HR@20 | NDCG@5 | NDCG@10 |
+| Phương pháp | Nhóm | HR@5 | HR@10 | HR@20 | NDCG@10 | MRR@10 |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Phổ biến theo giờ** | Heuristic (Không học) | $7.22\%$ | $11.88\%$ | $18.40\%$ | $4.35\%$ | $5.83\%$ |
-| **Giờ × Khoảng cách cuối train** | Heuristic (Không học) | $8.63\%$ | $13.12\%$ | $19.72\%$ | $5.31\%$ | $6.76\%$ |
-| **Giờ × Khoảng cách liền trước** | Next-POI Heuristic | **$10.12\%$** | **$14.88\%$** | **$21.83\%$** | **$6.77\%$** | **$8.26\%$** |
-| **LightGCN** | GNN Tĩnh (SIGIR '20) | $7.31\%$ | $11.36\%$ | $16.46\%$ | $4.96\%$ | $6.25\%$ |
-| **ST-GNN-POI / TAS-GNN** | GNN Không - Thời gian | $7.39\%$ | $12.45\%$ | $18.56\%$ | $4.46\%$ | $6.09\%$ |
+| Giờ × khoảng cách liền trước ¹ | Không học | 9,90% | 14,64% | 21,79% | 8,05% | 6,05% |
+| Gradient Boosting (đặc trưng) | ML truyền thống | 7,71% | 13,93% | 20,44% | 6,90% | 4,80% |
+| **TAS-GNN (model chính)** | GNN | **7,39%** | **12,45%** | **18,56%** | **6,09%** | **4,18%** |
+| LightGCN (đối chứng) | GNN | 6,81% | 11,13% | 16,15% | 5,76% | 4,15% |
+| Phổ biến theo giờ | Không học | 6,33% | 10,53% | 16,37% | 5,13% | 3,50% |
+| User-KNN | ML truyền thống | 6,33% | 10,35% | 15,49% | 5,38% | 3,89% |
+| Item-KNN | ML truyền thống | 5,77% | 9,10% | 13,82% | 5,00% | 3,76% |
+| BPR-MF | ML truyền thống | 4,07% | 6,24% | 9,93% | 3,32% | 2,44% |
+| Phổ biến chung | Không học | 2,17% | 6,12% | 11,19% | 2,29% | 1,17% |
+
+¹ Được biết vị trí check-in ngay trước sự kiện kiểm tra; các phương pháp khác không có thông tin này.
+Chạy lại: `python src/benchmark_ml.py` trong `DSS_repo` (chấm đủ 6.811 sự kiện, giờ và thứ thật).
+TAS-GNN hơn LightGCN và ba phương pháp lọc cộng tác, nhưng chưa vượt Gradient Boosting và heuristic khoảng cách.
 
 > **Nhận định khoa học:**
 > 1. Quy luật thời gian và khoảng cách địa lý đóng vai trò tối quan trọng trong hành vi di chuyển đô thị. Tín hiệu *Khoảng cách từ vị trí check-in liền trước* đem lại hiệu quả vượt trội.
@@ -105,7 +118,7 @@ python server.py
 Chạy frontend trong terminal riêng:
 
 ```powershell
-cd F:\dss\DSS_repo\FE
+cd DSS_repo/FE
 npm.cmd ci
 npm.cmd run dev
 ```

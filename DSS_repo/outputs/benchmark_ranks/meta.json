@@ -1,0 +1,38 @@
+{
+  "popularity": {
+    "seconds": 0.0,
+    "note": null
+  },
+  "hourly_popularity": {
+    "seconds": 0.0,
+    "note": null
+  },
+  "hour_prev_distance": {
+    "seconds": 0.0,
+    "note": null
+  },
+  "user_knn": {
+    "seconds": 0.02,
+    "note": "cosine trên ma trận số lượt ghé"
+  },
+  "item_knn": {
+    "seconds": 0.02,
+    "note": "cosine, 50 láng giềng"
+  },
+  "bpr_mf": {
+    "seconds": 47.17,
+    "note": "dim 64, 30 epoch, Adam lr 0.005 (chọn trên validation)"
+  },
+  "feature_gbm": {
+    "seconds": 11.5,
+    "note": "HistGradientBoosting, max_depth=4, 39,435 dòng huấn luyện, mẫu âm 4:1"
+  },
+  "lightgcn": {
+    "seconds": 0.0,
+    "note": "checkpoint trong repo, không huấn luyện lại"
+  },
+  "tas_gnn": {
+    "seconds": 0.0,
+    "note": "checkpoint trong repo, không huấn luyện lại"
+  }
+}

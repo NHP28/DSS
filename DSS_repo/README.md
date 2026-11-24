@@ -1,5 +1,10 @@
 # Đà Nẵng DSS — Next.js / NestJS / MySQL / Colab
 
+> **Bản hiện tại:** website có đăng nhập, 8 chủ đề du lịch, trang cài đặt mô hình, đồ thị tri thức Neo4j và
+> bảng so sánh với baseline machine learning. Bắt đầu từ [docs/TRA_LOI_GOP_Y.md](docs/TRA_LOI_GOP_Y.md)
+> (trả lời 9 góp ý) và mục 0 của [docs/RUNNING.md](docs/RUNNING.md) (cách chạy, kể cả khi không có Docker).
+> TAS-GNN là model chính (HR@10 12,45%), LightGCN là đối chứng (11,13%); model nằm sẵn trong `outputs/checkpoints`.
+
 Phiên bản ứng dụng mới:
 
 - **Frontend:** `FE` — Next.js App Router, TypeScript, Tailwind CSS, bản đồ Leaflet/OSM; dependency và lệnh chạy riêng.
@@ -22,7 +27,7 @@ DSS_repo/
 FE giao tiếp với backend qua HTTP. Xem [FE/README.md](FE/README.md) để chạy riêng frontend.
 
 ```powershell
-cd F:\dss\DSS_repo
+cd DSS_repo
 npm.cmd ci
 npm.cmd --prefix FE ci
 python -m pip install -r ml/requirements.txt

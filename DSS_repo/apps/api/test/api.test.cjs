@@ -1,82 +1,141 @@
-require('reflect-metadata');
-const {test,before,after} = require('node:test');
+const {test, before, after} = require('node:test');
 const assert = require('node:assert/strict');
-const {createServer} = require('node:http');
-const {NestFactory} = require('@nestjs/core');
-const {Module,ValidationPipe} = require('@nestjs/common');
-const {FastifyAdapter} = require('@nestjs/platform-fastify');
-const {AppController} = require('../dist/app.controller');
-const {AppService} = require('../dist/app.service');
-const {DatabaseService} = require('../dist/database/database.service');
+const {startApp} = require('./helpers.cjs');
 
-const catalog=[
-  {id:0,name:'Cà phê A',category:'cafe',district:'Hải Châu',latitude:16.06,longitude:108.22,rating:4.5,price_avg:30000,popularity:80},
-  {id:1,name:'Cà phê B',category:'cafe',district:'Sơn Trà',latitude:16.07,longitude:108.23,rating:4,price_avg:60000,popularity:60},
-  {id:2,name:'Khách sạn',category:'hotel',district:'Sơn Trà',latitude:16.07,longitude:108.24,rating:4,price_avg:900000,popularity:60},
-];
-const feedback=[];
-const fakeDb={
-  async query(sql,args=[]){
-    if(sql.startsWith('SELECT * FROM pois')) return catalog;
-    if(sql.startsWith('SELECT id FROM users'))return args[0]===12?[{id:12}]:[];
-    if(sql.startsWith('SELECT id FROM pois'))return catalog.filter(p=>p.id===args[0]);
-    if(sql.includes('SELECT DISTINCT poi_id'))return [{poi_id:0},...feedback.filter(x=>x[2]==='visit').map(x=>({poi_id:x[1]}))];
-    if(sql.includes('GROUP BY poi_id'))return [{poi_id:0,count:4},{poi_id:1,count:2},{poi_id:2,count:1}];
-    if(sql.includes('FROM dataset_meta'))return [{sha256:'abc'}];
-    return [];
-  },
-  async execute(sql,args){feedback.push(args);}
-};
-let app,server,aiMode='ok';
-before(async()=>{
-  server=createServer((req,res)=>{
-    res.setHeader('Content-Type','application/json');
-    res.statusCode=aiMode==='down'?503:200;
-    res.end(JSON.stringify({source:'tas_gnn',smokeRun:false,datasetSha256:aiMode==='mismatch'?'wrong':aiMode==='newline_alias'?'lf_hash':'abc',datasetSha256Aliases:aiMode==='newline_alias'?['abc']:[],scores:catalog.map(p=>({poiId:p.id,score:1-p.id*.2}))}));
-  });
-  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
-  process.env.AI_URL=`http://127.0.0.1:${server.address().port}`;
-  class TestModule{}
-  Module({controllers:[AppController],providers:[AppService,{provide:DatabaseService,useValue:fakeDb}]})(TestModule);
-  app=await NestFactory.create(TestModule,new FastifyAdapter(),{logger:false});
-  app.setGlobalPrefix('api');
-  app.useGlobalPipes(new ValidationPipe({transform:true,whitelist:true,forbidNonWhitelisted:true}));
-  await app.init();await app.getHttpAdapter().getInstance().ready();
-});
-after(async()=>{await app?.close();await new Promise(resolve=>server.close(resolve));});
-const post=(url,payload)=>app.inject({method:'POST',url,payload});
-test('HTTP DTO rejects invalid coordinates, time, topK and extra properties',async()=>{
-  for(const payload of [{hour:24},{latitude:100},{topK:0},{radiusKm:-1},{userId:'12'},{unknown:1},{matrix:[[null]]}]) {
-    const res=await post('/api/recommendations',payload);assert.equal(res.statusCode,400,res.body);
+let t;
+before(async () => { t = await startApp(); });
+after(async () => { await t.close(); });
+const recommend = (payload, cookie) => t.call('POST', '/api/recommendations', payload, cookie);
+
+test('HTTP DTO rejects invalid coordinates, time, topK and extra properties', async () => {
+  for (const payload of [{hour:24},{latitude:100},{topK:0},{radiusKm:-1},{userId:12},{unknown:1},{matrix:[[null]]},{model:'xgboost'}]) {
+    const res = await recommend(payload);
+    assert.equal(res.statusCode, 400, res.body);
   }
 });
-test('AI scores, per-category ranking, budget/radius filters and history masking',async()=>{
-  aiMode='ok';
-  const res=await post('/api/recommendations',{userId:12,radiusKm:10,maxPrice:100000});
-  assert.equal(res.statusCode,201,res.body);
-  const body=res.json();assert.equal(body.source,'tas_gnn');assert.equal(body.warning,null);
-  assert.equal(body.groups.length,1);assert.deepEqual(body.groups[0].items.map(p=>p.id),[1]);
-  assert.equal(body.rankingScope,'within_category');
-  const empty=await post('/api/recommendations',{latitude:0,longitude:0,radiusKm:1});
-  assert.equal(empty.json().totalCandidates,0);
+
+test('guest gets cold-start ranking per category with budget and radius filters', async () => {
+  t.ai.mode = 'ok';
+  const res = await recommend({radiusKm:10, maxPrice:100000});
+  assert.equal(res.statusCode, 200, res.body);
+  const body = res.json();
+  assert.equal(body.personalization, 'cold_start');
+  assert.equal(body.source, 'hourly_popularity');
+  assert.equal(body.warning, null);
+  assert.deepEqual(body.groups.map(g=>g.category).sort(), ['cafe','restaurant','tourist_spot']);
+  assert.equal(body.rankingScope, 'within_category');
+  assert.ok(!('userId' in t.ai.requests.at(-1)) && !('historyPoiIds' in t.ai.requests.at(-1)));
 });
-test('cold start and explicit fallback on unavailable or mismatched artifact',async()=>{
-  for(const mode of ['down','mismatch']) {
-    aiMode=mode;
-    const res=await post('/api/recommendations',{category:'cafe'});
-    assert.equal(res.statusCode,201,res.body);const body=res.json();
-    assert.equal(body.source,'hourly_popularity');assert.ok(body.warning);assert.equal(body.groups[0].total,2);
+
+test('filters that match nothing return an empty result, not an error', async () => {
+  const res = await recommend({latitude:0, longitude:0, radiusKm:0.1});
+  assert.equal(res.statusCode, 200);
+  assert.equal(res.json().totalCandidates, 0);
+  assert.deepEqual(res.json().groups, []);
+});
+
+test('falls back to hourly popularity with a warning when the model service is down or mismatched', async () => {
+  for (const mode of ['down','mismatch']) {
+    t.ai.mode = mode;
+    const res = await recommend({category:'cafe'});
+    assert.equal(res.statusCode, 200, res.body);
+    const body = res.json();
+    assert.equal(body.source, 'hourly_popularity');
+    assert.ok(body.warning);
+    assert.equal(body.groups[0].total, 2);
+    assert.equal(body.personalization, 'cold_start');
   }
-  const badUser=await post('/api/recommendations',{userId:99});assert.equal(badUser.statusCode,400);
+  t.ai.mode = 'ok';
 });
-test('Colab LF artifact matches the same Windows CRLF dataset through verified hash aliases',async()=>{
-  aiMode='newline_alias';
-  const res=await post('/api/recommendations',{category:'cafe'});
-  assert.equal(res.statusCode,201,res.body);
-  assert.equal(res.json().source,'tas_gnn');assert.equal(res.json().warning,null);
+
+test('junk-named POIs stay hidden unless asked for', async () => {
+  const names = body => body.groups.flatMap(g=>g.items).map(p=>p.name);
+  assert.ok(!names((await recommend({radiusKm:50})).json()).includes('End of the Road?'));
+  assert.ok(names((await recommend({radiusKm:50, showHidden:true})).json()).includes('End of the Road?'));
 });
-test('feedback validates foreign IDs and persists valid action',async()=>{
-  const saved=await post('/api/feedback',{userId:12,poiId:1,action:'visit'});
-  assert.equal(saved.statusCode,201);assert.equal(saved.json().saved,true);assert.deepEqual(feedback[0],[12,1,'visit']);
-  assert.equal((await post('/api/feedback',{userId:99,poiId:1,action:'like'})).statusCode,400);
+
+test('candidate pool keeps the model\'s top N of each category before TOPSIS', async () => {
+  const body = (await recommend({radiusKm:50, candidatePool:1})).json();
+  assert.ok(body.groups.length >= 3);
+  for (const group of body.groups) assert.equal(group.items.length, 1);
+  // Stub scores grow with the id, so the higher id of each category survives.
+  assert.equal(body.groups.find(g=>g.category==='cafe').items[0].id, 1);
+  assert.equal(body.groups.find(g=>g.category==='cafe').total, 2);
+});
+
+test('demo account scores as its dataset user and hides that user\'s history', async () => {
+  await t.store.createAccount({username:'demo_cafe', displayName:'Demo', passwordHash:'x', interests:[], datasetUserId:12});
+  const cookie = `dss_session=${t.app.get(require('../dist/auth/auth.service').AuthService).token(t.store.state.accounts.at(-1).id)}`;
+  const body = (await recommend({category:'cafe'}, cookie)).json();
+  assert.equal(t.ai.requests.at(-1).userId, 12);
+  assert.equal(body.personalization, 'trained_user');
+  assert.equal(body.source, 'tas_gnn');
+  assert.deepEqual(body.groups[0].items.map(p=>p.id), [1]);
+  const all = (await recommend({category:'cafe', excludeVisited:false}, cookie)).json();
+  assert.deepEqual(all.groups[0].items.map(p=>p.id).sort(), [0,1]);
+  assert.equal(all.groups[0].items.find(p=>p.id===0).visited, true);
+});
+
+test('a self-registered account is personalised by fold-in once it has three places', async () => {
+  const {cookie} = await t.register('nguoi_moi');
+  const feedback = (poiId, action) => t.call('POST', '/api/feedback', {poiId, action}, cookie);
+  assert.equal((await feedback(0, 'like')).statusCode, 200);
+  await feedback(3, 'like');
+  let body = (await recommend({excludeVisited:false}, cookie)).json();
+  assert.ok(!('historyPoiIds' in t.ai.requests.at(-1)));
+  assert.equal(body.personalization, 'cold_start');
+  assert.equal(body.historyCount, 2);
+  await feedback(4, 'visit');
+  body = (await recommend({excludeVisited:false, radiusKm:50, model:'lightgcn'}, cookie)).json();
+  assert.deepEqual([...t.ai.requests.at(-1).historyPoiIds].sort(), [0,3,4]);
+  assert.equal(t.ai.requests.at(-1).model, 'lightgcn');
+  assert.ok(!('userId' in t.ai.requests.at(-1)));
+  assert.equal(body.personalization, 'foldin');
+  assert.equal(body.source, 'lightgcn_foldin');
+  assert.equal(body.groups.flatMap(g=>g.items).find(p=>p.id===0).saved, true);
+
+  const saved = (await t.call('GET', '/api/saved', undefined, cookie)).json();
+  assert.deepEqual(saved.liked.map(p=>p.id).sort(), [0,3]);
+  assert.deepEqual(saved.visited.map(p=>p.id), [4]);
+  await feedback(0, 'unlike');
+  assert.deepEqual((await t.call('GET', '/api/saved', undefined, cookie)).json().liked.map(p=>p.id), [3]);
+  assert.equal((await feedback(999, 'like')).statusCode, 400);
+});
+
+test('feedback and saved places require a session', async () => {
+  assert.equal((await t.call('POST', '/api/feedback', {poiId:1, action:'like'})).statusCode, 401);
+  assert.equal((await t.call('GET', '/api/saved')).statusCode, 401);
+});
+
+test('saved model settings drive recommendations and request fields override them', async () => {
+  const {cookie} = await t.register('thich_lightgcn');
+  const put = await t.call('PUT', '/api/settings', {model:'lightgcn', useTime:false, topK:5, radiusKm:50, candidatePool:20, preset:'custom', weightLevels:[9,1,1,1,1]}, cookie);
+  assert.equal(put.statusCode, 200, put.body);
+  let body = (await recommend({}, cookie)).json();
+  assert.equal(t.ai.requests.at(-1).model, 'lightgcn');
+  assert.equal(t.ai.requests.at(-1).useTime, false);
+  assert.equal(body.query.radiusKm, 50);
+  assert.ok(Math.abs(body.weights[0] - 9/13) < 1e-6);
+  body = (await recommend({model:'tas_gnn', preset:'balanced'}, cookie)).json();
+  assert.equal(t.ai.requests.at(-1).model, 'tas_gnn');
+  assert.deepEqual(body.weights, [.25,.2,.15,.3,.1]);
+});
+
+test('system status reports the model service and a missing graph', async () => {
+  const body = (await t.call('GET', '/api/system')).json();
+  assert.equal(body.ai.ready, true);
+  assert.deepEqual(body.ai.models, ['tas_gnn','lightgcn']);
+  assert.equal(body.graph, false);
+});
+
+test('an explicit "no limit" overrides a saved budget, and themes ignore the saved budget', async () => {
+  const {cookie} = await t.register('ngan_sach');
+  await t.call('PUT', '/api/settings', {maxPrice: 50000, radiusKm: 50}, cookie);
+  const ids = body => body.groups.flatMap(g => g.items).map(p => p.id);
+  assert.ok(!ids((await recommend({}, cookie)).json()).includes(2));
+  const open = (await recommend({maxPrice: null}, cookie)).json();
+  assert.ok(ids(open).includes(2));
+  assert.equal(open.query.maxPrice, null);
+  const hotels = (await t.call('POST', '/api/themes/luu-tru/recommendations', {}, cookie)).json();
+  assert.deepEqual(ids(hotels), [2]);
 });

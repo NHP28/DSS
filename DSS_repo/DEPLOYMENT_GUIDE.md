@@ -1,3 +1,5 @@
+> **Tài liệu của phiên bản cũ.** Số liệu và kiến trúc hiện hành xem [docs/TRA_LOI_GOP_Y.md](docs/TRA_LOI_GOP_Y.md) và [docs/RUNNING.md](docs/RUNNING.md).
+
 # 📘 HƯỚNG DẪN TRIỂN KHAI HỆ THỐNG GỢI Ý ĐỊA ĐIỂM (L-DSS)
 ## Time-Aware Spatio-Temporal GNN (TAS-GNN) kết hợp AHP + TOPSIS
 
