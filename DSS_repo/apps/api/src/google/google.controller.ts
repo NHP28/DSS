@@ -7,4 +7,7 @@ export class GoogleController {
 
   /** Photo and rating from Google Maps for one place; `available: false` when there is nothing to show. */
   @Get(':id/google') place(@Param('id', ParseIntPipe) id: number) { return this.google.place(id); }
+
+  /** Keyless multi-photo gallery, exact street address, and real web review snippets for one place. */
+  @Get(':id/preview') preview(@Param('id', ParseIntPipe) id: number) { return this.google.preview(id); }
 }
